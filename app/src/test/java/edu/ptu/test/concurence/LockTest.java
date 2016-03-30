@@ -50,5 +50,7 @@ public class LockTest {
             e.printStackTrace();
         }
     }
+    public void testVolatile(){
+    }
 
 }
