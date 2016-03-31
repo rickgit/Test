@@ -1,6 +1,9 @@
 package edu.ptu.test.concurence;
 
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -20,6 +23,9 @@ public class LockTest {
         }
     }
 
+    /**
+     * 代码模板，具体可以看官方注释Reentrent注释
+     */
     public void testLock() {
         l.lock();
         try {
@@ -50,7 +56,26 @@ public class LockTest {
             e.printStackTrace();
         }
     }
-    public void testVolatile(){
+    public void testTimer(){
+        Timer timer = new Timer(true);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+
+            }
+        },0l);
+    }
+
+    /**
+     * 信号量
+     */
+    public void testSemaphore(){
+        Semaphore semaphore = new Semaphore(5);
+        try {
+            semaphore.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
