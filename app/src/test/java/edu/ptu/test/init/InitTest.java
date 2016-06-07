@@ -1,5 +1,8 @@
 package edu.ptu.test.init;
 
+
+import org.junit.Test;
+
 import edu.ptu.test.bean.Dog;
 import edu.ptu.test.bean.HasiqiDog;
 
@@ -22,9 +25,7 @@ public class InitTest {
         System.out.println(System.nanoTime() - last);
     }
 
-    public static void main(String[] args) {
-        System.out.println("");
-    }
+
 //    @Test
     public void testDogObj() {
         long last = System.nanoTime();
@@ -43,5 +44,40 @@ public class InitTest {
         o = new HasiqiDog();
         System.out.println(System.nanoTime() - last);
     }
+    @Test
+    public void testCreateAutoBoxing(){
+        Long Ii=0l;
+        long last = System.nanoTime();
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            Ii+=i;
+        }
+        System.out.println(System.nanoTime() - last);
+        long longSimple=0;
+        last = System.nanoTime();
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            longSimple+=i;
+        }
+        System.out.println(System.nanoTime() - last);
+    }
+
+    /**
+     * 增加终结方法的效率
+     *
+     * effictive java ,第二章，第七条
+     */
+    public void testAddFinalizer(){
+
+    }
+    /**
+     * 增加到set的两个对象，这两个对象根据一个属性判断是否相等，如果在加入后，两个对象的属性值设置相等后，两个对象是否还会存在set中。
+     *
+     * effictive java ,第三章，第八条，一致性
+     */
+    public void testEquelConsistency(){
+
+    }
+
+
+
 
 }

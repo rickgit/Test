@@ -9,10 +9,14 @@ import java.security.NoSuchAlgorithmException;
  * Created by WangAnshu on 2016/6/6.
  */
 public class MessageDigestTest {
+
+    public static final String SHA_1 = "SHA1";
+    public static final String MD5 = "MD5";
+
     @Test
     public void testMD5() {
         try {
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            MessageDigest md5 = MessageDigest.getInstance(MD5);
             StringBuilder sb = new StringBuilder(448);
             for (int i = 0; i < 448; i++) {
                 sb.append("a");

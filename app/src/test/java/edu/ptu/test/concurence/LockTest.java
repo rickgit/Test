@@ -1,6 +1,7 @@
 package edu.ptu.test.concurence;
 
-import java.util.Objects;
+import org.junit.Test;
+
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Semaphore;
@@ -16,7 +17,7 @@ public class LockTest {
     private int b;
     private Object o = new Object();
     private Lock l = new ReentrantLock();
-
+@Test
     public void testSynchronized() {
         synchronized (LockTest.this) {
             a++;
@@ -26,6 +27,7 @@ public class LockTest {
     /**
      * 代码模板，具体可以看官方注释Reentrent注释
      */
+    @Test
     public void testLock() {
         l.lock();
         try {
@@ -44,7 +46,7 @@ public class LockTest {
 
         }
     }
-
+    @Test
     public void testObjectWait() {
         try {
 
@@ -56,6 +58,7 @@ public class LockTest {
             e.printStackTrace();
         }
     }
+    @Test
     public void testTimer(){
         Timer timer = new Timer(true);
         timer.schedule(new TimerTask() {
@@ -69,6 +72,7 @@ public class LockTest {
     /**
      * 信号量
      */
+    @Test
     public void testSemaphore(){
         Semaphore semaphore = new Semaphore(5);
         try {
