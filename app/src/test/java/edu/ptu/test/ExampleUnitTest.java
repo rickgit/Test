@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
  */
 public class ExampleUnitTest {
-    //    @Test
+    @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
@@ -66,8 +66,8 @@ public class ExampleUnitTest {
 
         }
         System.out.println("===>" + (System.currentTimeMillis() - l));
-        l=System.currentTimeMillis();
-        for (long index =  100_000_000_000l; index >0; index--) {
+        l = System.currentTimeMillis();
+        for (long index = 100_000_000_000l; index > 0; index--) {
 
         }
         System.out.println("===>" + (System.currentTimeMillis() - l));
