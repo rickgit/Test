@@ -1,0 +1,90 @@
+def pDir = projectDir.path
+
+subprojects {
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = 1.7
+        targetCompatibility = 1.7
+        options.encoding = "UTF-8"
+    }
+    repositories {
+
+//        maven {
+//            def s = rootProject.buildFile.getParent()+File.separator+"libs"
+//            url uri(s)}
+        flatDir {
+            dirs "${pDir}/app/libs/android","${pDir}/app/libs/junit","${pDir}/app/libs/okhttp","${pDir}/app/libs/glide","${pDir}/app/libs/recyclerview", "${pDir}/app/libs/palette", "${pDir}/app/libs/gridlayout", "${pDir}/app/libs/cardview", "${pDir}/app/libs/constraint", "${pDir}/app/libs/rxjava", "${pDir}/app/libs/fastjson", "${pDir}/app/libs/design"
+
+        }
+        jcenter()
+    }
+}
+// 配置子项目项目
+project.ext.androidlibraryprojects = ["RecyclerView","Cardview","Gridlayout","Design","V7appconpat"]
+project.ext.androidapkprojects = ["app"]
+project.ext.androidprojects = project.androidlibraryprojects + project.androidapkprojects
+/**
+ * 根据容器类型，过滤出需要的gradle project.
+ * @param proj
+ * @return
+ * @author anshu.wang 2016-09-26
+ */
+def filterProject(proj) {
+    subprojects.findAll { project ->
+        proj.contains(project.name)
+    }
+}
+
+configure(filterProject(androidapkprojects)) {
+    apply plugin: 'com.android.application'
+    android {
+        compileSdkVersion COMPILE_SDK_VERSION
+        buildToolsVersion BUILD_TOOLS_VERSION
+        defaultConfig {
+            minSdkVersion MIN_SDK_VERSION
+            targetSdkVersion TARGET_SDK_VERSION
+        }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
+        }
+
+        lintOptions {
+            checkReleaseBuilds false
+            quiet true
+            abortOnError false
+        }
+        compileOptions.encoding = "UTF-8"
+
+
+    }
+    dependencies {
+        //support-v4
+        compile ':support-v4_internal_impl-23.0.1'
+        compile ':support-v4_23.0.1'
+        compile ':support-annotations-23.0.1'
+    }
+}
+configure(filterProject(androidlibraryprojects)) {
+    apply plugin: 'com.android.library'
+    android {
+        compileSdkVersion COMPILE_SDK_VERSION
+        buildToolsVersion BUILD_TOOLS_VERSION
+        defaultConfig {
+            minSdkVersion MIN_SDK_VERSION
+            targetSdkVersion TARGET_SDK_VERSION
+        }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_7
+            targetCompatibility JavaVersion.VERSION_1_7
+        }
+
+        lintOptions {
+            checkReleaseBuilds false
+            quiet true
+            abortOnError false
+        }
+        compileOptions.encoding = "UTF-8"
+
+
+    }
+}
