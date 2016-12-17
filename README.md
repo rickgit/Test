@@ -47,5 +47,7 @@ android {
 
     }
 ```
+2. **Build Variants**需要选择debug，不然所写的类识别不到test库的类
 
- ###Espresso UI recorder
+ ### Espresso UI recorder
+ 
