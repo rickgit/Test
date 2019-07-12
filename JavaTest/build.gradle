@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0-M4")
+    implementation 'junit:junit:4.12'
+    implementation 'junit:junit:4.12'
+
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
