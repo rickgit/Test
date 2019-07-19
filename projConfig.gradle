@@ -59,9 +59,9 @@ configure(filterProject(androidapkprojects)) {
     }
     dependencies {
         //support-v4
-        compile ':support-v4_internal_impl-23.0.1'
-        compile ':support-v4_23.0.1'
-        compile ':support-annotations-23.0.1'
+        implementation ':support-v4_internal_impl-23.0.1'
+        implementation ':support-v4_23.0.1'
+        implementation ':support-annotations-23.0.1'
     }
 }
 configure(filterProject(androidlibraryprojects)) {
