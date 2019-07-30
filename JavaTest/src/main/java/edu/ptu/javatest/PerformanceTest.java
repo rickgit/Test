@@ -67,8 +67,6 @@ public class PerformanceTest {
         for (int i = 0; i < 100; i++) {
             try {
                 //uc
-//            URL url = new URL("http://image.uczzd.cn/5864809814117103944.jpg?id=0&from=export");
-                //xiao mi
                 URL url = new URL("http://images.cdn.pt.xiaomi.com/thumcrop/webp/w329h219q80/Feeds/07e613497c71b4a1f2a6e82f67f3f84c6bd382c76?crop=l0r816t8b552");
                 URLConnection urlConnection = url.openConnection();
 
@@ -90,7 +88,6 @@ public class PerformanceTest {
         for (int i = 0; i < 100; i++) {
             try {
                 //uc
-//            URL url = new URL("http://image.uczzd.cn/5864809814117103944.jpg?id=0&from=export");
                 //xiao mi
                 File url = new File("./doc/07e613497c71b4a1f2a6e82f67f3f84c6bd382c76.webp");
                 InputStream inputStream = new FileInputStream(url);
@@ -110,8 +107,6 @@ public class PerformanceTest {
     public void testReadJpgFile() {
         for (int i = 0; i < 100; i++) {
             try {
-                //uc
-//            URL url = new URL("http://image.uczzd.cn/5864809814117103944.jpg?id=0&from=export");
                 //xiao mi
                 File url = new File("./doc/5864809814117103944.jpg");
                 InputStream inputStream = new FileInputStream(url);
@@ -125,5 +120,18 @@ public class PerformanceTest {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    @Test
+    public void testThreadCreate(){
+        final long l = System.currentTimeMillis();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println(System.currentTimeMillis()-l);
+            }
+        });
+        thread.start();
     }
 }
