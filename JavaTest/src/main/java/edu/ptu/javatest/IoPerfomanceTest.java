@@ -13,6 +13,7 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -30,85 +31,62 @@ import static org.junit.runners.MethodSorters.NAME_ASCENDING;
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
 public class IoPerfomanceTest {
     @Test
-    public void test001ObjectIO() {//str 64ms //json 167ms
+    public void test001ObjectIO() throws IOException {//str 64ms //json 167ms
         ArrayList<String> strings = initObject();
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("./object"));
-            oos.writeObject(strings);
-            oos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("./object"));
+        oos.writeObject(strings);
+        oos.close();
 
     }
 
     @Test
 
-    public void test002ReadObj() {//str 160ms //json 518ms
-        try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("./object"));
-            Object o = ois.readObject();
-            ois.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void test002ReadObj() throws IOException, ClassNotFoundException {//str 160ms //json 518ms
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("./object"));
+        Object o = ois.readObject();
+        ois.close();
+
     }
 
     @Test
-    public void test003BufferIo() {//str 30ms
+    public void test003BufferIo() throws FileNotFoundException {//str 30ms
         ArrayList<String> strings = initObject();
-        try {
-            PrintWriter oos = new PrintWriter(new OutputStreamWriter(new FileOutputStream("./object")));
-            for (int i = 0; i < strings.size(); i++) {
-                oos.println(strings.get(i));
-            }
-            oos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        PrintWriter oos = new PrintWriter(new OutputStreamWriter(new FileOutputStream("./object")));
+        for (int i = 0; i < strings.size(); i++) {
+            oos.println(strings.get(i));
         }
+        oos.close();
+
     }
 
     @Test
-    public void test004ReadBuffered() {//str 14ms
-        try {
-            ArrayList<String> newStr = new ArrayList<>();
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("./object")));
-            String str = null;
-            while ((str = br.readLine()) != null) {
-                newStr.add(str);
-            }
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void test004ReadBuffered() throws Exception {//str 14ms
+        ArrayList<String> newStr = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("./object")));
+        String str = null;
+        while ((str = br.readLine()) != null) {
+            newStr.add(str);
         }
+        br.close();
     }
 
     //200条数据以下，序列化与反序列化快，json 序列化字符串toJson慢
     ArrayList<Article> articles = initArticleList();
+
     @Test
-    public void test011ObjectIO() {//1000 json 167ms, 15条 json 11ms
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("./object"));
-            oos.writeObject(articles);
-            oos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
+    public void test011ObjectIO() throws IOException {//1000 json 167ms, 15条 json 11ms
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("./object"));
+        oos.writeObject(articles);
+        oos.close();
     }
 
     @Test
-    public void test012ReadObj() {//1000json 518ms ,15条 json 18ms
-        try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("./object"));
-            Object o = ois.readObject();
-            ois.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void test012ReadObj() throws IOException, ClassNotFoundException {//1000json 518ms ,15条 json 18ms
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("./object"));
+        Object o = ois.readObject();
+        ois.close();
     }
+
     @Test
     public void test013WriteJson() throws Exception {//1000json 277ms,15条 json 211ms
         String string = new Gson().toJson(articles, ArrayList.class);
@@ -156,7 +134,7 @@ public class IoPerfomanceTest {
 
     //NotSerializableException
     public static class Article implements Serializable {
-        private static final long serialVersionUID =1l;
+        private static final long serialVersionUID = 1l;
         private String recoid;
         private String id;
         private String title;
@@ -173,7 +151,7 @@ public class IoPerfomanceTest {
         private String content;
         private int contentLength;
         private ArrayList<Thumbnail> thumbnails;
-        private HashMap<String,BottomLeftMark> bottomleftmarkMap;
+        private HashMap<String, BottomLeftMark> bottomleftmarkMap;
         private ArrayList<Thumbnail> images;
         private int commentCnt;
         private ArrayList<String> videos;
@@ -183,21 +161,23 @@ public class IoPerfomanceTest {
         private int likeCnt;
         private int supportCnt;
         private int opposeCnt;
-        private HashMap<String,Thumbnail> adContent;
+        private HashMap<String, Thumbnail> adContent;
         private String ad_content_click_ad_url_array;
         private String ad_content_show_ad_url_array;
         private String fl_article_content_click_url_array;
         private BottomLeftMark bottomLeftMark;
         private int openType;
     }
-    public static class Thumbnail{
+
+    public static class Thumbnail {
         private String url;
         private int width;
         private int height;
         private int type;
 
     }
-    public static class BottomLeftMark{
+
+    public static class BottomLeftMark {
         private String mark;
         private int markColor;
         private String markIconUrl;
