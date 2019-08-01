@@ -7,7 +7,11 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import edu.ptu.test.utils.ClockUtils;
+import edu.ptu.test.utils.media.GifDecoder;
 
 public class LifeActivity extends FragmentActivity {
 
@@ -23,6 +27,7 @@ public class LifeActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(),LifeActivity.class));
+
             }
         });
     }
