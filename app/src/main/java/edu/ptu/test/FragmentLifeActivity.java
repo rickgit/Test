@@ -2,12 +2,18 @@ package edu.ptu.test;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import com.google.gson.Gson;
 
 import java.io.InputStream;
 
-import edu.ptu.androidutils.GifDecoder;
+import edu.ptu.androidutils.PhoneInfo;
+import edu.ptu.androidutils.media.GifDecoder;
 import edu.ptu.utils.utils.ClockUtils;
 
 public class FragmentLifeActivity extends FragmentActivity {
@@ -40,11 +46,24 @@ public class FragmentLifeActivity extends FragmentActivity {
                 });
             }
         });
+
+        ViewPager vp = (ViewPager)findViewById(R.id.vp);
+        vp.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int i) {
+                return new LifeFragment();
+            }
+
+            @Override
+            public int getCount() {
+                return 12;
+            }
+        });
 //        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getCpuInfo())+"\n\n");
 //        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getPhoneOsInfo(this))+"\n\n");
 //        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getTotalMemory(this)* 1.0/ (1024 * 1024))+"\n\n");
 //        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getAppMemory(this))+"\n\n");
 //        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getNumberOfCPUCores())+"\n\n");
-//        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getCPUMaxFreqKHz())+"\n\n");
+        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getCPUMaxFreqKHz()/1024./1024.)+"GHZ\n\n");
     }
 }

@@ -20,7 +20,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package edu.ptu.androidutils;
+package edu.ptu.androidutils.media;
 
 import android.graphics.Bitmap;
 import android.util.Log;

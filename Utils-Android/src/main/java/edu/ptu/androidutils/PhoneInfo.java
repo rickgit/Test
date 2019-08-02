@@ -1,4 +1,4 @@
-package edu.ptu.test;
+package edu.ptu.androidutils;
 
 import android.Manifest;
 import android.annotation.TargetApi;

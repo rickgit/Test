@@ -29,9 +29,31 @@ public class ClockUtils {
 
     public void printDiffTime() {
         int index = 3;//Android
-        if ( Thread.currentThread().getStackTrace()[ Thread.currentThread().getStackTrace().length-1].getFileName().toLowerCase().contains("junit"))
-            index=2;
+        if (Thread.currentThread().getStackTrace()[Thread.currentThread().getStackTrace().length - 1].getFileName().toLowerCase().contains("junit"))
+            index = 2;
         String pre = "(" + Thread.currentThread().getStackTrace()[index].getClassName() + "#" +
+                Thread.currentThread().getStackTrace()[index].getMethodName() + "," +
+                Thread.currentThread().getStackTrace()[index].getLineNumber() + ")";
+        printDiffTime(pre + ": ");
+    }
+
+    public void printDiffTime(Object o, Object msg) {
+        int index = 3;//Android
+        if (Thread.currentThread().getStackTrace()[Thread.currentThread().getStackTrace().length - 1].getFileName().toLowerCase().contains("junit"))
+            index = 2;
+        String pre = "(" + Thread.currentThread().getStackTrace()[index].getClassName() + "@" + o.hashCode()
+                + "#" +
+                Thread.currentThread().getStackTrace()[index].getMethodName() + "," +
+                Thread.currentThread().getStackTrace()[index].getLineNumber() + ")";
+        printDiffTime(pre + ": "+msg+" ");
+    }
+
+    public void printDiffTime(Object o) {
+        int index = 3;//Android
+        if (Thread.currentThread().getStackTrace()[Thread.currentThread().getStackTrace().length - 1].getFileName().toLowerCase().contains("junit"))
+            index = 2;
+        String pre = "(" + Thread.currentThread().getStackTrace()[index].getClassName() + "@" + o.hashCode()
+                + "#" +
                 Thread.currentThread().getStackTrace()[index].getMethodName() + "," +
                 Thread.currentThread().getStackTrace()[index].getLineNumber() + ")";
         printDiffTime(pre + ": ");
