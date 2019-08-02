@@ -2,7 +2,7 @@ package edu.ptu.javatest;
 
 import org.junit.Test;
 
-import edu.ptu.javatest.utils.ClockUtils;
+import edu.ptu.utils.utils.ClockUtils;
 
 public class BaseLangTest {
     @Test

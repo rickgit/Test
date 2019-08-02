@@ -1,4 +1,4 @@
-package edu.ptu.test.utils;
+package edu.ptu.utils.utils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,9 +28,12 @@ public class ClockUtils {
     }
 
     public void printDiffTime() {
-        String pre = "(" + Thread.currentThread().getStackTrace()[3].getClassName() + "#" +
-                Thread.currentThread().getStackTrace()[3].getMethodName() + "," +
-                Thread.currentThread().getStackTrace()[3].getLineNumber() + ")";
+        int index = 3;//Android
+        if ( Thread.currentThread().getStackTrace()[ Thread.currentThread().getStackTrace().length-1].getFileName().toLowerCase().contains("junit"))
+            index=2;
+        String pre = "(" + Thread.currentThread().getStackTrace()[index].getClassName() + "#" +
+                Thread.currentThread().getStackTrace()[index].getMethodName() + "," +
+                Thread.currentThread().getStackTrace()[index].getLineNumber() + ")";
         printDiffTime(pre + ": ");
     }
 

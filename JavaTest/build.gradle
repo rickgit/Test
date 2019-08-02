@@ -5,6 +5,7 @@ dependencies {
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0-M4")
     implementation 'junit:junit:4.12'
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation project(path: ':Utils')
 
 }
 

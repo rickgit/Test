@@ -1,17 +1,14 @@
 package edu.ptu.test;
 
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-
-import com.google.gson.Gson;
 
 import java.io.InputStream;
 
-import edu.ptu.test.utils.ClockUtils;
-import edu.ptu.test.utils.media.GifDecoder;
+import edu.ptu.androidutils.GifDecoder;
+import edu.ptu.utils.utils.ClockUtils;
 
 public class FragmentLifeActivity extends FragmentActivity {
 

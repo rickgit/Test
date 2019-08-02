@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import edu.ptu.test.utils.ClockUtils;
+import edu.ptu.utils.utils.ClockUtils;
 
 public class LifeFragment extends Fragment {
     @Override

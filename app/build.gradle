@@ -5,6 +5,8 @@ android {
 
     defaultConfig {
         applicationId "edu.ptu.test"
+        versionCode Integer.parseInt(APP_VERSION_CODE)
+        versionName APP_VERSION_NAME
 //        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
@@ -34,4 +36,6 @@ dependencies {
     }
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation project(path: ':Utils')
+    implementation project(path: ':Utils-Android')
 }

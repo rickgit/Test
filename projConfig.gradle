@@ -19,7 +19,7 @@ subprojects {
     }
 }
 // 配置子项目项目
-project.ext.androidlibraryprojects = ["RecyclerView","Cardview","Gridlayout","Design","V7appconpat"]
+project.ext.androidlibraryprojects = ["RecyclerView","Cardview","Gridlayout","Design","V7appconpat","Utils-Android"]
 project.ext.androidapkprojects = ["app"]
 project.ext.androidprojects = project.androidlibraryprojects + project.androidapkprojects
 /**
