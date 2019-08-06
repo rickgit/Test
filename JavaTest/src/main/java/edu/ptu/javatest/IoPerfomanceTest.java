@@ -1,5 +1,6 @@
 package edu.ptu.javatest;
 
+import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -26,6 +27,7 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.alibaba.fastjson.JSON.DEFAULT_GENERATE_FEATURE;
 import static org.junit.runners.MethodSorters.NAME_ASCENDING;
 
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
@@ -101,6 +103,23 @@ public class IoPerfomanceTest {
 
         BufferedReader oos = new BufferedReader(new InputStreamReader(new FileInputStream("./object")));
         ArrayList string = new Gson().fromJson(oos, ArrayList.class);
+        oos.close();
+    }
+
+    @Test
+    public void test015WriteFastJson() throws Exception {//1000json 277ms,15条 json 211ms
+        String string = JSON.toJSONString(articles);
+        BufferedWriter oos = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("./object")));
+        oos.write(string);
+        oos.close();
+    }
+
+    @Test
+    public void test016ReadFastJson() throws Exception {//1000json 171ms,15条 json 9ms
+        ArrayList<Article> articles = initArticleList();
+
+        BufferedReader oos = new BufferedReader(new InputStreamReader(new FileInputStream("./object")));
+        ArrayList string = JSON.parseObject(new FileInputStream("./object"),ArrayList.class);
         oos.close();
     }
 
