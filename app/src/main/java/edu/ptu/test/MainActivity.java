@@ -1,11 +1,9 @@
 package edu.ptu.test;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 
-import com.google.gson.Gson;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 
 /**
  * Created by anshu.wang on 2016/12/15.

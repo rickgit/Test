@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:overrideLibrary="android.support.test.uiautomator.v18">
-        <activity android:name=".FragmentLifeActivity">
+        <activity android:name=".FragmentLifeActivity" android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,23 +1,20 @@
 package edu.ptu.test;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 
 import com.google.gson.Gson;
 
-import java.io.InputStream;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 import edu.ptu.androidutils.PhoneInfo;
-import edu.ptu.androidutils.media.GifDecoder;
 import edu.ptu.utils.utils.ClockUtils;
 
 public class FragmentLifeActivity extends FragmentActivity {
@@ -25,13 +22,14 @@ public class FragmentLifeActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ClockUtils.getInstance().printDiffTime(this);
         setContentView(R.layout.activity_fragment_life);
         View btn = findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
 //                getSupportFragmentManager().beginTransaction().add(R.id.fl_container,new LifeFragment()).commit();
-//                startActivity(new Intent(view.getContext(),LifeActivity.class));
+                startActivity(new Intent(view.getContext(),LifeActivity.class));
 //                AsyncTask.execute(new Runnable() {
 //                    @Override
 //                    public void run() {
@@ -48,17 +46,17 @@ public class FragmentLifeActivity extends FragmentActivity {
 //                        }
 //                    }
 //                });
-                h.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            ah.await(20, TimeUnit.SECONDS);
-                            System.out.println("error 到时");
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+//                h.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            ah.await(20, TimeUnit.SECONDS);
+//                            System.out.println("error 到时");
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
             }
         });
 
@@ -88,4 +86,10 @@ public class FragmentLifeActivity extends FragmentActivity {
     ht.start();
       h=new Handler(ht.getLooper());
   }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        ClockUtils.getInstance().printDiffTime(this);
+    }
 }

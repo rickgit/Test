@@ -1,11 +1,9 @@
 package edu.ptu.test;
 
-import android.os.SystemClock;
-import android.support.v4.util.ArrayMap;
-import android.support.v4.util.SparseArrayCompat;
+import androidx.collection.ArrayMap;
+import androidx.collection.SparseArrayCompat;
 
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
 
 import java.util.Random;
 

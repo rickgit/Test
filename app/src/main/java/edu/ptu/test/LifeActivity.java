@@ -2,8 +2,8 @@ package edu.ptu.test;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -15,14 +15,16 @@ public class LifeActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       ClockUtils.getInstance().printDiffTime();
+        ClockUtils.getInstance().printDiffTime(this);
         FrameLayout view = new FrameLayout(this);
         view.setBackgroundColor(0xff00c00c);
         setContentView(view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(),LifeActivity.class));
+                Intent intent = new Intent(v.getContext(), FragmentLifeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
 
             }
         });
@@ -68,5 +70,11 @@ public class LifeActivity extends FragmentActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         ClockUtils.getInstance().printDiffTime();
         super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        ClockUtils.getInstance().printDiffTime(this);
     }
 }
