@@ -33,7 +33,7 @@ import static org.junit.runners.MethodSorters.NAME_ASCENDING;
 @FixMethodOrder(value = MethodSorters.NAME_ASCENDING)
 public class IoPerfomanceTest {
     @Test
-    public void test001ObjectIO() throws IOException {//str 64ms //json 167ms
+    public void test001WriteObj() throws IOException {//str 64ms //json 167ms
         ArrayList<String> strings = initObject();
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("./object"));
         oos.writeObject(strings);
@@ -51,7 +51,7 @@ public class IoPerfomanceTest {
     }
 
     @Test
-    public void test003BufferIo() throws FileNotFoundException {//str 30ms
+    public void test003PrintWriterString() throws FileNotFoundException {//str 30ms
         ArrayList<String> strings = initObject();
         PrintWriter oos = new PrintWriter(new OutputStreamWriter(new FileOutputStream("./object")));
         for (int i = 0; i < strings.size(); i++) {
@@ -62,7 +62,7 @@ public class IoPerfomanceTest {
     }
 
     @Test
-    public void test004ReadBuffered() throws Exception {//str 14ms
+    public void test004ReadBufferedString() throws Exception {//str 14ms
         ArrayList<String> newStr = new ArrayList<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("./object")));
         String str = null;
@@ -76,21 +76,21 @@ public class IoPerfomanceTest {
     ArrayList<Article> articles = initArticleList();
 
     @Test
-    public void test011ObjectIO() throws IOException {//1000 json 167ms, 15条 json 11ms
+    public void test011WriteSerializable() throws IOException {//1000 json 167ms, 15条 json 11ms
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("./object"));
         oos.writeObject(articles);
         oos.close();
     }
 
     @Test
-    public void test012ReadObj() throws IOException, ClassNotFoundException {//1000json 518ms ,15条 json 18ms
+    public void test012ReadSerializable() throws IOException, ClassNotFoundException {//1000json 518ms ,15条 json 18ms
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream("./object"));
         Object o = ois.readObject();
         ois.close();
     }
 
     @Test
-    public void test013WriteJson() throws Exception {//1000json 277ms,15条 json 211ms
+    public void test013WriteGsonJson() throws Exception {//1000json 277ms,15条 json 211ms
         String string = new Gson().toJson(articles, ArrayList.class);
         BufferedWriter oos = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("./object")));
         oos.write(string);
@@ -98,7 +98,7 @@ public class IoPerfomanceTest {
     }
 
     @Test
-    public void test014ReadJson() throws Exception {//1000json 171ms,15条 json 9ms
+    public void test014ReadGsonJson() throws Exception {//1000json 171ms,15条 json 9ms
         ArrayList<Article> articles = initArticleList();
 
         BufferedReader oos = new BufferedReader(new InputStreamReader(new FileInputStream("./object")));
