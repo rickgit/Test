@@ -38,4 +38,12 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     implementation project(path: ':Utils')
     implementation project(path: ':Utils-Android')
+
+    // 网络
+     implementation 'com.android.volley:volley:1.1.1'
+
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation("com.squareup.okhttp3:okhttp:4.1.0")
+
+
 }

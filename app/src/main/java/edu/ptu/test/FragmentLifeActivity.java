@@ -15,6 +15,8 @@ import com.google.gson.Gson;
 import java.util.concurrent.CountDownLatch;
 
 import edu.ptu.androidutils.PhoneInfo;
+import edu.ptu.test.test.EventBrocastTest;
+import edu.ptu.test.test.NetworkTest;
 import edu.ptu.utils.utils.ClockUtils;
 
 public class FragmentLifeActivity extends FragmentActivity {
@@ -29,7 +31,7 @@ public class FragmentLifeActivity extends FragmentActivity {
             @Override
             public void onClick(final View view) {
 //                getSupportFragmentManager().beginTransaction().add(R.id.fl_container,new LifeFragment()).commit();
-                startActivity(new Intent(view.getContext(),LifeActivity.class));
+//                startActivity(new Intent(view.getContext(),LifeActivity.class));
 //                AsyncTask.execute(new Runnable() {
 //                    @Override
 //                    public void run() {
@@ -57,9 +59,14 @@ public class FragmentLifeActivity extends FragmentActivity {
 //                        }
 //                    }
 //                });
+//                EventBrocastTest.sendLocalBrocast(view.getContext());
+//                EventBrocastTest.postEventBus();
+                NetworkTest.testVolley(view.getContext());
             }
         });
-
+//        EventBrocastTest.registLocalBrocast(this);
+//        EventBrocastTest.registEventBus();
+//        EventBrocastTest.registBrocast(this);
         ViewPager vp = (ViewPager)findViewById(R.id.vp);
         vp.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -91,5 +98,8 @@ public class FragmentLifeActivity extends FragmentActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         ClockUtils.getInstance().printDiffTime(this);
+
     }
+
+
 }

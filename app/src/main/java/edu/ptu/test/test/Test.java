@@ -1,4 +1,4 @@
-package edu.ptu.test;
+package edu.ptu.test.test;
 
 /**
  * Created by WangAnshu on 2016/6/6.
