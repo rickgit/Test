@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 
@@ -16,6 +18,7 @@ import java.util.concurrent.CountDownLatch;
 
 import edu.ptu.androidutils.PhoneInfo;
 import edu.ptu.test.test.EventBrocastTest;
+import edu.ptu.test.test.ImageTest;
 import edu.ptu.test.test.NetworkTest;
 import edu.ptu.utils.utils.ClockUtils;
 
@@ -61,7 +64,8 @@ public class FragmentLifeActivity extends FragmentActivity {
 //                });
 //                EventBrocastTest.sendLocalBrocast(view.getContext());
 //                EventBrocastTest.postEventBus();
-                NetworkTest.testVolley(view.getContext());
+//                NetworkTest.testVolley(view.getContext());
+                ImageTest.testLoadImage(view.getContext(), (ViewGroup)view.getParent());
             }
         });
 //        EventBrocastTest.registLocalBrocast(this);

@@ -11,9 +11,15 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class PerformanceTest {
     public static final int time = 1_000_000_000;
+    private String uri_uc_img = "http://image.uczzd.cn/5864809814117103944.jpg?id=0&from=export";
+    private String uri_xiaomi_img = "http://images.cdn.pt.xiaomi.com/thumcrop/webp/w329h219q80/Feeds/07e613497c71b4a1f2a6e82f67f3f84c6bd382c76?crop=l0r816t8b552";
+    ;
 
 
     /**
@@ -43,7 +49,8 @@ public class PerformanceTest {
         for (int i = 0; i < 100; i++) {
             try {
                 //uc
-                URL url = new URL("http://image.uczzd.cn/5864809814117103944.jpg?id=0&from=export");
+
+                URL url = new URL(uri_uc_img);
                 //xiao mi
 //            URL url = new URL("http://images.cdn.pt.xiaomi.com/thumcrop/webp/w329h219q80/Feeds/07e613497c71b4a1f2a6e82f67f3f84c6bd382c76?crop=l0r816t8b552");
                 URLConnection urlConnection = url.openConnection();
@@ -67,7 +74,8 @@ public class PerformanceTest {
         for (int i = 0; i < 100; i++) {
             try {
                 //uc
-                URL url = new URL("http://images.cdn.pt.xiaomi.com/thumcrop/webp/w329h219q80/Feeds/07e613497c71b4a1f2a6e82f67f3f84c6bd382c76?crop=l0r816t8b552");
+
+                URL url = new URL(uri_xiaomi_img);
                 URLConnection urlConnection = url.openConnection();
 
                 InputStream inputStream = urlConnection.getInputStream();
@@ -83,6 +91,45 @@ public class PerformanceTest {
             }
         }
     }
+
+    @Test
+    public void testConnectJSON() {// 2核4线程,IO密集型操作：串行连接20个连接， 2s  ;2个线程，20个连接，1s656ms;4个线程，20个连接，1s199ms
+        final CountDownLatch countDownLatch = new CountDownLatch(20);
+        ExecutorService executorService = Executors.newFixedThreadPool(2*2+1);
+        for (int i = 0; i < 20; i++) {
+
+            //uc
+            executorService.submit(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+
+                        URL url = new URL("https://www.apiopen.top/weatherApi");
+                        URLConnection urlConnection = url.openConnection();
+
+                        InputStream inputStream = urlConnection.getInputStream();
+
+                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                        String line = null;
+                        while ((line = bufferedReader.readLine()) != null) {
+                        }
+                        countDownLatch.countDown();
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+        }
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Test
     public void testReadWebpFile() {
         for (int i = 0; i < 100; i++) {
@@ -124,12 +171,12 @@ public class PerformanceTest {
 
 
     @Test
-    public void testThreadCreate(){
+    public void testThreadCreate() {
         final long l = System.currentTimeMillis();
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println(System.currentTimeMillis()-l);
+                System.out.println(System.currentTimeMillis() - l);
             }
         });
         thread.start();

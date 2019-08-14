@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.concurrent.CountDownLatch;
 
 import edu.ptu.utils.utils.ClockUtils;
 import okhttp3.Call;
@@ -23,60 +24,79 @@ import okhttp3.OkHttpClient;
 
 //https://www.apiopen.top/api.html#c14353b903984e699c31c08f639baaff
 public class NetworkTest {
-    static int time = 0;
+    static final int time=20;
 
     public static void testVolley(final Context context) {
-        if (time == 0)
-            ClockUtils.getInstance().printDiffTime();
-        Volley.newRequestQueue(context).add(new JsonObjectRequest(Request.Method.GET, "https://www.apiopen.top/weatherApi", null, new Response.Listener<JSONObject>() {
 
+        new Thread(new Runnable() {
             @Override
-            public void onResponse(JSONObject response) {
-                if (time == 20) {//3729ms 4494ms
-                    time = 0;
-                    ClockUtils.getInstance().printDiffTime(this,"volley网络");
-                    testOkhttp(context);
-                } else {
-                    time++;
-                    testVolley(context);
+            public void run() {
+                final CountDownLatch cdl = new CountDownLatch(time);
+                for (int i = 0; i < time; i++) {
+                    Volley.newRequestQueue(context).add(new JsonObjectRequest(Request.Method.GET, "https://www.apiopen.top/weatherApi", null, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            cdl.countDown();
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            ClockUtils.getInstance().printDiffTime(this, error.getMessage());
+                            cdl.countDown();
+                        }
+                    }));
                 }
+                ClockUtils.getInstance().printDiffTime();
+                try {
+                    cdl.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                ClockUtils.getInstance().printDiffTime(this, "volley网络");//8核心，串行连接20次：   3729ms 4494ms ;3核并行，394ms
+                testOkhttp(context);
+            }
+        }).start();
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                ClockUtils.getInstance().printDiffTime(this, error.getMessage());
-            }
-        }));
     }
 
     static OkHttpClient client = new OkHttpClient();
 
     public static void testOkhttp(final Context context) {
-        if (time == 0)
-            ClockUtils.getInstance().printDiffTime();
-
-        HashMap<Class<?>, ? extends Object> classStringHashMap = new HashMap<>();
-        client.newCall(
-                new okhttp3.Request(HttpUrl.parse("https://www.apiopen.top/weatherApi"),
-                        "get", Headers.of(), null, classStringHashMap))
-                .enqueue(new Callback() {
+        new Thread(new Runnable() {
             @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                ClockUtils.getInstance().printDiffTime(this, e.getMessage());
-            }
+            public void run() {
+                final CountDownLatch cdl = new CountDownLatch(time);
 
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull okhttp3.Response response) throws IOException {
-                if (time == 20) {//3200ms 4306ms
-                    time = 0;
-                    ClockUtils.getInstance().printDiffTime(this,"okhttp网络");
-                } else {
-                    time++;
-                    testOkhttp(context);
+                HashMap<Class<?>, ? extends Object> classStringHashMap = new HashMap<>();
+                for (int i = 0; i < time; i++) {
+                    client.newCall(
+                            new okhttp3.Request(HttpUrl.parse("https://www.apiopen.top/weatherApi"),
+                                    "get", Headers.of(), null, classStringHashMap))
+                            .enqueue(new Callback() {
+                                @Override
+                                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                                    ClockUtils.getInstance().printDiffTime(this, e.getMessage());
+                                    cdl.countDown();
+                                }
+
+                                @Override
+                                public void onResponse(@NotNull Call call, @NotNull okhttp3.Response response) throws IOException {
+                                    cdl.countDown();
+                                }
+                            });
                 }
+                ClockUtils.getInstance().printDiffTime();
+                try {
+                    cdl.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                ClockUtils.getInstance().printDiffTime(this, "okhttp网络");//8核心，串行连接20个地址： 3200ms 4306ms  ;3核并行，1096ms
+
             }
-        });
+        }).start();
+
 
     }
 }
