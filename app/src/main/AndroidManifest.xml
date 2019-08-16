@@ -14,14 +14,14 @@
         android:theme="@style/AppTheme"
         tools:overrideLibrary="android.support.test.uiautomator.v18">
         <activity android:name=".FragmentLifeActivity" android:launchMode="singleTop">
+
+        </activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity">
-
         </activity>
         <activity android:name=".LifeActivity">
 

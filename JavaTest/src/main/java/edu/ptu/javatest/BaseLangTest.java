@@ -23,4 +23,8 @@ public class BaseLangTest {
         ClockUtils.getInstance().printDiffTime();
     }
 
+    public static void main(String[] args) {
+        System.out.println();
+    }
+
 }
