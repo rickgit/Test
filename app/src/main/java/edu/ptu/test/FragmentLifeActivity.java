@@ -1,12 +1,16 @@
 package edu.ptu.test;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,7 +76,7 @@ public class FragmentLifeActivity extends FragmentActivity {
 //        EventBrocastTest.registEventBus();
 //        EventBrocastTest.registBrocast(this);
         ViewPager vp = (ViewPager)findViewById(R.id.vp);
-        vp.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+        vp.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
                 return new LifeFragment();
@@ -89,6 +93,9 @@ public class FragmentLifeActivity extends FragmentActivity {
 //        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getAppMemory(this))+"\n\n");
 //        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getNumberOfCPUCores())+"\n\n");
         System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getCPUMaxFreqKHz()/1024./1024.)+"GHZ\n\n");
+        Drawable drawable = ContextCompat.getDrawable(this, R.mipmap.ic_launcher);
+//        Drawable drawable = getResources().getDrawable(R.mipmap.ic_launcher);
+        System.out.println("getIntrinsicWidth: "+drawable.getIntrinsicWidth());
     }
     Handler h;
     CountDownLatch ah=new CountDownLatch(1);
