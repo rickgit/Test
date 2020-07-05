@@ -1,1 +1,2 @@
+include ':GradlePlugin'
 include ':app', ':JavaTest', ':Utils', ':Utils-Android'

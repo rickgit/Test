@@ -4,12 +4,16 @@ buildscript {
     ext.kotlin_version = '1.3.31'
 
     repositories {
-        jcenter()
+        maven{
+            url uri('repos')
+        }
+        jcenter(){url 'https://maven.aliyun.com/repository/jcenter'}
         google()
 
     }
     dependencies {
         classpath "com.android.tools.build:gradle:${ANDROID_DSL_VERSION}"
+        classpath "edu.ptu.java.gradleplugin:appt2-fix:1.0.0"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -22,8 +26,9 @@ allprojects {
 
     }
     repositories {
-        jcenter()
+        jcenter(){url 'https://maven.aliyun.com/repository/jcenter'}
         google()
+
     }
 }
 

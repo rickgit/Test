@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/main_tv_name"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:ellipsize="start"
+        android:singleLine="true"
+        android:text="aasdfasfs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/singleinstance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginRight="38dp"
+        android:text="singleinstance"
+        app:layout_constraintBottom_toBottomOf="@+id/singleTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/singleTask"
+        app:layout_constraintTop_toTopOf="@+id/singleTask" />
+
+    <Button
+        android:id="@+id/standard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="263dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginBottom="420dp"
+        android:text="standard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/singleTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/singleTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="singleTop"
+        app:layout_constraintBottom_toBottomOf="@+id/standard"
+        app:layout_constraintEnd_toStartOf="@+id/singleTask"
+        app:layout_constraintStart_toEndOf="@+id/standard"
+        app:layout_constraintTop_toTopOf="@+id/standard" />
+
+    <Button
+        android:id="@+id/singleTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:text="singleTask"
+        app:layout_constraintBottom_toBottomOf="@+id/singleTop"
+        app:layout_constraintEnd_toStartOf="@+id/singleinstance"
+        app:layout_constraintStart_toEndOf="@+id/singleTop"
+        app:layout_constraintTop_toTopOf="@+id/singleTop" />
+
+    <Button
+        android:id="@+id/singleInstanceFlag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="singleInstanceFlag"
+        app:layout_constraintBottom_toBottomOf="@+id/singleTaskFlag"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/singleTaskFlag" />
+
+    <Button
+        android:id="@+id/singleTopFlag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="singleTopFlag"
+        app:layout_constraintBottom_toBottomOf="@+id/standardflag"
+        app:layout_constraintStart_toEndOf="@+id/standardflag" />
+
+    <Button
+        android:id="@+id/singleTaskFlag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:text="singleTaskFlag"
+        app:layout_constraintBottom_toBottomOf="@+id/singleTopFlag"
+        app:layout_constraintStart_toEndOf="@+id/singleTopFlag" />
+
+    <Button
+        android:id="@+id/standardflag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:text="standardflag"
+        app:layout_constraintEnd_toStartOf="@+id/singleTopFlag"
+        app:layout_constraintTop_toBottomOf="@+id/standard" />
+
+    <Button
+        android:id="@+id/standard2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="51dp"
+        android:text="standard2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/singleTopFlag" />
+
+    <Button
+        android:id="@+id/singleTop2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="48dp"
+        android:text="singleTop2"
+        app:layout_constraintStart_toEndOf="@+id/standard2"
+        app:layout_constraintTop_toBottomOf="@+id/singleTopFlag" />
+
+    <Button
+        android:id="@+id/singleTask2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="50dp"
+        android:text="singleTask2"
+        app:layout_constraintStart_toEndOf="@+id/singleTop2"
+        app:layout_constraintTop_toBottomOf="@+id/singleInstanceFlag" />
+
+    <Button
+        android:id="@+id/singleinstance2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="47dp"
+        android:text="singleinstance2"
+        app:layout_constraintStart_toEndOf="@+id/singleTask2"
+        app:layout_constraintTop_toBottomOf="@+id/singleInstanceFlag" />
+
+    <Button
+        android:id="@+id/thisclassname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="63dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

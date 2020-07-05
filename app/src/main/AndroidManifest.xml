@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="edu.ptu.test">
+    package="edu.ptu.androidtest">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,17 +14,63 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:overrideLibrary="android.support.test.uiautomator.v18">
-        <activity android:name=".FragmentLifeActivity" android:launchMode="singleTop">
+        <activity
+            android:name="edu.ptu.androidtest.FragmentLifeActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="edu.ptu.androidtest.MainActivity">
 
         </activity>
-        <activity android:name=".LifeActivity">
+        <activity android:name="edu.ptu.androidtest.LifeActivity">
+
+        </activity>
+        <activity android:name="edu.ptu.androidtest.android.LifeTestActivity">
+
+        </activity>
+        <activity android:name="edu.ptu.androidtest.android.LifeTestSecondActivity">
+
+        </activity>
+        <activity android:name="edu.ptu.androidtest.android.StandardActivity">
+
+        </activity>
+        <activity android:name="edu.ptu.androidtest.android.SingleTopActivity" android:launchMode="singleTop">
+
+        </activity>
+        <activity android:name="edu.ptu.androidtest.android.SingleTaskActivity" android:launchMode="singleTask">
+
+        </activity>
+        <activity android:name="edu.ptu.androidtest.android.SingleInstanceActivity" android:launchMode="singleInstance">
+
+        </activity>
+
+        <activity android:name="edu.ptu.androidtest.android.lifecycle.LauchmodeStandardUIActivity" android:exported="true">
+        </activity>
+        <activity android:name="edu.ptu.androidtest.android.lifecycle.LauchmodeSingleTopUIActivity" android:launchMode="singleTop">
+
+        </activity>
+        <activity android:name="edu.ptu.androidtest.android.lifecycle.LauchmodeSingleTaskUIActivity" android:launchMode="singleTask">
+
+        </activity>
+        <activity android:name="edu.ptu.androidtest.android.lifecycle.LauchmodeSingleInstanceUIActivity" android:launchMode="singleInstance">
+
+        </activity>
+
+        <activity android:name="edu.ptu.androidtest.android.lifecycle.LauchmodeStandardUI2Activity" android:exported="true">
+        </activity>
+        <activity android:name="edu.ptu.androidtest.android.lifecycle.LauchmodeSingleTopUI2Activity" android:launchMode="singleTop">
+
+        </activity>
+        <activity android:name="edu.ptu.androidtest.android.lifecycle.LauchmodeSingleTaskUI2Activity" android:launchMode="singleTask">
+
+        </activity>
+        <activity
+            android:name="edu.ptu.androidtest.android.lifecycle.LauchmodeSingleInstanceUI2Activity"
+            android:launchMode="singleInstance">
 
         </activity>
     </application>
