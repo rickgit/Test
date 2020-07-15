@@ -24,7 +24,7 @@ uploadArchives {
             pom.groupId = 'edu.ptu.java.gradleplugin'
             pom.artifactId = 'appt2-fix'
             pom.version = '1.0.0'
-            repository(url: uri('../repos'))
+            repository(url: uri('../file/repos'))
         }
     }
 }
