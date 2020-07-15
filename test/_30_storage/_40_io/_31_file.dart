@@ -14,7 +14,7 @@ main() {
     f = File('D:\\workspace\\ws-flutter\\flutter_app\\test\\_30_storage\\_40_io\\_31_file.dart');
     print("absolute " + f.absolute.toString()); //flutter_app 项目的文件夹
     print("absolute " + f.existsSync().toString()); //flutter_app 项目的文件夹
-    print(f.readAsStringSync());
+    print(f.readAsStringSync());//_RandomAccessFile : RandomAccessFile
   });
   test("Platform test", () {
     var uri = Platform.script;

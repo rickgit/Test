@@ -62,6 +62,10 @@ main(){
     //扩容(old_capacity * 2) | 3， new _List(capacity | 1)保证奇数。fori拷贝数据。
     //重新设置长度，可能需要_shrink
     print((0 * 2) | 3);
+    final alistHash=aList;
+    aList.add("value");
+    print(aList.toString());//可变长
+    expect(aList, alistHash);
 
     var aSet={'sd'};//_CompactLinkedHashSet
     expect(aSet.elementAt(0), 'sd');
