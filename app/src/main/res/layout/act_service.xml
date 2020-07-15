@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <Button
+        android:id="@+id/unbindservice"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:text="unbindservice"
+        app:layout_constraintBottom_toBottomOf="@+id/bindservice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bindservice"
+        app:layout_constraintTop_toTopOf="@+id/bindservice" />
+
+    <Button
+        android:id="@+id/startservice"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="420dp"
+        android:text="startservice"
+        app:layout_constraintEnd_toStartOf="@+id/singleTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/thisclassname" />
+
+    <Button
+        android:id="@+id/stopservice"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:text="stopservice"
+        app:layout_constraintBottom_toBottomOf="@+id/startservice"
+        app:layout_constraintEnd_toStartOf="@+id/singleTask"
+        app:layout_constraintStart_toEndOf="@+id/startservice"
+        app:layout_constraintTop_toTopOf="@+id/startservice" />
+
+    <Button
+        android:id="@+id/bindservice"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:text="bindservice"
+        app:layout_constraintBottom_toBottomOf="@+id/singleTop"
+        app:layout_constraintEnd_toStartOf="@+id/singleinstance"
+        app:layout_constraintStart_toEndOf="@+id/stopservice"
+        app:layout_constraintTop_toTopOf="@+id/stopservice" />
+
+    <Button
+        android:id="@+id/unbindProcessService"
+        android:layout_width="98dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="unbindProcessService"
+        app:layout_constraintBottom_toBottomOf="@+id/bindProcessService"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bindProcessService" />
+
+    <Button
+        android:id="@+id/stopProcessService"
+        android:layout_width="98dp"
+        android:layout_height="wrap_content"
+        android:text="stopProcessService"
+        app:layout_constraintBottom_toBottomOf="@+id/startProcessService"
+        app:layout_constraintStart_toEndOf="@+id/startProcessService" />
+
+    <Button
+        android:id="@+id/bindProcessService"
+        android:layout_width="97dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:text="bindProcessService"
+        app:layout_constraintBottom_toBottomOf="@+id/stopProcessService"
+        app:layout_constraintStart_toEndOf="@+id/stopProcessService" />
+
+    <Button
+        android:id="@+id/startProcessService"
+        android:layout_width="97dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="startProcessService"
+        app:layout_constraintEnd_toStartOf="@+id/stopProcessService"
+        app:layout_constraintTop_toBottomOf="@+id/startservice" />
+
+    <Button
+        android:id="@+id/standard2"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="standard2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startProcessService" />
+
+    <Button
+        android:id="@+id/singleTop2"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:text="singleTop2"
+        app:layout_constraintBottom_toBottomOf="@+id/standard2"
+        app:layout_constraintStart_toEndOf="@+id/standard2"
+        app:layout_constraintTop_toTopOf="@+id/standard2" />
+
+    <Button
+        android:id="@+id/singleTask2"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="singleTask2"
+        app:layout_constraintBottom_toBottomOf="@+id/singleTop2"
+        app:layout_constraintStart_toEndOf="@+id/singleTop2"
+        app:layout_constraintTop_toTopOf="@+id/singleTop2" />
+
+    <Button
+        android:id="@+id/singleinstance2"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:text="singleinstance2"
+        app:layout_constraintBottom_toBottomOf="@+id/singleTask2"
+        app:layout_constraintStart_toEndOf="@+id/singleTask2"
+        app:layout_constraintTop_toTopOf="@+id/singleTask2" />
+
+    <Button
+        android:id="@+id/standardDialog"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="standardDialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/standard2" />
+
+    <Button
+        android:id="@+id/singleTopProcess"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="24dp"
+        android:text="singleTopDialog"
+        app:layout_constraintStart_toEndOf="@+id/standardDialog"
+        app:layout_constraintTop_toBottomOf="@+id/singleTop2" />
+
+    <Button
+        android:id="@+id/singleTaskDialog"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="20dp"
+        android:text="singleTaskDialog"
+        app:layout_constraintStart_toEndOf="@+id/singleTopProcess"
+        app:layout_constraintTop_toBottomOf="@+id/singleTask2" />
+
+    <Button
+        android:id="@+id/singleinstanceDialog"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:text="singleinstanceDialog"
+        app:layout_constraintStart_toEndOf="@+id/singleTaskDialog"
+        app:layout_constraintTop_toBottomOf="@+id/singleinstance2" />
+
+    <Button
+        android:id="@+id/thisclassname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="63dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

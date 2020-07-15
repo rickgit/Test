@@ -6,26 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/main_tv_name"
-        android:layout_width="match_parent"
-
-        android:layout_height="match_parent"
-        android:ellipsize="start"
-        android:singleLine="true"
-        android:text="aasdfasfs"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/singleinstance"
-        android:layout_width="wrap_content"
+        android:layout_width="102dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginRight="38dp"
         android:text="singleinstance"
         app:layout_constraintBottom_toBottomOf="@+id/singleTask"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,28 +19,19 @@
 
     <Button
         android:id="@+id/standard"
-        android:layout_width="wrap_content"
+        android:layout_width="101dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
-        android:layout_marginLeft="38dp"
-        android:layout_marginTop="263dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginRight="23dp"
         android:layout_marginBottom="420dp"
         android:text="standard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/singleTop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/thisclassname" />
 
     <Button
         android:id="@+id/singleTop"
-        android:layout_width="wrap_content"
+        android:layout_width="102dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginLeft="23dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:text="singleTop"
         app:layout_constraintBottom_toBottomOf="@+id/standard"
         app:layout_constraintEnd_toStartOf="@+id/singleTask"
@@ -64,12 +40,8 @@
 
     <Button
         android:id="@+id/singleTask"
-        android:layout_width="wrap_content"
+        android:layout_width="101dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
         android:text="singleTask"
         app:layout_constraintBottom_toBottomOf="@+id/singleTop"
         app:layout_constraintEnd_toStartOf="@+id/singleinstance"
@@ -78,7 +50,7 @@
 
     <Button
         android:id="@+id/singleInstanceFlag"
-        android:layout_width="wrap_content"
+        android:layout_width="98dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginLeft="14dp"
@@ -91,7 +63,7 @@
 
     <Button
         android:id="@+id/singleTopFlag"
-        android:layout_width="wrap_content"
+        android:layout_width="98dp"
         android:layout_height="wrap_content"
         android:text="singleTopFlag"
         app:layout_constraintBottom_toBottomOf="@+id/standardflag"
@@ -99,7 +71,7 @@
 
     <Button
         android:id="@+id/singleTaskFlag"
-        android:layout_width="wrap_content"
+        android:layout_width="97dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginLeft="3dp"
@@ -109,56 +81,128 @@
 
     <Button
         android:id="@+id/standardflag"
-        android:layout_width="wrap_content"
+        android:layout_width="97dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="10dp"
         android:text="standardflag"
         app:layout_constraintEnd_toStartOf="@+id/singleTopFlag"
         app:layout_constraintTop_toBottomOf="@+id/standard" />
 
     <Button
         android:id="@+id/standard2"
-        android:layout_width="wrap_content"
+        android:layout_width="95dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
-        android:layout_marginLeft="33dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="1dp"
         android:text="standard2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/singleTopFlag" />
+        app:layout_constraintTop_toBottomOf="@+id/standardflag" />
 
     <Button
         android:id="@+id/singleTop2"
-        android:layout_width="wrap_content"
+        android:layout_width="96dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginLeft="17dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:text="singleTop2"
+        app:layout_constraintBottom_toBottomOf="@+id/standard2"
         app:layout_constraintStart_toEndOf="@+id/standard2"
-        app:layout_constraintTop_toBottomOf="@+id/singleTopFlag" />
+        app:layout_constraintTop_toTopOf="@+id/standard2" />
 
     <Button
         android:id="@+id/singleTask2"
-        android:layout_width="wrap_content"
+        android:layout_width="96dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginLeft="23dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:text="singleTask2"
+        app:layout_constraintBottom_toBottomOf="@+id/singleTop2"
         app:layout_constraintStart_toEndOf="@+id/singleTop2"
-        app:layout_constraintTop_toBottomOf="@+id/singleInstanceFlag" />
+        app:layout_constraintTop_toTopOf="@+id/singleTop2" />
 
     <Button
         android:id="@+id/singleinstance2"
-        android:layout_width="wrap_content"
+        android:layout_width="96dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:text="singleinstance2"
+        app:layout_constraintBottom_toBottomOf="@+id/singleTask2"
         app:layout_constraintStart_toEndOf="@+id/singleTask2"
-        app:layout_constraintTop_toBottomOf="@+id/singleInstanceFlag" />
+        app:layout_constraintTop_toTopOf="@+id/singleTask2" />
+
+    <Button
+        android:id="@+id/standardDialog"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="standardDialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/standard2" />
+
+    <Button
+        android:id="@+id/standardProcess"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:text="standardProcess"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/standardDialog" />
+
+    <Button
+        android:id="@+id/singleTopProcess"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:text="singleTopProcess"
+        app:layout_constraintStart_toEndOf="@+id/standardProcess"
+        app:layout_constraintTop_toBottomOf="@+id/singleTopDialog2" />
+
+    <Button
+        android:id="@+id/singleTopDialog2"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="24dp"
+        android:text="singleTopDialog"
+        app:layout_constraintStart_toEndOf="@+id/standardDialog"
+        app:layout_constraintTop_toBottomOf="@+id/singleTop2" />
+
+    <Button
+        android:id="@+id/singleTaskDialog"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="20dp"
+        android:text="singleTaskDialog"
+        app:layout_constraintStart_toEndOf="@+id/singleTopProcess"
+        app:layout_constraintTop_toBottomOf="@+id/singleTask2" />
+
+    <Button
+        android:id="@+id/singleTaskProcess"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:text="singleTaskProcess"
+        app:layout_constraintStart_toEndOf="@+id/singleTopProcess"
+        app:layout_constraintTop_toBottomOf="@+id/singleTaskDialog" />
+
+    <Button
+        android:id="@+id/singleinstanceDialog"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:text="singleinstanceDialog"
+        app:layout_constraintStart_toEndOf="@+id/singleTaskDialog"
+        app:layout_constraintTop_toBottomOf="@+id/singleinstance2" />
+
+    <Button
+        android:id="@+id/singleinstanceProcess"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:text="singleinstanceProcess"
+        app:layout_constraintStart_toEndOf="@+id/singleTaskProcess"
+        app:layout_constraintTop_toBottomOf="@+id/singleinstanceDialog" />
 
     <Button
         android:id="@+id/thisclassname"

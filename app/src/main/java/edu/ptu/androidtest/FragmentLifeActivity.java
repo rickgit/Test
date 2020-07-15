@@ -10,7 +10,9 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
+
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -18,6 +20,7 @@ import com.google.gson.Gson;
 
 import java.util.concurrent.CountDownLatch;
 
+import edu.ptu.androidtest.jetpack.HelloViewHolder;
 import edu.ptu.androidutils.PhoneInfo;
 import edu.ptu.androidtest.test.ImageTest;
 import edu.ptu.utils.utils.ClockUtils;
@@ -30,6 +33,8 @@ public class FragmentLifeActivity extends FragmentActivity {
         ClockUtils.getInstance().printDiffTime(this);
         setContentView(R.layout.activity_fragment_life);
         View btn = findViewById(R.id.btn);
+        new ViewModelProvider(this,
+                new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(HelloViewHolder.class);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
@@ -65,13 +70,13 @@ public class FragmentLifeActivity extends FragmentActivity {
 //                EventBrocastTest.sendLocalBrocast(view.getContext());
 //                EventBrocastTest.postEventBus();
 //                NetworkTest.testVolley(view.getContext());
-                ImageTest.testLoadImage(view.getContext(), (ViewGroup)view.getParent());
+                ImageTest.testLoadImage(view.getContext(), (ViewGroup) view.getParent());
             }
         });
 //        EventBrocastTest.registLocalBrocast(this);
 //        EventBrocastTest.registEventBus();
 //        EventBrocastTest.registBrocast(this);
-        ViewPager vp = (ViewPager)findViewById(R.id.vp);
+        ViewPager vp = (ViewPager) findViewById(R.id.vp);
         vp.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
@@ -88,18 +93,20 @@ public class FragmentLifeActivity extends FragmentActivity {
 //        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getTotalMemory(this)* 1.0/ (1024 * 1024))+"\n\n");
 //        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getAppMemory(this))+"\n\n");
 //        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getNumberOfCPUCores())+"\n\n");
-        System.out.println("\n\n"+new Gson().toJson(PhoneInfo.getCPUMaxFreqKHz()/1024./1024.)+"GHZ\n\n");
+        System.out.println("\n\n" + new Gson().toJson(PhoneInfo.getCPUMaxFreqKHz() / 1024. / 1024.) + "GHZ\n\n");
         Drawable drawable = ContextCompat.getDrawable(this, R.mipmap.ic_launcher);
 //        Drawable drawable = getResources().getDrawable(R.mipmap.ic_launcher);
-        System.out.println("getIntrinsicWidth: "+drawable.getIntrinsicWidth());
+        System.out.println("getIntrinsicWidth: " + drawable.getIntrinsicWidth());
     }
+
     Handler h;
-    CountDownLatch ah=new CountDownLatch(1);
+    CountDownLatch ah = new CountDownLatch(1);
+
     {
-    HandlerThread ht=  new HandlerThread("HandlerThread");
-    ht.start();
-      h=new Handler(ht.getLooper());
-  }
+        HandlerThread ht = new HandlerThread("HandlerThread");
+        ht.start();
+        h = new Handler(ht.getLooper());
+    }
 
     @Override
     protected void onNewIntent(Intent intent) {

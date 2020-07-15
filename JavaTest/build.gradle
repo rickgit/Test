@@ -6,8 +6,9 @@ dependencies {
     implementation 'junit:junit:4.12'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.alibaba:fastjson:1.2.58'
+    implementation "io.reactivex.rxjava3:rxjava:3.0.0"
     implementation 'com.google.protobuf:protobuf-java:3.8.0'
-
+    implementation group: 'org.openjdk.jol', name: 'jol-core', version: '0.10'
 //    compile 'com.alibaba:fastjson:1.1.71.android'
     implementation project(path: ':Utils')
 

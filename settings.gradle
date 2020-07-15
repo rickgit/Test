@@ -1,2 +1,5 @@
 include ':GradlePlugin'
 include ':app', ':JavaTest', ':Utils', ':Utils-Android'
+include ':process'
+include ':app_ndk'
+include ':app_kotlin'
