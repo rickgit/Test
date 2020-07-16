@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+if (file('../file/repos').exists())
 apply plugin: 'appt2-fix'
 
 
