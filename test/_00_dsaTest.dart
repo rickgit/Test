@@ -12,5 +12,16 @@ main() {
     var dur= Duration(days: 1);
     expect(dur.inHours,24);
   });
+  test("hash test", (){
+    expect(true.hashCode, 1231);
+    expect(false.hashCode, 1237);
+    expect(0.hashCode, 0);
+    expect(BigInt.from(0).hashCode, 6707);
+
+
+    expect(1.5.hashCode, 4609434219686920192);//java  1073217536
+
+//    expect( 111111111111111111.hashCode,  (111111111111111111 ^ (111111111111111111 >> 32)));
+  });
 
 }
