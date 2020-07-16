@@ -72,5 +72,13 @@ def test_bdiTypeCast():
     assert  type(bytearray(5))==bytearray
     assert  type(memoryview(bytes(6)))==memoryview
     print()
-def test_buildinAbs():
-    print()
+def test_buildinHash():
+    assert hash(1)==1#PyTypeObject PyLong_Type 
+    assert hash(1.0)==1    #floatobject.c#float_hash()   PyTypeObject PyFloat_Type 
+    assert hash(1.1)==1932735693
+    assert hash(complex(1))==(1+1000003*0)  # complexobject.c#complex_hash()
+    assert hash(complex(1,2))==(1+1000003*2)#hashreal + 1000003 * hashimag
+    assert hash('2')                        #PyTypeObject PyString_Type #string_hash() (1000003*x) ^ *p++
+     
+def test_buildinFunc():
+    print('')

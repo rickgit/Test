@@ -1,6 +1,7 @@
 import unittest
 
 def fun(x):
+    print('sss')
     return x + 1
 
 class MyTest(unittest.TestCase):
