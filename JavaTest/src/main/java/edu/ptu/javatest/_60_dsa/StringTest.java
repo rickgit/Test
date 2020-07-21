@@ -1,7 +1,5 @@
 package edu.ptu.javatest._60_dsa;
 
-import com.sun.org.apache.xpath.internal.operations.String;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,7 +13,14 @@ public class StringTest {
         System.out.println(getArrayCount(sbd));
         Assert.assertEquals(Integer.toBinaryString(Integer.MAX_VALUE-8),"1111111111111111111111111110111");
         Assert.assertEquals( Integer.toBinaryString(Integer.MAX_VALUE-8).length(),31);
-        StringBuffer sbf = new StringBuffer();
+
+        StringBuilder sbd2 = new StringBuilder(0);
+        System.out.println(getArrayAlloc(sbd2));;
+        System.out.println(getArrayCount(sbd2));
+        sbd2.append("f");
+        System.out.println(getArrayAlloc(sbd2));;
+        System.out.println(getArrayCount(sbd2));
+
     }
     private static int getArrayAlloc(Object list) {
         try {
