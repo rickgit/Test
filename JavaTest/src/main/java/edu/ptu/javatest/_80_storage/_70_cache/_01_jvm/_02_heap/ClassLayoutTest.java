@@ -5,9 +5,12 @@ import org.openjdk.jol.info.ClassLayout;
 
 public class ClassLayoutTest {
     @Test
-    public void test(){
-        String s = ClassLayout.parseInstance(new Integer[]{1,32,23,123}).toPrintable();
-          s = ClassLayout.parseInstance(new int[]{1,32,23,123}).toPrintable();
+    public void test() {
+//        String s = ClassLayout.parseInstance(new Integer[]{1,32,23,123}).toPrintable();
+        String s = ClassLayout.parseInstance(new Object[]{new Object(), new Object()}).toPrintable();
+        System.out.println(s);
+
+        s = ClassLayout.parseInstance(new Object()).toPrintable();
         System.out.println(s);
     }
 }

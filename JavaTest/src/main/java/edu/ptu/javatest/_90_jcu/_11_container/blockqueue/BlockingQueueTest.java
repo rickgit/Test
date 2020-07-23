@@ -2,6 +2,9 @@ package edu.ptu.javatest._90_jcu._11_container.blockqueue;
 
 import org.junit.Test;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.DelayQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.SynchronousQueue;
 
@@ -9,141 +12,6 @@ import edu.ptu.javatest._80_storage._80_file.classfile.RefectTest;
 
 //LinkedBlockingQueue、ArrayBlockingQueue、DelayQueue、SynchronousQueue
 public class BlockingQueueTest {
-    @Test
-    public void testUnfairSynchroneousQueue() {//需要先take,在offer，才能获取到所有任务。Synchroneous不缓存任务
-        SynchronousQueue<Runnable> synchronousQueue = new SynchronousQueue<>();
-        for (int i = 0; i < 10; i++) {
-            int finalI = i;
-            Thread thread = new Thread(() -> {
-                try {
-                    Thread.sleep(111);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                synchronousQueue.offer(() -> System.out.println(" 执行" + finalI));
-                printStackNode(synchronousQueue);
-            });
-            thread.setName("(" + i + ")");
-            thread.start();
-        }
-        Thread thread = new Thread(() -> {
-            try {
-//                Thread.sleep(1000);
-                while (true) {
-
-                    Runnable take = synchronousQueue.take();
-                    take.run();
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-        });
-        thread.setName("( take )");
-        thread.start();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        printStackNode(synchronousQueue);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void testfairSynchroneousQueue() {//需要先take,在offer，才能获取到所有任务。Synchroneous不缓存任务
-        SynchronousQueue<Runnable> synchronousQueue = new SynchronousQueue<>(true);
-        for (int i = 0; i < 1; i++) {
-            int finalI = i;
-            Thread thread = new Thread(() -> {
-                try {
-                    Thread.sleep(12);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                synchronousQueue.offer(() -> System.out.println(" 执行" + finalI));
-            });
-            thread.setName("(" + i + ")");
-            thread.start();
-        }
-        Thread thread = new Thread(() -> {
-            try {
-                Thread.sleep(1000);
-                while (true) {
-
-                    Runnable take = synchronousQueue.take();
-                    take.run();
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-        });
-        thread.setName("( take )");
-        thread.start();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        printQueueNode(synchronousQueue);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void printQueueNode(Object object) {
-        synchronized (object) {
-            Object transferer = RefectTest.getRefFieldObj(object, SynchronousQueue.class, "transferer");
-            Object headNode = RefectTest.getRefFieldObj(transferer, transferer.getClass(), "head");
-            while (headNode != null) {
-                Object matchNode = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "isData");
-                Object waiterThread = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "waiter");
-                Object itemObj = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "item");
-
-                System.out.print("Node " + headNode.toString().substring(headNode.getClass().getName().length()));
-                System.out.print("( waiterThread:" + (waiterThread == null ? "null " : ((Thread) waiterThread).getName()));
-                System.out.print(" itemObj:" + itemObj);
-                System.out.print(" matchNode:" + matchNode);
-                System.out.print(" ) ");
-                System.out.print(" -> ");
-
-                headNode = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "next");
-            }
-            System.out.println();
-        }
-
-    }
-
-    public void printStackNode(Object object) {
-        synchronized (object) {
-            Object transferer = RefectTest.getRefFieldObj(object, SynchronousQueue.class, "transferer");
-            Object headNode = RefectTest.getRefFieldObj(transferer, transferer.getClass(), "head");
-
-            while (headNode != null) {
-                Object matchNode = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "match");
-                Object waiterThread = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "waiter");
-                Object itemObj = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "item");
-                Object mode = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "mode");
-
-                System.out.print("Node " + headNode.toString().substring(headNode.getClass().getName().length()));
-                System.out.print("( waiterThread:" + (waiterThread == null ? "null " : ((Thread) waiterThread).getName()));
-                System.out.print(" itemObj:" + itemObj);
-                System.out.print(" matchNode:" + matchNode);
-                System.out.print(" mode:" + mode);
-                System.out.print(" ) ->");
-
-                headNode = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "next");
-            }
-            System.out.println();
-        }
-    }
 
     @Test
     public void testLinkedBlockQueue() {//有缓存任务
@@ -174,5 +42,44 @@ public class BlockingQueueTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void testArrayBlockQueue() {//需要先take,在offer，才能获取到所有任务。Synchroneous不缓存任务
+        BlockingQueue<Runnable> bq = new ArrayBlockingQueue<Runnable>(3);
+        for (int i = 0; i < 1; i++) {
+            int finalI = i;
+            Thread thread = new Thread(() -> {
+                try {
+                    Thread.sleep(12);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                bq.offer(() -> System.out.println(" 执行" + finalI));
+            });
+            thread.setName("(" + i + ")");
+            thread.start();
+        }
+        Thread thread = new Thread(() -> {
+            try {
+                Thread.sleep(1000);
+                while (true) {
+
+                    Runnable take = bq.take();
+                    take.run();
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        });
+        thread.setName("( take )");
+        thread.start();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 }

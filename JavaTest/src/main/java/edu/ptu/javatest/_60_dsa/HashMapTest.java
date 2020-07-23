@@ -8,6 +8,9 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import edu.ptu.javatest._80_storage._80_file.classfile.RefectTest;
+
+import static edu.ptu.javatest._80_storage._80_file.classfile.RefectTest.getRefFieldBool;
 import static edu.ptu.javatest._80_storage._80_file.classfile.RefectTest.getRefFieldObj;
 
 
@@ -133,7 +136,7 @@ public class HashMapTest {
             elementData.setAccessible(true);
             Assert.assertEquals((((Object[]) (elementData.get(map)))[1]).getClass().toString(), "class java.util.HashMap$TreeNode");
 
-            System.out.println("树高 "+getTreeDepth((((Object[]) (elementData.get(map)))[1])));
+            System.out.println("树高 " + getTreeDepth((((Object[]) (elementData.get(map)))[1])));
             //Minitree
             Integer unTreeifytry = 6;//拆分表时，节点小于就链表化
             //
@@ -196,21 +199,80 @@ public class HashMapTest {
     }
 
 
-
     public static int getTreeDepth(Object rootNode) {
         if (rootNode == null || !rootNode.getClass().toString().equals("class java.util.HashMap$TreeNode"))
             return 0;
 
         return rootNode == null ? 0 : (1 + Math.max(getTreeDepth(getRefFieldObj(rootNode, rootNode.getClass(), "left")), getTreeDepth(getRefFieldObj(rootNode, rootNode.getClass(), "right"))));
     }
-    private static void printTreeNode(Object rootNode,int treeheight) {//转化为堆
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < treeheight; i++) {
-            stringBuilder.append("      ");
+
+    @Test
+    public void testPrintTree() {
+        HashMap hashMapTest = new HashMap(64);
+        for (int i = 0; i < 9; i++) {
+            hashMapTest.put(new HashObj(1), i);
         }
-//        stringBuilder.append()
+        Object[] table = (Object[]) getRefFieldObj(hashMapTest, hashMapTest.getClass(), "table");
+        printTreeNode(table[1]);
+        System.out.println();
+    }
+
+    private static void printTreeNode(Object rootNode) {//转化为堆
+        if (rootNode == null || !rootNode.getClass().toString().equals("class java.util.HashMap$TreeNode"))
+            return;
+        int treeDepth = getTreeDepth(rootNode);
+        Object[] objects = new Object[(int) (Math.pow(2, treeDepth) - 1)];
+        objects[0] = rootNode;
+        //         objects[0]=rootNode;
+//         objects[1]=getRefFieldObj(objects,objects.getClass(),"left");
+//         objects[2]=getRefFieldObj(objects,objects.getClass(),"right");
+//
+//        objects[3]=getRefFieldObj(objects[1],objects[1].getClass(),"left");
+//        objects[4]=getRefFieldObj(objects[1],objects[1].getClass(),"right");
+//        objects[5]=getRefFieldObj(objects[2],objects[3].getClass(),"left");
+//        objects[6]=getRefFieldObj(objects[2],objects[4].getClass(),"right");
+
+        for (int i = 1; i < objects.length; i++) {//数组打印
+            int index = (i - 1) / 2;
+            if (objects[index] != null) {
+                if (i % 2 == 0)
+                    objects[i] = getRefFieldObj(objects[index], objects[index].getClass(), "left");
+                else
+                    objects[i] = getRefFieldObj(objects[index], objects[index].getClass(), "right");
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        String space = "       ";
+        for (int i = 0; i < treeDepth + 1; i++) {
+            sb.append(space);
+        }
+        int nextlineIndex = 0;
+        for (int i = 0; i < objects.length; i++) {//new line: 0,1 ,3,7
+            //print space
+            //print value
+            if (nextlineIndex == i) {
+                System.out.println();
+                System.out.println();
+                if (sb.length() >= space.length()) {
+                    sb.delete(0, space.length());
+                }
+
+                nextlineIndex = i * 2 + 1;
+            }
+            System.out.print(sb.toString());
+
+            if (objects[i]!=null) {
+                Object value = getRefFieldObj(objects[i], objects[i].getClass().getSuperclass().getSuperclass(), "value");
+                boolean red = getRefFieldBool(objects[i], objects[i].getClass(), "red");
+                System.out.print(""+value+"("+(red?"r":"b")+")");
+            } else
+                System.out.print("nil");
+
+        }
 
     }
+
+
     private static void printArrayNode(Object map, int tabindex) {
         try {
             Field elementData = null;
