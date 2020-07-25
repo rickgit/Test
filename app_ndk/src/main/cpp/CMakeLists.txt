@@ -17,7 +17,33 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             native-lib.cpp )
+             native-lib.cpp
+
+            jnitest/jnitest.cpp
+            jnitest/jnitest.h
+
+             pip_test.cpp
+            pip_test.h
+
+        base_type.cpp
+        base_type.h
+
+        ctest/hello.c
+        ctest/hello.h
+        ctest/ctypetest.c
+        ctest/ctypetest.h
+        ctest/thread_test.c
+        ctest/thread_test.h
+        ctest/file_test.c
+        ctest/file_test.h
+
+#        giflib/dgif_lib.c
+#        giflib/gif_err.c
+#        giflib/gif_hash.h
+#        giflib/gif_lib.h
+#        giflib/gif_lib_private.h
+#        giflib/gifalloc.c
+        )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -41,4 +67,7 @@ target_link_libraries( # Specifies the target library.
 
                        # Links the target library to the log library
                        # included in the NDK.
-                       ${log-lib} )
+                       ${log-lib}
+                        android
+                        stdc++
+                        c)

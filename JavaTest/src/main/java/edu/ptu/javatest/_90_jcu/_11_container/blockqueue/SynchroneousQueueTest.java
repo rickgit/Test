@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.concurrent.SynchronousQueue;
 
-import edu.ptu.javatest._80_storage._80_file.classfile.RefectTest;
+import edu.ptu.javatest._20_ooad._50_dynamic._00_ReflectionTest;
 
 public class SynchroneousQueueTest {
     @Test
@@ -139,12 +139,12 @@ public class SynchroneousQueueTest {
 
     public void printQueueNode(Object object) {
         synchronized (object) {
-            Object transferer = RefectTest.getRefFieldObj(object, SynchronousQueue.class, "transferer");
-            Object headNode = RefectTest.getRefFieldObj(transferer, transferer.getClass(), "head");
+            Object transferer = _00_ReflectionTest.getRefFieldObj(object, SynchronousQueue.class, "transferer");
+            Object headNode = _00_ReflectionTest.getRefFieldObj(transferer, transferer.getClass(), "head");
             while (headNode != null) {
-                Object matchNode = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "isData");
-                Object waiterThread = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "waiter");
-                Object itemObj = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "item");
+                Object matchNode = _00_ReflectionTest.getRefFieldObj(headNode, headNode.getClass(), "isData");
+                Object waiterThread = _00_ReflectionTest.getRefFieldObj(headNode, headNode.getClass(), "waiter");
+                Object itemObj = _00_ReflectionTest.getRefFieldObj(headNode, headNode.getClass(), "item");
 
                 System.out.print("Node " + headNode.toString().substring(headNode.getClass().getName().length()));
                 System.out.print("( waiterThread:" + (waiterThread == null ? "null " : ((Thread) waiterThread).getName()));
@@ -153,7 +153,7 @@ public class SynchroneousQueueTest {
                 System.out.print(" ) ");
                 System.out.print(" -> ");
 
-                headNode = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "next");
+                headNode = _00_ReflectionTest.getRefFieldObj(headNode, headNode.getClass(), "next");
             }
             System.out.println();
         }
@@ -162,14 +162,14 @@ public class SynchroneousQueueTest {
 
     public void printStackNode(Object object) {
         synchronized (object) {
-            Object transferer = RefectTest.getRefFieldObj(object, SynchronousQueue.class, "transferer");
-            Object headNode = RefectTest.getRefFieldObj(transferer, transferer.getClass(), "head");
+            Object transferer = _00_ReflectionTest.getRefFieldObj(object, SynchronousQueue.class, "transferer");
+            Object headNode = _00_ReflectionTest.getRefFieldObj(transferer, transferer.getClass(), "head");
 
             while (headNode != null) {
-                Object matchNode = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "match");
-                Object waiterThread = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "waiter");
-                Object itemObj = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "item");
-                Object mode = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "mode");
+                Object matchNode = _00_ReflectionTest.getRefFieldObj(headNode, headNode.getClass(), "match");
+                Object waiterThread = _00_ReflectionTest.getRefFieldObj(headNode, headNode.getClass(), "waiter");
+                Object itemObj = _00_ReflectionTest.getRefFieldObj(headNode, headNode.getClass(), "item");
+                Object mode = _00_ReflectionTest.getRefFieldObj(headNode, headNode.getClass(), "mode");
 
                 System.out.print("Node " + headNode.toString().substring(headNode.getClass().getName().length()));
                 System.out.print("( waiterThread:" + (waiterThread == null ? "null " : ((Thread) waiterThread).getName()));
@@ -178,7 +178,7 @@ public class SynchroneousQueueTest {
                 System.out.print(" mode:" + mode);
                 System.out.print(" ) ->");
 
-                headNode = RefectTest.getRefFieldObj(headNode, headNode.getClass(), "next");
+                headNode = _00_ReflectionTest.getRefFieldObj(headNode, headNode.getClass(), "next");
             }
             System.out.println();
         }

@@ -28,7 +28,12 @@ public class LauchmodeUIActivity extends FragmentActivity {
         startActivity(R.id.singleTask, LauchmodeSingleTaskUIActivity.class);
         startActivity(R.id.singleinstance, LauchmodeSingleInstanceUIActivity.class);
 
+//        final int flags = Intent.FLAG_ACTIVITY_SINGLE_TOP;
+//        final int flags = Intent.FLAG_ACTIVITY_CLEAR_TOP;
+//        final int flags = Intent.FLAG_ACTIVITY_NO_HISTORY;
+
         final int flags = Intent.FLAG_ACTIVITY_MULTIPLE_TASK | Intent.FLAG_ACTIVITY_NEW_TASK;
+
         startActivity(R.id.standardflag, LauchmodeStandardUIActivity.class, flags);
         startActivity(R.id.singleTopFlag, LauchmodeSingleTopUIActivity.class, flags);
         startActivity(R.id.singleTaskFlag, LauchmodeSingleTaskUIActivity.class, flags);

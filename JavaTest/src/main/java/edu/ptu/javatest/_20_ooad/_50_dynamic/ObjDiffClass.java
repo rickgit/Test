@@ -1,4 +1,4 @@
-package edu.ptu.javatest._80_storage._80_file.classfile;
+package edu.ptu.javatest._20_ooad._50_dynamic;
 
 public class ObjDiffClass {
     private static int pristat;

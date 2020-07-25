@@ -1,4 +1,4 @@
-package edu.ptu.javatest._90_jcu._10_jsr133._12_jmm._11_volatile;
+package edu.ptu.javatest._90_jcu._10_jsr133._12_jmm;
 
 import org.junit.Test;
 

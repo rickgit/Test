@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import edu.ptu.androidtest.LifeActivity;
+import edu.ptu.androidtest.android.act.LauchmodeSingleTaskUIActivity;
 import edu.ptu.androidtest.android.act.LauchmodeStandardUIActivity;
 import edu.ptu.androidtest.android.LifeTestActivity;
 import edu.ptu.androidtest.android.LifeTestSecondActivity;

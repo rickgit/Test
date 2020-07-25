@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentActivity;
 /**
  * Created by anshu.wang on 2016/12/15.
  */
-
 public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

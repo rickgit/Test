@@ -26,7 +26,7 @@ public class IntentTest {
 
         Instrumentation.ActivityMonitor monitor;
         Intent intent = new Intent(context, LauchmodeStandardUIActivity.class);
-        intent.putExtra("a", new int[1020 * 1024 ]);//  android.os.TransactionTooLargeException
+        intent.putExtra("a", new int[4 * 1024 ]);//  android.os.TransactionTooLargeException
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
         monitor = getInstrumentation().addMonitor(LauchmodeStandardUIActivity.class.getName(), null, false);

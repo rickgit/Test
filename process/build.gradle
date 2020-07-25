@@ -5,7 +5,8 @@ dependencies {
     implementation 'javax.inject:javax.inject:1'
     implementation 'com.squareup:javapoet:1.12.1'
     implementation 'com.squareup:javawriter:2.5.1'
+    implementation(project(':JavaTest'))
 }
 
-sourceCompatibility = "7"
-targetCompatibility = "7"
+sourceCompatibility = "8"
+targetCompatibility = "8"

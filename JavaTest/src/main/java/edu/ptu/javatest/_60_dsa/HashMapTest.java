@@ -8,10 +8,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import edu.ptu.javatest._80_storage._80_file.classfile.RefectTest;
-
-import static edu.ptu.javatest._80_storage._80_file.classfile.RefectTest.getRefFieldBool;
-import static edu.ptu.javatest._80_storage._80_file.classfile.RefectTest.getRefFieldObj;
+import static edu.ptu.javatest._20_ooad._50_dynamic._00_ReflectionTest.getRefFieldBool;
+import static edu.ptu.javatest._20_ooad._50_dynamic._00_ReflectionTest.getRefFieldObj;
 
 
 public class HashMapTest {

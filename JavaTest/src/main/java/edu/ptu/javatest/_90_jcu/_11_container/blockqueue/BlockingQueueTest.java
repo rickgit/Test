@@ -4,11 +4,7 @@ import org.junit.Test;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.DelayQueue;
 import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.SynchronousQueue;
-
-import edu.ptu.javatest._80_storage._80_file.classfile.RefectTest;
 
 //LinkedBlockingQueue、ArrayBlockingQueue、DelayQueue、SynchronousQueue
 public class BlockingQueueTest {

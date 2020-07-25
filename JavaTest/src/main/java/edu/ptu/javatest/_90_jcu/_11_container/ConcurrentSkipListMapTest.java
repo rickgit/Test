@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.Random;
 import java.util.concurrent.ConcurrentSkipListMap;
 
-import edu.ptu.javatest._80_storage._80_file.classfile.RefectTest;
+import edu.ptu.javatest._20_ooad._50_dynamic._00_ReflectionTest;
 
 //优于TreeMap
 public class ConcurrentSkipListMapTest {
@@ -21,27 +21,27 @@ public class ConcurrentSkipListMapTest {
     }
 
     public void printSkipList(Object obj){
-        Object indexObj = RefectTest.getRefFieldObj(obj, obj.getClass(), "head");//headindex
-        Object descendingMapObj = RefectTest.getRefFieldObj(obj, obj.getClass(), "descendingMap");
+        Object indexObj = _00_ReflectionTest.getRefFieldObj(obj, obj.getClass(), "head");//headindex
+        Object descendingMapObj = _00_ReflectionTest.getRefFieldObj(obj, obj.getClass(), "descendingMap");
 //        Object levelInt = RefectTest.getRefFieldInt(obj, obj.getClass(), "level");
 //        Object adderObj = RefectTest.getRefFieldObj(obj, obj.getClass(), "adder");
         while (indexObj!=null){
-            Object level = RefectTest.getRefFieldObj(indexObj, indexObj.getClass(), "level");
-            Object node = RefectTest.getRefFieldObj(indexObj, indexObj.getClass().getSuperclass(), "node");
+            Object level = _00_ReflectionTest.getRefFieldObj(indexObj, indexObj.getClass(), "level");
+            Object node = _00_ReflectionTest.getRefFieldObj(indexObj, indexObj.getClass().getSuperclass(), "node");
             System.out.print("  Node "+node.toString().substring(node.getClass().getName().length()));
             while (node!=null){
-                Object value = RefectTest.getRefFieldObj(node, node.getClass(), "value");
-                Object key = RefectTest.getRefFieldObj(node, node.getClass(), "key");
+                Object value = _00_ReflectionTest.getRefFieldObj(node, node.getClass(), "value");
+                Object key = _00_ReflectionTest.getRefFieldObj(node, node.getClass(), "key");
                 System.out.print(" {"+key+":"+(value instanceof Integer?value:"obj")+"} ->");
-                node=RefectTest.getRefFieldObj(node, node.getClass(), "next");
+                node= _00_ReflectionTest.getRefFieldObj(node, node.getClass(), "next");
             }
             //class java.util.concurrent.ConcurrentSkipListMap$Index
-            Object rightIndex = RefectTest.getRefFieldObj(indexObj, indexObj.getClass().getSuperclass(), "right");
+            Object rightIndex = _00_ReflectionTest.getRefFieldObj(indexObj, indexObj.getClass().getSuperclass(), "right");
 //            while (rightIndex!=null){
 //
 //            }
             //class java.util.concurrent.ConcurrentSkipListMap$HeadIndex
-            Object downIndex = RefectTest.getRefFieldObj(indexObj, indexObj.getClass().getSuperclass(), "down");
+            Object downIndex = _00_ReflectionTest.getRefFieldObj(indexObj, indexObj.getClass().getSuperclass(), "down");
             indexObj=downIndex;
             System.out.println();
         }

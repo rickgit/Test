@@ -1,14 +1,32 @@
-package edu.ptu.javatest._80_storage._80_file.classfile;
+package edu.ptu.javatest._20_ooad._50_dynamic;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.awt.Color;
+import java.lang.annotation.ElementType;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 import edu.ptu.javatest._80_storage._80_file.classfile2.ObjDiffPack;
 
-public class RefectTest {
+public class _00_ReflectionTest {
+    @Test
+    public   void getRefFieldObj( ) {
+        Class<Integer> integerClass = int.class;
+        Class<Deprecated> deprecatedClass = Deprecated.class;
+        System.out.println("注解"+deprecatedClass);
+        Class<Class> classClass = Class.class;
+        Class<int[]> aClass = int[].class;
+        System.out.println("数组"+aClass);
 
+        Class<? extends ElementType> aClass1 = ElementType.FIELD.getClass();//枚举
+        System.out.println("枚举"+aClass1);
+        Class<ArrayList> arrayListClass = ArrayList.class;//泛型
+        System.out.println("泛型类"+arrayListClass);
+
+
+    }
     public static Object getRefFieldObj(Object object, Class clazz, String name) {
         try {
             Field declaredField = clazz.getDeclaredField(name);

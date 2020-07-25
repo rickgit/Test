@@ -1,4 +1,4 @@
-package edu.ptu.javatest._20_ooad._oob;
+package edu.ptu.javatest._20_ooad._30__oob;
 
 public class ExtendsTest {
     public  static class P{
