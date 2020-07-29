@@ -6,27 +6,29 @@ import org.junit.Test;
 import java.awt.Color;
 import java.lang.annotation.ElementType;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 import edu.ptu.javatest._80_storage._80_file.classfile2.ObjDiffPack;
 
 public class _00_ReflectionTest {
     @Test
-    public   void getRefFieldObj( ) {
+    public void getRefFieldObj() {
         Class<Integer> integerClass = int.class;
         Class<Deprecated> deprecatedClass = Deprecated.class;
-        System.out.println("注解"+deprecatedClass);
+        System.out.println("注解" + deprecatedClass);
         Class<Class> classClass = Class.class;
         Class<int[]> aClass = int[].class;
-        System.out.println("数组"+aClass);
+        System.out.println("数组" + aClass);
 
         Class<? extends ElementType> aClass1 = ElementType.FIELD.getClass();//枚举
-        System.out.println("枚举"+aClass1);
+        System.out.println("枚举" + aClass1);
         Class<ArrayList> arrayListClass = ArrayList.class;//泛型
-        System.out.println("泛型类"+arrayListClass);
+        System.out.println("泛型类" + arrayListClass);
 
 
     }
+
     public static Object getRefFieldObj(Object object, Class clazz, String name) {
         try {
             Field declaredField = clazz.getDeclaredField(name);
@@ -192,13 +194,14 @@ public class _00_ReflectionTest {
                 staticpub.set(obj.getClass(), 1);
                 Assert.fail("不能执行到这");
             } catch (Exception e) {
-                Assert.assertEquals(e.getClass(),IllegalAccessException.class);
+                Assert.assertEquals(e.getClass(), IllegalAccessException.class);
             }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
             Assert.fail(e.getMessage());
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();Assert.fail(e.getMessage());
+            e.printStackTrace();
+            Assert.fail(e.getMessage());
         }
         System.out.printf("");
     }
@@ -302,6 +305,27 @@ public class _00_ReflectionTest {
             e.printStackTrace();
         }
         System.out.printf("");
+    }
+
+    static final int staticFinalField = 0;
+
+    @Test
+    public void testStaticFinal() {
+        try {
+            Field declaredField = _00_ReflectionTest.class.getDeclaredField("staticFinalField");
+            Field modifiers = declaredField.getClass().getDeclaredField("modifiers");
+            modifiers.setAccessible(true);
+            modifiers.setInt(declaredField, declaredField.getModifiers() & ~Modifier.FINAL);
+
+            declaredField.setAccessible(true);
+            declaredField.set(_00_ReflectionTest.class,1);
+            System.out.println();
+            //还原
+            modifiers.setInt(declaredField, declaredField.getModifiers() & ~Modifier.FINAL);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

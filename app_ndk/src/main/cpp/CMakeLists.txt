@@ -30,12 +30,20 @@ add_library( # Sets the name of the library.
 
         ctest/hello.c
         ctest/hello.h
-        ctest/ctypetest.c
-        ctest/ctypetest.h
-        ctest/thread_test.c
-        ctest/thread_test.h
-        ctest/file_test.c
-        ctest/file_test.h
+        ctest/_00_ctypetest.c
+        ctest/_00_ctypetest.h
+        ctest/_01_asm.c
+        ctest/_01_asm.h
+        ctest/_02_storage.h
+        ctest/_02_storage.c
+        ctest/_05_thread_test.c
+        ctest/_05_thread_test.h
+        ctest/_03_file_test.c
+        ctest/_03_file_test.h
+
+
+        _05_microsystest/microsystest.c
+        _05_microsystest/microsystest.h
 
 #        giflib/dgif_lib.c
 #        giflib/gif_err.c

@@ -1,7 +1,7 @@
 package edu.ptu.javatest._20_ooad._21_create;
 
 public class SingleInstanceDoubleCheck {
-    public  static volatile SingleInstanceDoubleCheck singleinstance=null;
+    public  static volatile SingleInstanceDoubleCheck singleinstance=null;//volatile this引用逃逸
 //volatile 变量值内存共享
     public static SingleInstanceDoubleCheck getSingleinstance() {
         if (singleinstance==null){

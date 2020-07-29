@@ -7,6 +7,8 @@
 
 char *say_hello_c() {
     testctypesuit();
+    testAsmSuit();
+    testStorageSuit();
     testThreadSuit();
     test_file_suit();
     return "hello c";
