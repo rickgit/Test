@@ -25,12 +25,9 @@ public class RxJavaTest {
 
     @Test
     public void testTestMain() {
-        Flowable.just("").map(new Function<String, Object>() {
-            @Override
-            public Object apply(String s) throws Throwable {
-                System.out.println("onSubscribe" + (Looper.myLooper() == Looper.getMainLooper()));
-                return "null";
-            }
+        Flowable.just("").map((Function<String, Object>) s -> {
+            System.out.println("onSubscribe" + (Looper.myLooper() == Looper.getMainLooper()));
+            return "null";
         }).subscribeOn(AndroidSchedulers.mainThread()).observeOn(Schedulers.io())
                 .subscribe(new FlowableSubscriber<Object>() {
                     @Override
@@ -61,38 +58,24 @@ public class RxJavaTest {
     }
 
     @Test
-    public void testObservable() {
+    public void testSubscribeOn() {
         Observable.just(1)
-                .map(new Function<Integer, Integer>() {
-                    @Override
-                    public Integer apply(@NonNull Integer integer) throws Exception {
-                        Log.i(TAG, "map-1:" + Thread.currentThread().getName());
-                        return integer;
-                    }
+                .map(integer -> {
+                    Log.i(TAG, "map-1:" + Thread.currentThread().getName());
+                    return integer;
                 })
                 .subscribeOn(Schedulers.newThread())
-                .map(new Function<Integer, Integer>() {
-                    @Override
-                    public Integer apply(@NonNull Integer integer) throws Exception {
-                        Log.i(TAG, "map-2:" + Thread.currentThread().getName());
-                        return integer;
-                    }
+                .map(integer -> {
+                    Log.i(TAG, "map-2:" + Thread.currentThread().getName());
+                    return integer;
                 })
                 .subscribeOn(Schedulers.io())
-                .map(new Function<Integer, Integer>() {
-                    @Override
-                    public Integer apply(@NonNull Integer integer) throws Exception {
-                        Log.i(TAG, "map-3:" + Thread.currentThread().getName());
-                        return integer;
-                    }
+                .map(integer -> {
+                    Log.i(TAG, "map-3:" + Thread.currentThread().getName());
+                    return integer;
                 })
                 .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(@NonNull Integer integer) throws Exception {
-                        Log.i(TAG, "subscribe:" + Thread.currentThread().getName());
-                    }
-                });
+                .subscribe(integer -> Log.i(TAG, "subscribe:" + Thread.currentThread().getName()));
         try {
             Thread.sleep(15000000);
         } catch (InterruptedException e) {
@@ -102,36 +85,22 @@ public class RxJavaTest {
     @Test
     public void onObserverOn(){
         Observable.just(1)
-                .map(new Function<Integer, Integer>() {
-                    @Override
-                    public Integer apply(@NonNull Integer integer) throws Exception {
-                        Log.i(TAG, "map-1:"+Thread.currentThread().getName());
-                        return integer;
-                    }
+                .map(integer -> {
+                    Log.i(TAG, "map-1:"+Thread.currentThread().getName());
+                    return integer;
                 })
                 .observeOn(Schedulers.newThread())
-                .map(new Function<Integer, Integer>() {
-                    @Override
-                    public Integer apply(@NonNull Integer integer) throws Exception {
-                        Log.i(TAG, "map-2:"+Thread.currentThread().getName());
-                        return integer;
-                    }
+                .map(integer -> {
+                    Log.i(TAG, "map-2:"+Thread.currentThread().getName());
+                    return integer;
                 })
                 .observeOn(Schedulers.io())
-                .map(new Function<Integer, Integer>() {
-                    @Override
-                    public Integer apply(@NonNull Integer integer) throws Exception {
-                        Log.i(TAG, "map-3:"+Thread.currentThread().getName());
-                        return integer;
-                    }
+                .map(integer -> {
+                    Log.i(TAG, "map-3:"+Thread.currentThread().getName());
+                    return integer;
                 })
 //                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(@NonNull Integer integer) throws Exception {
-                        Log.i(TAG, "subscribe:"+Thread.currentThread().getName());
-                    }
-                });
+                .subscribe(integer -> Log.i(TAG, "subscribe:"+Thread.currentThread().getName()));
 
         try {
             Thread.sleep(3000);

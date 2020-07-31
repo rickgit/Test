@@ -12,7 +12,7 @@ import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentat
 
 public class ServiceTest {
     @Test
-    public void testLaucherModeMix2LifeCycle() {
+    public void testServiceLifeCycle() {
         Context targetContext = getInstrumentation().getTargetContext();
         _00_LifeCyclerTest.startActivityFromInstrumentation(targetContext, ServiceActivity.class);
         Assert.assertTrue(true);

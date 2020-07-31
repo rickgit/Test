@@ -63,7 +63,17 @@ void __test_epoll(){
     int i = epoll_create(0);
 }
 
+void testpipe(){
+    int fd[2];
+    int result = pipe(fd);
+    if (result<0){
+      //erro
+    }else{
+
+    }
+}
+
 void test_file_suit() {
 
-
+    testpipe();
 }
