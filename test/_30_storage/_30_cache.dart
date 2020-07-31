@@ -1,5 +1,11 @@
 import "package:test/test.dart";
 //8种内置数据类型
+//声明，定义
+//8种内置数据类型
+//布尔型 值类型（int,double）字符型（string，rune,symbol符号不大会用到） 容器类型（List Set Map）
+//数据类型+标识符+内存分配
+//const final常量
+// 函数类型
 main(){
 //  BuildInType
   //numbers int,double
