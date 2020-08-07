@@ -108,4 +108,77 @@ public class RxJavaTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void testCreate() {
+        Observable.just(1)
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Integer integer) throws Exception {
+                        System.out.println("map-1:"+Thread.currentThread().getName());
+                        return integer;
+                    }
+                })
+                .subscribeOn(Schedulers.newThread())
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Integer integer) throws Exception {
+                        System.out.println("map-2:"+Thread.currentThread().getName());
+                        return integer;
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Integer integer) throws Exception {
+                        System.out.println("map-3:"+Thread.currentThread().getName());
+                        return integer;
+                    }
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(@NonNull Integer integer) throws Exception {
+                        System.out.println("subscribe:"+Thread.currentThread().getName());
+                    }
+                });
+    }
+    @Test
+    public void testObservableOn() {
+        Observable.just(1)
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Integer integer) throws Exception {
+                        System.out.println("map-1:"+Thread.currentThread().getName());
+                        return integer;
+                    }
+                })
+                .observeOn(Schedulers.newThread())
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Integer integer) throws Exception {
+                        System.out.println("map-2:"+Thread.currentThread().getName());
+                        return integer;
+                    }
+                })
+                .observeOn(Schedulers.io())
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Integer integer) throws Exception {
+                        System.out.println("map-3:"+Thread.currentThread().getName());
+                        return integer;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(@NonNull Integer integer) throws Exception {
+                        System.out.println("subscribe:"+Thread.currentThread().getName());
+                    }
+                });
+    }
+    @Test
+    public void testSub() {
+
+    }
 }

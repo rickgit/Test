@@ -1,0 +1,1 @@
+https://www.kotlincn.net/docs/reference/interfaces.html

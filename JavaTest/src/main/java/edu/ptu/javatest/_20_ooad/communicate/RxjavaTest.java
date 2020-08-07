@@ -13,7 +13,9 @@ public class RxjavaTest {
     }
     @Test
     public void testScheduler(){
-        Flowable.just("").observeOn(Schedulers.io()).subscribeOn(Schedulers.newThread()).subscribe(new Subscriber<String>() {
+        Flowable.just("").observeOn(Schedulers.io())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Subscriber<String>() {
             @Override
             public void onSubscribe(Subscription s) {
                 System.out.println(Thread.currentThread());

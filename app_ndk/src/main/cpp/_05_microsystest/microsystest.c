@@ -4,11 +4,10 @@
 
 #include "microsystest.h"
 void testSyscall(){
-    __asm__(
-            "ldr r7,=6"//include\asm-arm\unistd.h
-            "swi"//arch\arm\kernel\calls.S
-            //
-            );
+//    __asm__(
+//            "ldr r7,=6"//include\asm-arm\unistd.h
+//            "swi"//arch\arm\kernel\calls.S
+//            );
 }
 //物理地址直接映射，static struct map_desc s3c_iodesc[]
 void testAddressMap(){

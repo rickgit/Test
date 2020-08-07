@@ -2,12 +2,12 @@ package edu.ptu.androidtest._20_dsa;
 
 import org.junit.Test;
 
-import java.util.concurrent.TimeUnit;
+import edu.ptu.javatest._60_dsa._36_ConcurrentHashMapTest;
 
 public class ConcurrentHashMapTest {
     @Test
     public void testGrow(){
-        edu.ptu.javatest._60_dsa.ConcurrentHashMapTest concurrentHashMapTest = new edu.ptu.javatest._60_dsa.ConcurrentHashMapTest();
+        _36_ConcurrentHashMapTest concurrentHashMapTest = new _36_ConcurrentHashMapTest();
         concurrentHashMapTest.testThread();
 
         System.out.println();

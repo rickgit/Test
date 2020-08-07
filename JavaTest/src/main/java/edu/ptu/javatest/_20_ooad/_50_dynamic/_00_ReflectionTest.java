@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.awt.Color;
 import java.lang.annotation.ElementType;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
@@ -37,6 +38,17 @@ public class _00_ReflectionTest {
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Object invokeMethod(Object object, Class clazz, String name,  Class[] type, Object[] params) {
+        try {
+            Method declaredField = type != null ? clazz.getDeclaredMethod(name, type) : clazz.getDeclaredMethod(name);
+            declaredField.setAccessible(true);
+            return  type != null ? declaredField.invoke(object, params):declaredField.invoke(object);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -318,7 +330,7 @@ public class _00_ReflectionTest {
             modifiers.setInt(declaredField, declaredField.getModifiers() & ~Modifier.FINAL);
 
             declaredField.setAccessible(true);
-            declaredField.set(_00_ReflectionTest.class,1);
+            declaredField.set(_00_ReflectionTest.class, 1);
             System.out.println();
             //还原
             modifiers.setInt(declaredField, declaredField.getModifiers() & ~Modifier.FINAL);

@@ -11,46 +11,64 @@ cmake_minimum_required(VERSION 3.4.1)
 # Gradle automatically packages shared libraries with your APK.
 
 add_library( # Sets the name of the library.
-             native-lib
+        native-lib
 
-             # Sets the library as a shared library.
-             SHARED
+        # Sets the library as a shared library.
+        SHARED
 
-             # Provides a relative path to your source file(s).
-             native-lib.cpp
+        # Provides a relative path to your source file(s).
+        native-lib.cpp
 
-            jnitest/jnitest.cpp
-            jnitest/jnitest.h
+        jnitest/jnitest.cpp
+        jnitest/jnitest.h
 
-             pip_test.cpp
-            pip_test.h
+        pip_test.cpp
+        pip_test.h
 
         base_type.cpp
         base_type.h
 
-        ctest/hello.c
-        ctest/hello.h
-        ctest/_00_ctypetest.c
-        ctest/_00_ctypetest.h
-        ctest/_01_asm.c
-        ctest/_01_asm.h
-        ctest/_02_storage.h
-        ctest/_02_storage.c
-        ctest/_05_thread_test.c
-        ctest/_05_thread_test.h
-        ctest/_03_file_test.c
-        ctest/_03_file_test.h
+        _10_ctest/hello.c
+        _10_ctest/hello.h
+        _10_ctest/_00_ctypetest.c
+        _10_ctest/_00_ctypetest.h
+        _10_ctest/_01_asm.c
+        _10_ctest/_01_asm.h
+        _10_ctest/_02_storage.h
+        _10_ctest/_02_storage.c
+        _10_ctest/_50_thread_test.c
+        _10_ctest/_50_thread_test.h
+        _10_ctest/_30_file_test.c
+        _10_ctest/_30_file_test.h
+        _10_ctest/_31_SysStatTest.c
+        _10_ctest/_32_accessTest.c
 
 
         _05_microsystest/microsystest.c
         _05_microsystest/microsystest.h
 
-#        giflib/dgif_lib.c
-#        giflib/gif_err.c
-#        giflib/gif_hash.h
-#        giflib/gif_lib.h
-#        giflib/gif_lib_private.h
-#        giflib/gifalloc.c
+        cpptest/testCppSuit.h
+        cpptest/testCppSuit.cpp
+#                cpptest/_30_ooad/_00_class.h
+#                cpptest/_30_ooad/_00_class.cpp
+
+                cpptest/_10_storage/_10_DataTypeTest.h
+                cpptest/_10_storage/_10_DataTypeTest.cpp
+                cpptest/_10_storage/_11_SpecialTypeTest.cpp
+                cpptest/_10_storage/_11_SpecialTypeTest.h
+        #
+        #        cpptest/_30_ooad/_00_class.cpp
+        #        cpptest/_30_ooad/_00_class.h
+        #        cpptest/_30_ooad/_10_extendsTest.h
+        #        cpptest/_30_ooad/_10_extendsTest.cpp
+        #        cpptest/_30_ooad/_20_dynamic.cpp
+        #        cpptest/_30_ooad/_20_dynamic.h
+        #        giflib/dgif_lib.c
+        #        giflib/gif_err.c
+        #        giflib/gif_hash.h
+        #        giflib/gif_lib.h
+        #        giflib/gif_lib_private.h
+        #        giflib/gifalloc.c
         )
 
 # Searches for a specified prebuilt library and stores the path as a
@@ -60,22 +78,24 @@ add_library( # Sets the name of the library.
 # completing its build.
 
 find_library( # Sets the name of the path variable.
-              log-lib
+        log-lib
 
-              # Specifies the name of the NDK library that
-              # you want CMake to locate.
-              log )
+        # Specifies the name of the NDK library that
+        # you want CMake to locate.
+        log)
+#SET(CMAKE_SYSROOT D:\\Program\\Android\\android-ndk-r16b\\sysroot\\usr)
 
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-                       native-lib
+        native-lib
 
-                       # Links the target library to the log library
-                       # included in the NDK.
-                       ${log-lib}
-                        android
-                        stdc++
-                        c)
+        # Links the target library to the log library
+        # included in the NDK.
+        ${log-lib}
+        android
+        stdc++
+        c
+        )

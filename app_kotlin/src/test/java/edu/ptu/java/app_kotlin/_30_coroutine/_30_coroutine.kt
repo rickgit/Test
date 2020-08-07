@@ -35,6 +35,7 @@ class _30_coroutine {
 //        block:{}
 //        ): Job
         val mJob = GlobalScope.launch {
+            pringCoroutineScheduler()
             // 在后台启动一个新的协程并继续
             delay(1000L) // 非阻塞的等待 1 秒钟（默认时间单位是毫秒）
             println("World!") // 在延迟后打印输出
@@ -49,6 +50,7 @@ class _30_coroutine {
 
         //超时
         runBlocking {
+            println()
             withTimeout(1300L) {
                 println()
             }
@@ -58,6 +60,7 @@ class _30_coroutine {
     @Test
     fun testGlobalScopeAsync() {
         GlobalScope.async {
+            pringCoroutineScheduler()
             // 在后台启动一个新的协程并继续
             delay(1000L) // 非阻塞的等待 1 秒钟（默认时间单位是毫秒）
             println("World!") // 在延迟后打印输出
@@ -67,15 +70,31 @@ class _30_coroutine {
         Thread.sleep(3000)
     }
 
+    private fun pringCoroutineScheduler() {
+        val declaredField = Thread.currentThread().javaClass.getDeclaredField("this\$0")
+        declaredField.isAccessible = true
+        var data = declaredField.get(Thread.currentThread())
+        println(data.toString())
+    }
+
     @Test
-    fun testWithContext() {
+    fun testrunBlocking() {
         runBlocking {
             var counter:Int=0
-
+            pringCoroutineScheduler()
             println("Counter = $counter")
         }
     }
+    @Test
+    fun testWithContext() {
+            runBlocking {
+                var counter:Int=0
+                pringCoroutineScheduler()
+                println("Counter = $counter")
+            }
+        Thread.sleep(3000)
 
+    }
     /////// 官方例子
     fun corountineCancel() = runBlocking {
         val job = launch {

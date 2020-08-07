@@ -14,6 +14,7 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags ""
+//                arguments "-DANDROID_UNIFIED_HEADERS=ON"
             }
         }
     }
@@ -28,6 +29,7 @@ android {
         cmake {
             path "src/main/cpp/CMakeLists.txt"
             version "3.10.2"
+
         }
     }
 }
