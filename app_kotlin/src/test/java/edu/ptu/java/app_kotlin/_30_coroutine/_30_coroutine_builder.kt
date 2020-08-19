@@ -6,6 +6,7 @@ import org.junit.Test
 class _30_coroutine_builder {
     @Test
     fun testThread(){
+        //适用于单元测试，一般业务开发不会使用这种
         runBlocking {
             launch { // 运行在父协程的上下文中，即 runBlocking 主协程
                 println("main runBlocking      : I'm working in thread ${Thread.currentThread().name}")

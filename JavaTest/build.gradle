@@ -1,5 +1,5 @@
 apply plugin: 'java-library'
-
+apply plugin: 'com.google.protobuf'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0-M4")
@@ -12,7 +12,53 @@ dependencies {
 //    compile 'com.alibaba:fastjson:1.1.71.android'
     implementation project(path: ':Utils')
 
+    //storage
+    implementation 'com.google.protobuf:protobuf-java:3.8.0'
+
+}
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            //添加生成的文件夹
+            srcDir 'build/generated/source/proto/main/java'
+        }
+        proto {
+            srcDir 'src/main/proto' //指定.proto文件路径
+        }
+    }
 }
 
+//https://github.com/google/protobuf-gradle-plugin
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.8.0' // 也可以配置本地编译器路径
+    }
+    //3.8以前
+//    plugins {
+//        javalite {
+//            artifact = 'com.google.protobuf:protoc-gen-javalite:3.8.0'
+//        }
+//
+//    }
+    //更改路径
+//    generatedFilesBaseDir = "$projectDir/src/generated"
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove java
+            }
+            task.builtins {
+                // 生产java源码，Java提供 nano,lite,java三种版本
+                java {
+                    option "lite"
+                }
+//                javalite { }//3.8以前
+//                cpp { }// 生产cpp源码
+//                grpc {}
+            }
+        }
+    }
+}
 sourceCompatibility = "8"
 targetCompatibility = "8"

@@ -19,4 +19,6 @@
 #作用就是复用上次的mapping映射，让ProgramMember的visitorInfo恢复到上次混淆的状态。
 #由于R8配合Proguard规则进行混淆，需要禁用R8
 #-applymapping mapping.txt
-
+#-dontwarn
+#-keep public class * implements androidx.versionedparcelable.VersionedParcelable
+-verbose

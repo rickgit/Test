@@ -3,14 +3,13 @@ package edu.ptu.javatest._20_ooad._50_dynamic;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.awt.Color;
 import java.lang.annotation.ElementType;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
-import edu.ptu.javatest._80_storage._80_file.classfile2.ObjDiffPack;
+import edu.ptu.javatest._80_storage._80_file._01_classfile2.ObjDiffPack;
 
 public class _00_ReflectionTest {
     @Test

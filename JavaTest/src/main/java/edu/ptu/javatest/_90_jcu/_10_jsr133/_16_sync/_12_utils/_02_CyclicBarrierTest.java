@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-public class CyclicBarrierTest {
+public class _02_CyclicBarrierTest {
 
     @Test
     public void testCyclic() {

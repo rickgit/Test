@@ -8,7 +8,7 @@ import java.util.concurrent.CountDownLatch;
 import edu.ptu.javatest._90_jcu._10_jsr133._16_sync._62_aqs_lock;
 import edu.ptu.javatest._90_jcu._10_jsr133._16_sync._63_rwlock;
 
-public class CountDownLatchTest {
+public class _01_CountDownLatchTest {
     @Test
     public void testCountDownLatch() {
         _63_rwlock.printShareObj();

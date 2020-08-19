@@ -1,0 +1,8 @@
+syntax = "proto3";
+package edu.ptu.javatest._80_storage._80_file._04_probuf; //输出的包名 c++为namespace
+option java_outer_classname = "ProtoModel";  //输出的类名
+
+message User{
+        sint32 id    = 1 ;//负数需要特别注意
+        string name = 2 ;
+}

@@ -4,6 +4,7 @@
 #include "_30_file_test.h"
 #include <unistd.h>
 #include <assert.h>
+#define PGHDR_TO_DATA(P)  ((void*)(&(P)[1]))
 
 void testAccess(){
     //检查调用进程是否可以对指定的文件执行某种操作。
@@ -25,5 +26,7 @@ void testAccess(){
 //    ENOMEM： 不能获取足够的内核内存
 //    ETXTBSY：对程序写入出错
     assert(res==0);
+
+
 }
 

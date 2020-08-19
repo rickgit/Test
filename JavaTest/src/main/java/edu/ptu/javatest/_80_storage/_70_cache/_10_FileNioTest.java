@@ -22,7 +22,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.EnumSet;
 
-import sun.nio.ch.DirectBuffer;
+
 
 public class _10_FileNioTest {
     @Test
@@ -45,7 +45,7 @@ public class _10_FileNioTest {
         Assert.assertTrue(bb.isDirect());
         //清除直接缓存
 
-        ((DirectBuffer) bb).cleaner().clean();
+//        ((DirectBuffer) bb).cleaner().clean();
     }
 
     @Test

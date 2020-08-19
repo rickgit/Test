@@ -198,6 +198,13 @@ pointer|  addr        +---------+   int *const pointer; 内存地址的addr
        +--------------+
 
  */
+ struct S_test{
+
+ };
+__test_struct(){
+   int sizeOfS_test= sizeof(struct S_test);
+   printf("%d",sizeOfS_test);
+}
 void testctypesuit() {
     __test_type_size();
     __test_malloc();
@@ -205,4 +212,5 @@ void testctypesuit() {
     __testMacro();
     __testArray();
     __testPointer();
+    __test_struct();
 }

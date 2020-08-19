@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.concurrent.Semaphore;
 
-public class SemaphoreTest {
+public class _03_SemaphoreTest {
 
     @Test
     public void testCyclic() {

@@ -24,7 +24,7 @@ import java.util.List;
 //4. 类型擦除
 //5. 泛型与数组
 //6. 泛型与反射
-public class _01_GenericsTest {
+public class _07_GenericsTest {
 
     @Test
     public void testExtends() {

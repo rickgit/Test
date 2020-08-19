@@ -1,4 +1,4 @@
-package edu.ptu.java.app_kotlin._00_ooad
+package edu.ptu.java.app_kotlin._20_ooad
 
 import org.junit.Assert
 import org.junit.Test

@@ -1,4 +1,4 @@
-package edu.ptu.javatest._80_storage._80_file.classfile2;
+package edu.ptu.javatest._80_storage._80_file._01_classfile2;
 
 public class ObjDiffPack      {
     private static int pristat;
