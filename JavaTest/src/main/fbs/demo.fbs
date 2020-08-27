@@ -1,0 +1,15 @@
+//包名
+namespace edu.ptu.javatest._80_storage._80_file._04_probuf;
+//类名
+table FbDemo {
+	//名字
+	name:string;
+	//年龄
+	age:int;
+	//钱
+	money:double;
+	times:[string];
+	test:[byte];
+}
+//写根类的名字
+root_type FbDemo;

@@ -27,7 +27,7 @@ import java.sql.SQLOutput;
 import java.util.EnumSet;
 import java.util.concurrent.Future;
 
-import sun.nio.ch.DirectBuffer;
+//import sun.nio.ch.DirectBuffer;
 
 public class _10_NioTest {
     @Test
@@ -50,7 +50,7 @@ public class _10_NioTest {
         Assert.assertTrue(bb.isDirect());
         //清除直接缓存
 
-        ((DirectBuffer) bb).cleaner().clean();
+//        ((DirectBuffer) bb).cleaner().clean();
     }
     @Test
     public void testNioHeapBufferMapped()   {

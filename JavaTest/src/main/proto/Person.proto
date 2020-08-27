@@ -3,6 +3,10 @@ package edu.ptu.javatest._80_storage._80_file._04_probuf; //输出的包名 c++�
 option java_outer_classname = "ProtoModel";  //输出的类名
 
 message User{
-        sint32 id    = 1 ;//负数需要特别注意
+        sint32 id = 1 ;//负数需要特别注意
         string name = 2 ;
+        Address addr = 3 ;
+}
+message Address{
+        string name = 1 ;
 }

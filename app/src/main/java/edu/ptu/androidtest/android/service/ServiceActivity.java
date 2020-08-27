@@ -1,7 +1,10 @@
 package edu.ptu.androidtest.android.service;
 
 import android.app.Service;
+import android.app.job.JobService;
+import android.app.job.JobServiceEngine;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
@@ -112,8 +115,7 @@ public class ServiceActivity extends FragmentActivity {
         findViewById(R.id.standard2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), LauchmodeStandardUI2Activity.class);
-                startActivity(intent);
+
             }
         });
         findViewById(R.id.singleTop2).setOnClickListener(new View.OnClickListener() {

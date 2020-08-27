@@ -24,4 +24,12 @@ public class LRUCache {
         };
 
     }
+    static class FinalField{
+        final int field=1;
+    }
+    @Test
+    public void testFinal(){
+        FinalField finalField = new FinalField();//classsize 172
+        System.out.println();
+    }
 }

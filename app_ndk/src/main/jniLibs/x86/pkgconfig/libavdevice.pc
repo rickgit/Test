@@ -1,0 +1,14 @@
+prefix=/home/ffmpeg/android/x86
+exec_prefix=${prefix}
+libdir=/home/ffmpeg/android/x86/lib
+includedir=/home/ffmpeg/android/x86/include
+
+Name: libavdevice
+Description: FFmpeg device handling library
+Version: 58.11.101
+Requires: 
+Requires.private: libavfilter >= 7.87.100, libswscale >= 5.8.100, libavformat >= 58.51.101, libavcodec >= 58.101.100, libswresample >= 3.8.100, libavutil >= 56.58.100
+Conflicts:
+Libs: -L${libdir}  -lavdevice 
+Libs.private: -lm
+Cflags: -I${includedir}

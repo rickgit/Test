@@ -6,7 +6,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include "_00_ctypetest.h"
-
 // int     a    =1;
 //数据类型 标识符=变量/常量;
 void __test_type_size() {
@@ -213,4 +212,5 @@ void testctypesuit() {
     __testArray();
     __testPointer();
     __test_struct();
+
 }
