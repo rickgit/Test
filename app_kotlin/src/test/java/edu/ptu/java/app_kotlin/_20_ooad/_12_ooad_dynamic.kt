@@ -1,5 +1,6 @@
 package edu.ptu.java.app_kotlin._20_ooad
 
+import kotlinx.coroutines.CoroutineScope
 import org.junit.Assert
 import org.junit.Test
 import kotlin.properties.Delegates
@@ -20,6 +21,25 @@ class _10_ooad_dynamic {
 
     val StringBuffer.lastIndexCustom: Int
         get() = length - 1
+
+      interface CoroutineScope2 { }
+    class CoroutineScope2Impl() : CoroutineScope2 {
+        fun doinv(){
+            testblaock({
+                println(this.javaClass)
+            })
+        }
+        fun testblaock(block:   CoroutineScope2.() -> Unit) {//匿名拓展函数
+            block.invoke(this)
+        }
+    }
+    @Test
+    fun testAnonymousExtensionMethod() {
+        var v=CoroutineScope2Impl()
+         v.doinv()
+
+    }
+
 
 
     @Test

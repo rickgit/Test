@@ -40,7 +40,9 @@ class _30_coroutine {
             delay(1000L) // 非阻塞的等待 1 秒钟（默认时间单位是毫秒）
             println("World!") // 在延迟后打印输出
         }//Job
+        val value: Any? = GlobalScope.coroutineContext[Job];
 //        mJob.cancel()
+        GlobalScope.cancel(CancellationException("ms"))
         //非协程等同方式
         thread {
             Thread.sleep(1000L) // 非阻塞的等待 1 秒钟（默认时间单位是毫秒）

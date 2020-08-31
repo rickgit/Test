@@ -11,6 +11,9 @@ import java.util.HashMap;
 
 import sun.misc.Unsafe;
 
+//import sun.misc.Unsafe;
+
+
 //PhantomReference实现堆外内存的自动释放
 
 public class _40_PhantomRef {

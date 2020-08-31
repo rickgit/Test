@@ -1,15 +1,10 @@
-package edu.ptu.javatest._80_storage._80_file._04_ObjectStream;
+package edu.ptu.javatest._80_storage._80_file._00_ObjectStream;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
@@ -26,6 +21,14 @@ import static java.io.ObjectStreamConstants.TC_OBJECT;
 
 //https://docs.oracle.com/javase/8/docs/platform/serialization/spec/protocol.html
 public class ObjectStreamTest {
+    @Test
+    public void testWriteObject() throws IOException {
+        PipedInputStream pipedInputStream = new PipedInputStream();
+        PipedOutputStream pipedOutputStream = new PipedOutputStream(pipedInputStream);
+        ObjectOutputStream os = new ObjectOutputStream(pipedOutputStream);
+        os.writeObject(new ObjectStreamTest());
+        os.close();
+    }
     @Test
     public void testWrite() {
         try {

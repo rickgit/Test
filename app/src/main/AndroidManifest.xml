@@ -69,7 +69,6 @@
         <activity android:name="edu.ptu.androidtest.android.act.LauchmodeSingleTaskUIProcessActivity" android:launchMode="singleTask" android:process="@string/process"/>
         <activity  android:name="edu.ptu.androidtest.android.act.LauchmodeSingleInstanceUIProcessActivity" android:launchMode="singleInstance" android:process="@string/process"/>
 
-
         <service  android:name=".android.service.StandardService"  />
         <service  android:name=".android.service.ProcessService"  android:process="@string/process"/>
         <activity  android:name="edu.ptu.androidtest.android.service.ServiceActivity"  />

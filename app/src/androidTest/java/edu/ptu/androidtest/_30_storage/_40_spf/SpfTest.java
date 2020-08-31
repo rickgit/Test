@@ -9,7 +9,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import org.junit.Test;
 
 import java.util.Map;
-
+//跨进程不安全，异步加载xml，全量写入
 public class SpfTest {
     @Test
     public void testSpf() {

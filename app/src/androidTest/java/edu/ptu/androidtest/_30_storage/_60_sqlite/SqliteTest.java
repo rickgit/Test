@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Test;
-
+//greenDao，realm...
 public class SqliteTest {
     public static class SqliteManager extends SQLiteOpenHelper {
 

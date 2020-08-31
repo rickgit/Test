@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 30
@@ -22,12 +24,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    kotlinOptions {
+        jvmTarget = "1.8"
+        //“Cannot inline bytecode built with JVM target 1.8 into bytecode that is being built with JVM target 1.6
+    }
 }
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
@@ -35,9 +39,25 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    //viewmodel
+    implementation "androidx.fragment:fragment-ktx:1.2.4"
+//    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:$hilt_jetpack_version'
+//    kapt 'androidx.hilt:hilt-compiler:$hilt_jetpack_version'
+//    kaptAndroidTest 'androidx.hilt:hilt-compiler:$hilt_jetpack_version'
+
+    //hilt
+    def hiltAndroidXVersion = '1.0.0-alpha01'
+    implementation "com.google.dagger:hilt-android:2.28-alpha"
+    kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
     //反射
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+
 
     def work_version = "2.3.4"
     // (Java only)

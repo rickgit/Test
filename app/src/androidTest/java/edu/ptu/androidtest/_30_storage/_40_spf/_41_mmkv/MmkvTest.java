@@ -1,4 +1,4 @@
-package edu.ptu.androidtest._30_storage._41_mmkv;
+package edu.ptu.androidtest._30_storage._40_spf._41_mmkv;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 
