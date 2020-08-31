@@ -1,0 +1,9 @@
+Application	                 ApplicationComponent	    @Singleton
+View Model	                 ActivityRetainedComponent	@ActivityRetainedScope
+Activity	                 ActivityComponent	        @ActivityScoped
+Fragment	                 FragmentComponent	        @FragmentScoped
+View	                     ViewComponent	            @ViewScoped
+带有 @WithFragmentBindings	ViewWithFragmentComponent	@ViewScoped
+ 注释的 View
+
+Service	                      ServiceComponent	        @ServiceScoped
