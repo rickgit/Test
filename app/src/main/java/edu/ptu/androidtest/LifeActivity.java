@@ -4,9 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.view.View;
 import android.widget.FrameLayout;
 
+import edu.ptu.androidtest.jetpack.HelloViewHolder;
 import edu.ptu.utils.utils.ClockUtils;
 
 public class LifeActivity extends FragmentActivity {
@@ -28,6 +33,7 @@ public class LifeActivity extends FragmentActivity {
 
             }
         });
+        new ViewModelProvider(this).get(  HelloViewHolder.class);
     }
 
     @Override
@@ -65,7 +71,11 @@ public class LifeActivity extends FragmentActivity {
         ClockUtils.getInstance().printDiffTime();
         super.onSaveInstanceState(outState);
     }
+    protected void onRestart() {
+        ClockUtils.getInstance().printDiffTime();
+        super.onRestart();
 
+    }
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         ClockUtils.getInstance().printDiffTime();

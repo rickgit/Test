@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Instrumentation
 import android.content.Context
 import android.content.Intent
+import android.webkit.WebView
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import edu.ptu.java.app_kotlin.di.hilt.app.HActivity
@@ -30,7 +31,9 @@ class  HiltTest{
         Assert.assertNotEquals(viewModel1,viewModel)
         println()
     }
-
+    @Test
+    fun testBaseActivity(){
+    }
     fun startActivityFromInstrumentation(context: Context, newActivity: Class<*>): Activity? {
         val monitor: Instrumentation.ActivityMonitor
         val intent = Intent(context, newActivity)

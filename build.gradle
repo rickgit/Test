@@ -19,6 +19,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.8'
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
+        def nav_version = "2.3.0-alpha01"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
 //    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -26,9 +28,11 @@ buildscript {
 }
 
 allprojects {
-    ext{
 
-    }
+    if ( plugins.hasPlugin('kotlin-android'))
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
     repositories {
         jcenter(){url 'https://maven.aliyun.com/repository/jcenter'}
         google()

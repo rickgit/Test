@@ -3,8 +3,9 @@ apply plugin: 'com.google.protobuf'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0-M4")
-    implementation 'junit:junit:4.12'
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation "junit:junit:$junitVersion"
+
+    implementation "com.google.code.gson:gson:$gsonVersion"
     implementation 'com.alibaba:fastjson:1.2.58'
     implementation "io.reactivex.rxjava3:rxjava:3.0.0"
     implementation group: 'org.openjdk.jol', name: 'jol-core', version: '0.10'
@@ -13,7 +14,7 @@ dependencies {
 
 
     //ooad - communicate
-    implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation "org.greenrobot:eventbus:$eventbusVersion"
 
     //storage
     implementation 'com.google.protobuf:protobuf-java:3.8.0'
