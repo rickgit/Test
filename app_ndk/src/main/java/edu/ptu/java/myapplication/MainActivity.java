@@ -2,6 +2,7 @@ package edu.ptu.java.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -27,4 +28,6 @@ public class MainActivity extends AppCompatActivity {
      * which is packaged with this application.
      */
     public native String stringFromJNI();
+    public native String stringFromDynamicMethod();
+    public native String stringFromStatic();
 }

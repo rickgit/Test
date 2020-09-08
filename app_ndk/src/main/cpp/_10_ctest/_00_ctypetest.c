@@ -7,6 +7,11 @@
 #include <stdlib.h>
 #include "_00_ctypetest.h"
 // int     a    =1;
+// char ,short int long float double, void
+// 指针与数组
+// 结构体，枚举，
+// 文件
+
 //数据类型 标识符=变量/常量;
 void __test_type_size() {
     assert(sizeof(int) == 4);

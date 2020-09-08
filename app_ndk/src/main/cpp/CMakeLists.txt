@@ -58,6 +58,10 @@ add_library( # Sets the name of the library.
                 cpptest/_10_storage/_11_SpecialTypeTest.h
 
         _60_media/_00_ffmpegTest.c
+        _60_media/_10_ffmpegFile.c
+        _60_media/_10_ffmpegMediaInfo.c
+        _60_media/_20_ffmpegaudio.c
+        _60_media/_20_ffmpegvideo.c
         #
         #        cpptest/_30_ooad/_00_class.cpp
         #        cpptest/_30_ooad/_00_class.h

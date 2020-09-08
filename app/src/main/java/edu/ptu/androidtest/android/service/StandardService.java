@@ -2,7 +2,9 @@ package edu.ptu.androidtest.android.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Messenger;
 
 import androidx.annotation.Nullable;
 
@@ -33,7 +35,7 @@ public class StandardService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         System.out.println(StandardService.class.getName()+" onBind");
-        return null;
+        return new Messenger(new Handler()).getBinder();
     }
 
     @Override

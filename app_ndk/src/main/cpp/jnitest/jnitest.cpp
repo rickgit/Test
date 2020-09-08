@@ -7,6 +7,8 @@
 #include <string.h>
 #include <string>
 #include "jnitest.h"
+//方法注册
+
 
 //typedef uint8_t  jboolean; /* unsigned 8 bits */
 //typedef int8_t   jbyte;    /* signed 8 bits */
@@ -114,4 +116,29 @@ void testJniSuit(JNIEnv *jniEnv) {
     jclass pJclass = (jniEnv)->FindClass("android/app/NativeActivity");
     assert(pJclass != 0);
 
+}
+
+
+_jstring * get_dynamic_string(JNIEnv *env, jobject thiz){
+    std::string hello = "string from dynamic";
+
+    return env->NewStringUTF(hello.c_str());
+}
+static JNINativeMethod getMethods[] = {
+        {"stringFromDynamicMethod", "()Ljava/lang/String;",(void*)get_dynamic_string},
+};
+
+// 静态注册：javah 生成c文件
+//动态注册方法
+JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved) {
+    JNIEnv* env = NULL;
+    //获取JNIEnv
+    if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
+        return -1;
+    }
+    if(env->RegisterNatives(env->FindClass("edu/ptu/java/myapplication/MainActivity")
+            ,getMethods,sizeof(getMethods)/ sizeof(getMethods[0])) < 0){
+        return JNI_FALSE;
+    }
+    return JNI_VERSION_1_6;
 }

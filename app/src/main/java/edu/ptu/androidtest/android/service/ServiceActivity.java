@@ -15,6 +15,10 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import edu.ptu.androidtest.R;
 import edu.ptu.androidtest.android.act.LauchmodeSingleInstanceUI2Activity;
 import edu.ptu.androidtest.android.act.LauchmodeSingleInstanceUIDialogActivity;
@@ -26,8 +30,8 @@ import edu.ptu.androidtest.android.act.LauchmodeStandardUI2Activity;
 import edu.ptu.androidtest.android.act.LauchmodeStandardUIDialogActivity;
 
 public class ServiceActivity extends FragmentActivity {
-    private ServiceConnection sc;
-    private ServiceConnection scPc;
+    private List<ServiceConnection> sc=new ArrayList<>();
+    private List<ServiceConnection> scPc=new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,25 +54,32 @@ public class ServiceActivity extends FragmentActivity {
         findViewById(R.id.bindservice).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bindService(new Intent(v.getContext(), StandardService.class), ServiceActivity.this.sc = new ServiceConnection() {
+                ServiceConnection sc = new ServiceConnection() {
                     @Override
                     public void onServiceConnected(ComponentName name, IBinder service) {
-
+                        System.out.println("onService Connected");
                     }
 
                     @Override
                     public void onServiceDisconnected(ComponentName name) {
 
                     }
-                }, Service.BIND_AUTO_CREATE);
+                };
+//                ServiceActivity.this.sc.clear();
+                ServiceActivity.this.sc .add(sc);
+                bindService(new Intent(v.getContext(), StandardService.class), sc , Service.BIND_AUTO_CREATE);
             }
         });
         findViewById(R.id.unbindservice).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (sc != null) {
-                    unbindService(sc);
-                    sc = null;
+                    Iterator<ServiceConnection> iterator = sc.iterator();
+                    while (iterator.hasNext()){
+                        ServiceConnection next = iterator.next();
+                        unbindService(next);
+                        iterator.remove();
+                    }
                 }
             }
         });
@@ -88,7 +99,7 @@ public class ServiceActivity extends FragmentActivity {
         findViewById(R.id.bindProcessService).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bindService(new Intent(v.getContext(), ProcessService.class), ServiceActivity.this.scPc = new ServiceConnection() {
+                ServiceConnection scPc = new ServiceConnection() {
                     @Override
                     public void onServiceConnected(ComponentName name, IBinder service) {
 
@@ -98,15 +109,22 @@ public class ServiceActivity extends FragmentActivity {
                     public void onServiceDisconnected(ComponentName name) {
 
                     }
-                }, Service.BIND_AUTO_CREATE);
+                };
+                ServiceActivity.this.scPc.add(scPc);
+                bindService(new Intent(v.getContext(), ProcessService.class), scPc, Service.BIND_AUTO_CREATE);
             }
         });
         findViewById(R.id.unbindProcessService).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (scPc != null) {
-                    unbindService(scPc);
-                    scPc = null;
+                    Iterator<ServiceConnection> iterator = scPc.iterator();
+                    while (iterator.hasNext()){
+                        ServiceConnection next = iterator.next();
+                        unbindService(next);
+                        iterator.remove();
+                    }
+
                 }
             }
         });

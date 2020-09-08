@@ -7,3 +7,7 @@
 
 #endif //TEST_JAVA__00_FFMPEGTEST_H
 void testFfmpeg();
+void testFfmpegFile();
+void testFfmpegMediaInfo();
+void testAudioStream();
+void

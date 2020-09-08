@@ -27,3 +27,11 @@ Java_edu_ptu_java_myapplication_MainActivity_stringFromJNI(
 
     return env->NewStringUTF(hello.c_str());
 }
+extern "C" JNIEXPORT jstring JNICALL
+Java_edu_ptu_java_myapplication_MainActivity_stringFromStatic(
+        JNIEnv* env,
+        jobject /* this */) {
+    std::string hello = "string from static";
+
+    return env->NewStringUTF(hello.c_str());
+}
