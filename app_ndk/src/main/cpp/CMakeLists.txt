@@ -59,7 +59,7 @@ add_library( # Sets the name of the library.
 
         _60_media/_00_ffmpegTest.c
         _60_media/_10_ffmpegFile.c
-        _60_media/_10_ffmpegMediaInfo.c
+        _60_media/_20_ffmpeg_metadata.c
         _60_media/_20_ffmpegaudio.c
         _60_media/_20_ffmpegvideo.c
         #
@@ -101,6 +101,7 @@ find_library( # Sets the name of the path variable.
 include_directories(
         ${CMAKE_SOURCE_DIR}/include
 )
+add_subdirectory(sdl)
 
 add_library( avcodec
         SHARED
@@ -155,6 +156,8 @@ target_link_libraries( # Specifies the target library.
         avutil
         swresample
         swscale
+        ## sdl
+        SDL2
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib}

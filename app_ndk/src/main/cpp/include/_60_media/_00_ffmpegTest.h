@@ -10,4 +10,4 @@ void testFfmpeg();
 void testFfmpegFile();
 void testFfmpegMediaInfo();
 void testAudioStream();
-void
+void testVideoStream();

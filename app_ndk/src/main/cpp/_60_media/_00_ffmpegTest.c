@@ -4,9 +4,9 @@
 
 #include <assert.h>
 #include "_60_media/_00_ffmpegTest.h"
+
 #include "libavcodec/avcodec.h"
 #include "libavformat/avformat.h"
-
 void testLog();
 void testRecordAudio();
 

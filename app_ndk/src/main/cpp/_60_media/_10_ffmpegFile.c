@@ -3,7 +3,6 @@
 //
 
 #include "libavformat/avio.h"
-
 void testFfmpegFile() {
     AVIODirContext *s = NULL;
     AVIODirEntry *next=NULL;
