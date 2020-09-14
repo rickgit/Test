@@ -4,6 +4,7 @@
 # Sets the minimum version of CMake required to build the native library.
 
 cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")# sdl需要支持nullptr ，添加c++11
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -62,6 +63,7 @@ add_library( # Sets the name of the library.
         _60_media/_20_ffmpeg_metadata.c
         _60_media/_20_ffmpegaudio.c
         _60_media/_20_ffmpegvideo.c
+        _60_media/_50_sdl.c
         #
         #        cpptest/_30_ooad/_00_class.cpp
         #        cpptest/_30_ooad/_00_class.h
@@ -100,8 +102,13 @@ find_library( # Sets the name of the path variable.
 #)
 include_directories(
         ${CMAKE_SOURCE_DIR}/include
+
 )
-add_subdirectory(sdl)
+add_subdirectory(SDL2)
+#$ANDROID_SDK/cmake/<cmake-version>/share/cmake-<version>/Modules/AndroidNdkModules.cmake
+#D:\Program\Android\sdk-ndk\ndk\21.3.6528147\sources\android\cpufeatures
+#${ANDROID_NDK}/sources/android/cpufeatures
+
 
 add_library( avcodec
         SHARED
@@ -163,5 +170,5 @@ target_link_libraries( # Specifies the target library.
         ${log-lib}
         android
         stdc++
-        c
+        c     #D:\Program\Android\sdk-ndk\ndk\21.3.6528147\sysroot\usr\lib\x86_64-linux-android
         )

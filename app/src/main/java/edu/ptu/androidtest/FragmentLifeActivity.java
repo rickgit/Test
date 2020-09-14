@@ -26,6 +26,10 @@ import edu.ptu.androidtest.test.ImageTest;
 import edu.ptu.utils.utils.ClockUtils;
 
 public class FragmentLifeActivity extends FragmentActivity {
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

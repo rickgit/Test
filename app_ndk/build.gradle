@@ -43,4 +43,6 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidXTestExtKotlinRunnerVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 
+    implementation 'io.pristine:libjingle:11139@aar'//webRTC
+
 }

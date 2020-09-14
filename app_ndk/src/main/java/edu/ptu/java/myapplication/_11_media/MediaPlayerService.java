@@ -1,4 +1,4 @@
-package edu.ptu.androidtest._30_storage.media.sound;
+package edu.ptu.java.myapplication._11_media;
 
 import android.app.Service;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 
 import java.io.IOException;
 
+import edu.ptu.java.myapplication.R;
+
 public class MediaPlayerService extends Service {
 
     private MediaPlayer mediaPlayer;
@@ -17,8 +19,7 @@ public class MediaPlayerService extends Service {
     public void onCreate() {
         super.onCreate();
         try {
-            mediaPlayer = new MediaPlayer();
-//            mp = MediaPlayer.create(MediaPlayerService.this, R.raw.bg1);
+            mediaPlayer = MediaPlayer.create(MediaPlayerService.this, R.raw.bgm);
             mediaPlayer.prepare();
         } catch (IllegalStateException e) {
             // TODO Auto-generated catch block
@@ -28,8 +29,10 @@ public class MediaPlayerService extends Service {
             e.printStackTrace();
         }
     }
+
     @Override
-    public void onStart(Intent intent, int startId) {
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
 
         // 开始播放音乐
         if(null!=mediaPlayer) {
@@ -67,7 +70,7 @@ public class MediaPlayerService extends Service {
             });
         }
 
-        super.onStart(intent, startId);
+        return super.onStartCommand(intent, flags, startId);
     }
     @Nullable
     @Override

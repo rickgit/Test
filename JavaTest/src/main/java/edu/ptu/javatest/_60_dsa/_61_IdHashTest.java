@@ -11,12 +11,14 @@ public class _61_IdHashTest {
         Assert.assertFalse(Character.valueOf('a') == Character.valueOf('a'));//128个缓存
 
         Assert.assertTrue(Short.valueOf((short) 1) == Short.valueOf((short) 1));//256 有符号1byte
-        Assert.assertTrue(Integer.valueOf(123) == Integer.valueOf(123));//128个缓存
+        Assert.assertTrue(Integer.valueOf(123) == Integer.valueOf(123));//256 最少个缓存
         Assert.assertFalse(Integer.valueOf(1230) == Integer.valueOf(1230));
         Assert.assertFalse(Long.valueOf(1230) == Long.valueOf(1230));
 
         Assert.assertFalse(Float.valueOf(1230) == Float.valueOf(1230));//无缓存
         Assert.assertFalse(Double.valueOf(1230) == Double.valueOf(1230));//无缓存
+
+        Assert.assertFalse(String.valueOf(1230) == String.valueOf(1230));//无缓存
     }
 
     @Test
