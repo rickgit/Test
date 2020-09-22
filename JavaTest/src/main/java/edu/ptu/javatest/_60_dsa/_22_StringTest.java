@@ -8,6 +8,9 @@ import java.lang.reflect.Field;
 import edu.ptu.javatest._20_ooad._50_dynamic._00_ReflectionTest;
 
 public class _22_StringTest {
+    public static void main(String[] args) {
+        System.out.println();
+    }
     @Test
     public void testString() {
         StringBuilder sbd = new StringBuilder();
@@ -25,7 +28,7 @@ public class _22_StringTest {
 
 
     }
-    private static int getArrayAlloc(Object list) {
+    public static int getArrayAlloc(Object list) {
         try {
             Field elementData = null;
             elementData = list.getClass().getSuperclass().getDeclaredField("value");

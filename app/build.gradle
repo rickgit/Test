@@ -87,7 +87,9 @@ dependencies {
     implementation 'com.tencent:mmkv:1.0.10'//跨进程
 
     implementation "com.google.code.gson:gson:$gsonVersion"
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    implementation "com.github.bumptech.glide:recyclerview-integration:$glideVersion"
+
     implementation project(path: ':Utils')
     implementation project(path: ':Utils-Android')
 
@@ -107,7 +109,7 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.1'
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofitVersion"
 
     implementation "org.greenrobot:eventbus:$eventbusVersion"
     implementation("com.squareup.okhttp3:okhttp:4.1.0")

@@ -22,6 +22,7 @@ public class OkhttpTest {
 
     @Test
     public void testNetworkConnect() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
         Request request = getRequest();
 //        showTime(okHttpClient.newCall(request));//44_488800 ns
 //        showTime(okHttpClient.newCall(request));//5_573400 ns 使用缓存,降低10倍访问时间

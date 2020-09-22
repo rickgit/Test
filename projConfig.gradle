@@ -135,4 +135,6 @@ ext {
     gsonVersion = "2.8.5"
     eventbusVersion = "3.2.0"
     retrofitVersion = "2.9.0"
+
+    glideVersion = "4.9.0"
 }
