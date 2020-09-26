@@ -1,4 +1,4 @@
-package edu.ptu.javatest._30_security;
+package edu.ptu.javatest._61_security;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,7 +15,7 @@ public class DhTest {
 //        System.out.println(pubKeyAlice);
         //Alice 保留 expAlicePrivate
         //Bob 知道 bigPrim,gPrim,pubKeyAlice
-        int expBobPrivate=15;
+        int expBobPrivate=523;
         int pubKeyBob= (int) (Math.pow(gPrim,expBobPrivate))%bigPrim;
         System.out.println("pubKeyAlice " +pubKeyAlice);
         System.out.println("pubKeyBob "+pubKeyBob);

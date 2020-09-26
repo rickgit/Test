@@ -70,9 +70,10 @@ public class NetworkTest {
 
                 HashMap<Class<?>, ? extends Object> classStringHashMap = new HashMap<>();
                 for (int i = 0; i < time; i++) {
-                    client.newCall(
+                    Call call = client.newCall(
                             new okhttp3.Request(HttpUrl.parse("https://www.apiopen.top/weatherApi"),
-                                    "get", Headers.of(), null, classStringHashMap))
+                                    "get", Headers.of(), null, classStringHashMap));
+                    call
                             .enqueue(new Callback() {
                                 @Override
                                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
