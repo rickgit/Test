@@ -1,4 +1,4 @@
-package edu.ptu.javatest._61_security;
+package edu.ptu.javatest._60_dsa._61_security;
 
 import org.junit.Test;
 

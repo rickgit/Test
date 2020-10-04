@@ -2,9 +2,13 @@ package edu.ptu.javatest._80_storage._90_net;
 
 import org.junit.Test;
 
+import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Method;
 import java.net.DatagramSocket;
 import java.net.MalformedURLException;
 import java.net.Socket;
@@ -36,6 +40,18 @@ public class WebSocketTest {
         }
 //        testSocket("14.215.177.38");//tls_v1.2_ECDH  ping www.baidu.com
         testSocket("104.31.70.56");//tcp http://www.plantuml.com/
+        System.out.println(Long.toBinaryString(16807));
+        System.out.println(Long.toBinaryString(3579807591L));
+        System.out.println(Long.toBinaryString(273326509));
+        System.out.println(Long.toBinaryString((long) Math.pow(2,31)-1));
+        System.out.println(Long.toBinaryString(842502087));
+        try {
+            BeanInfo beanInfo = Introspector.getBeanInfo(WebSocketTest.class);
+            String name = beanInfo.getPropertyDescriptors()[0].getName();
+            Method readMethod = beanInfo.getPropertyDescriptors()[0].getReadMethod();
+        } catch (IntrospectionException e) {
+            e.printStackTrace();
+        }
     }
    
     private void testSocket(String url) {

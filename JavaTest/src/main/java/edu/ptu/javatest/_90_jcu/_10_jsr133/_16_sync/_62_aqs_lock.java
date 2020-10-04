@@ -9,6 +9,7 @@ import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class _62_aqs_lock {
+
     @Test
     public void testLockState() {
         ReentrantLock reentrantLock = new ReentrantLock();
@@ -74,7 +75,7 @@ public class _62_aqs_lock {
     @Test
     public void testMultiThreadFairLock() {
         ReentrantLock reentrantLock = new ReentrantLock(true);//默认非公平锁，打印日志 headObj.next
-        Object lockObj=null;
+        Object lockObj = null;
         try {
 
             Field lock = ReentrantLock.class.getDeclaredField("sync");
@@ -146,8 +147,8 @@ public class _62_aqs_lock {
                 int stateObj = (int) state.get(lock);
                 System.out.print("AQS state(" + stateObj + ")  ");
                 exclusiveOwnerThread.setAccessible(true);
-                Object exclusiveOwnerThreadObj = exclusiveOwnerThread.get(lock)==null?"null":((Thread)exclusiveOwnerThread.get(lock)).getName();
-                System.out.print(" OwnerThread " + exclusiveOwnerThreadObj+ "  ");
+                Object exclusiveOwnerThreadObj = exclusiveOwnerThread.get(lock) == null ? "null" : ((Thread) exclusiveOwnerThread.get(lock)).getName();
+                System.out.print(" OwnerThread " + exclusiveOwnerThreadObj + "  ");
 
                 tail.setAccessible(true);
                 Object tailObj = tail.get(lock);
@@ -157,9 +158,9 @@ public class _62_aqs_lock {
 //                Object headObj = head.get(lock);
 //                printNode(headObj,"headNode",true);
                 System.out.println();
-                Object objIter=tailObj;
+                Object objIter = tailObj;
                 while (objIter != null) {
-                    printNode(objIter," prev->",false);
+                    printNode(objIter, " prev->", false);
 
 //                    Field next = objIter.getClass().getDeclaredField("next");//
                     Field prev = objIter.getClass().getDeclaredField("prev");//
@@ -181,7 +182,7 @@ public class _62_aqs_lock {
 
     }
 
-    public static void printNode(Object nodeObj,String flag,boolean endNewLine)   {
+    public static void printNode(Object nodeObj, String flag, boolean endNewLine) {
         if (nodeObj == null)
             return;
         try {
@@ -192,11 +193,10 @@ public class _62_aqs_lock {
             Field waitStatus = nodeObj.getClass().getDeclaredField("waitStatus");
 
 
-
-            System.out.print(" "+flag+" Node" + nodeObj.toString().substring(nodeObj.getClass().getName().length()) + "");
+            System.out.print(" " + flag + " Node" + nodeObj.toString().substring(nodeObj.getClass().getName().length()) + "");
 
             nextWaiter.setAccessible(true);
-            Object nextWaiterObj = nextWaiter.get(nodeObj)==null?"null":nextWaiter.get(nodeObj).toString().substring(nextWaiter.get(nodeObj).getClass().getName().length());
+            Object nextWaiterObj = nextWaiter.get(nodeObj) == null ? "null" : nextWaiter.get(nodeObj).toString().substring(nextWaiter.get(nodeObj).getClass().getName().length());
             System.out.print("（nextWaiter " + nextWaiterObj + " ");
 
 //            next.setAccessible(true);
@@ -208,17 +208,17 @@ public class _62_aqs_lock {
 //            System.out.print(", prev " + prevObj + "  ）");
 
             waitStatus.setAccessible(true);
-            Object waitStatusObj = waitStatus.get(nodeObj)==null?"null": waitStatus.get(nodeObj);
+            Object waitStatusObj = waitStatus.get(nodeObj) == null ? "null" : waitStatus.get(nodeObj);
             System.out.print(", waitStatusObj（" + waitStatusObj + "）");
 
 
             thread.setAccessible(true);
-            Object threadObj = thread.get(nodeObj)==null?"null":(((Thread)thread.get(nodeObj)).getName());
+            Object threadObj = thread.get(nodeObj) == null ? "null" : (((Thread) thread.get(nodeObj)).getName());
             System.out.print(", thread " + threadObj + "  ）");
 
             if (endNewLine)
-            System.out.println( );
-        } catch ( Exception e) {
+                System.out.println();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

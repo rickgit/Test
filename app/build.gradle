@@ -196,5 +196,8 @@ dependencies {
     // optional - Guava ListenableFuture support
     implementation "androidx.paging:paging-guava:$paging_version"
 
+    implementation "androidx.startup:startup-runtime:1.0.0-alpha01"
+
+
 
 }

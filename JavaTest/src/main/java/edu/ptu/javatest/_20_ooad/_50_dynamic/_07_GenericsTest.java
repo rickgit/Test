@@ -156,6 +156,7 @@ public class _07_GenericsTest {
         Arr(Class<T> tClass) {
             t = (T[]) Array.newInstance(tClass, 2);
         }
+
     }
 
     @Test

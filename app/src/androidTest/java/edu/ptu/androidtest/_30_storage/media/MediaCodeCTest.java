@@ -34,5 +34,13 @@ public class MediaCodeCTest {
 
         lifeActivity1.finish();
     }
+    @Test
+    public void testMediac(){
+        MediaCodecList mcl = new MediaCodecList(MediaCodecList.ALL_CODECS);
+        MediaCodecInfo[] mci=      mcl.getCodecInfos();
+        for (MediaCodecInfo ci : mci) {
+            Log.i("testMediac", "ci =" + ci.getName());
+        }
+    }
 
 }

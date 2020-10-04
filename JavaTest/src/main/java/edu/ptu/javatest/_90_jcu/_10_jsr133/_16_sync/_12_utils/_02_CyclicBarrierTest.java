@@ -11,7 +11,7 @@ public class _02_CyclicBarrierTest {
     public void testCyclic() {
         CyclicBarrier barrier = new CyclicBarrier(3, () ->
                 System.out.println(Thread.currentThread().getName() + " 完成最后任务"));
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 6; i++) {
             Thread thread = new Thread(() -> {
                 System.out.println();
                 try {

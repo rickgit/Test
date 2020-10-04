@@ -11,10 +11,10 @@ android {
     defaultConfig {
         applicationId "edu.ptu.java.app_kotlin"
         minSdkVersion MIN_SDK_VERSION
-        targetSdkVersion COMPILE_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -27,6 +27,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
         //“Cannot inline bytecode built with JVM target 1.8 into bytecode that is being built with JVM target 1.6
+    }
+    sourceSets{
+        main.java.srcDirs += 'src/main/proto'
+//        main.java.srcDirs += 'src/proto_gen/java'
+
+
     }
 }
 dependencies {
@@ -71,4 +77,47 @@ dependencies {
     implementation "androidx.work:work-gcm:$work_version"
     // optional - Test helpers
     androidTestImplementation "androidx.work:work-testing:$work_version"
+
+
+    // Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha01"
+    // Proto DataStore
+    implementation "androidx.datastore:datastore-core:1.0.0-alpha01"
+
+    //storage
+    implementation 'com.google.protobuf:protobuf-javalite:3.8.0'
+
+}
+
+apply plugin: 'com.google.protobuf'
+//https://github.com/google/protobuf-gradle-plugin
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.8.0' // 也可以配置本地编译器路径
+    }
+    //3.8以前
+//    plugins {
+//        javalite {
+//            artifact = 'com.google.protobuf:protoc-gen-javalite:3.8.0'
+//        }
+//
+//    }
+    //更改路径
+    generatedFilesBaseDir = "$projectDir/src/proto_gen"
+    generateProtoTasks {
+        all().each { task ->
+//            task.builtins {
+//                remove java
+//            }
+            task.builtins {
+                // 生产java源码，Java提供 nano,lite,java三种版本
+                java {
+                    option "lite"
+                }
+//                javalite { }//3.8以前
+//                cpp { }// 生产cpp源码
+//                grpc {}
+            }
+        }
+    }
 }
