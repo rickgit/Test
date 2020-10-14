@@ -34,5 +34,6 @@ public class StandardActivityTest {
             e.printStackTrace();
         };
         System.out.println("activity");
+
     }
 }

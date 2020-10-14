@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Surface;
+import android.view.SurfaceView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,4 +32,5 @@ public class MainActivity extends AppCompatActivity {
     public native String stringFromJNI();
     public native String stringFromDynamicMethod();
     public native String stringFromStatic();
+    public native void aWindowFromSurface(Surface surfaceView);
 }

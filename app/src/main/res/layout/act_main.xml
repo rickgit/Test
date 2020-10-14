@@ -9,4 +9,11 @@
         android:id="@+id/main_tv_name"
         android:text="aasdfasfs"
         android:layout_height="match_parent" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
 </LinearLayout>

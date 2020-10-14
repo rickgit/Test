@@ -6,7 +6,10 @@
 #include <malloc.h>
 #include <string.h>
 #include <string>
+#include <android/native_window_jni.h>
 #include "jnitest.h"
+#include <GLES2/gl2.h>
+
 //方法注册
 
 
@@ -115,17 +118,41 @@ void testJniSuit(JNIEnv *jniEnv) {
     testJniJvalue(jniEnv);
     jclass pJclass = (jniEnv)->FindClass("android/app/NativeActivity");
     assert(pJclass != 0);
-
 }
 
 
-_jstring * get_dynamic_string(JNIEnv *env, jobject thiz){
+ 
+jstring * get_dynamic_string(JNIEnv *env, jobject thiz){
     std::string hello = "string from dynamic";
 
-    return env->NewStringUTF(hello.c_str());
+    return reinterpret_cast<jstring *>(env->NewStringUTF(hello.c_str()));
 }
+
+void aWindow_from_surface(JNIEnv *env, jobject thiz,jobject jsurfacev){
+    ANativeWindow *pWindow = ANativeWindow_fromSurface(env, jsurfacev);
+
+    ANativeWindow_setBuffersGeometry(pWindow, 1920,
+                                     1080,
+                                     WINDOW_FORMAT_RGBA_8888);
+    ANativeWindow_Buffer window_buffer;
+    if (ANativeWindow_lock(pWindow, &window_buffer, 0)) {
+        ANativeWindow_release(pWindow);
+        pWindow = 0;
+        return;
+    }
+//    gl_
+//    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+//    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+//    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+//    //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
+
+    ANativeWindow_unlockAndPost(pWindow);
+    assert(pWindow != 0);
+ }
 static JNINativeMethod getMethods[] = {
         {"stringFromDynamicMethod", "()Ljava/lang/String;",(void*)get_dynamic_string},
+        {"aWindowFromSurface", "(Landroid/view/Surface;)V",(void*)aWindow_from_surface},
 };
 
 // 静态注册：javah 生成c文件

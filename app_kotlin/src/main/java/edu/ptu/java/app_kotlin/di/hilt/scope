@@ -7,3 +7,8 @@ View	                     ViewComponent	            @ViewScoped
  注释的 View
 
 Service	                      ServiceComponent	        @ServiceScoped
+
+@HiltAndroidApp
+@AndroidEntryPoint
+@Inject
+@Install(xx)

@@ -9,7 +9,7 @@ import dagger.hilt.android.components.ApplicationComponent
 @Module
 class HAppModule{
     @Provides
-    fun provideAppName(): String? {
+    fun provideAppName(): String {
         return "注入 應用名"
     }
 }

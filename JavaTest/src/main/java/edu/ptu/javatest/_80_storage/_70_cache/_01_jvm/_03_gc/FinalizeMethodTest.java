@@ -8,7 +8,7 @@ public class FinalizeMethodTest {
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
-        System.out.println("调用 finalize ");
+        System.out.println("调用 finalize "+Thread.currentThread().getName());
         obj=this;
     }
     @Test

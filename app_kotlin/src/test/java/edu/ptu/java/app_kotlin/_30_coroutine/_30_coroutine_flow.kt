@@ -31,4 +31,14 @@ class _30_coroutine_flow {
         }
 
     }
+    @Test
+    fun  testFlow(){
+        runBlocking {
+            flow{
+                emit(1)
+            }.collect {
+                print(it)
+            }
+        }
+    }
 }

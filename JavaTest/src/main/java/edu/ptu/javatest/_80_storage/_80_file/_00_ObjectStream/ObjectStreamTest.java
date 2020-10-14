@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
@@ -28,6 +29,12 @@ public class ObjectStreamTest {
         ObjectOutputStream os = new ObjectOutputStream(pipedOutputStream);
         os.writeObject(new ObjectStreamTest());
         os.close();
+        ObjectInputStream ois = new ObjectInputStream(pipedInputStream);
+        try {
+            Object o = ois.readObject();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
     @Test
     public void testWrite() {

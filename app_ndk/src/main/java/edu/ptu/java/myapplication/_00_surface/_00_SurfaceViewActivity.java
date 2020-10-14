@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
@@ -15,12 +16,14 @@ import android.widget.FrameLayout;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import edu.ptu.java.myapplication.MainActivity;
+
 public class _00_SurfaceViewActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SurfaceView view = new SurfaceView(this);
+        final SurfaceView view = new SurfaceView(this);
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         FrameLayout frameLayout = new FrameLayout(this);
@@ -41,6 +44,7 @@ public class _00_SurfaceViewActivity extends FragmentActivity {
 
             @Override
             public void surfaceCreated(final SurfaceHolder holder) {
+//                new MainActivity().aWindowFromSurface(holder.getSurface());
                 new Thread(new Runnable() {
                     @Override
                     public void run() {

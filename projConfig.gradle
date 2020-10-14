@@ -137,4 +137,5 @@ ext {
     retrofitVersion = "2.9.0"
 
     glideVersion = "4.9.0"
+    constraintlayoutVersion = "2.0.0"
 }

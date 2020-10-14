@@ -19,6 +19,7 @@ public class LauchmodeUIActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("onCreate");
         setContentView(R.layout.act_lauchmode);
         ((TextView) findViewById(R.id.thisclassname)).setText(this.getClass().getName());
 
@@ -84,12 +85,32 @@ public class LauchmodeUIActivity extends FragmentActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        System.out.println("onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("onResume");
+    }
+
+    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        System.out.println("onNewIntent");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        System.out.println("onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        System.out.println("onStop");
     }
 }

@@ -13,5 +13,6 @@ class WorkTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         Assert.assertEquals("edu.ptu.java.app_kotlin", appContext.packageName)
+
     }
 }
