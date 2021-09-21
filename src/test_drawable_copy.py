@@ -20,8 +20,8 @@ def printFun():
     print("输入文件夹",str(srcPath))
 
     targetPath=os.path.join(wspath,'res-gen')
-    drawables=['drawable','drawable-hdpi','drawable-mdpi','drawable-hdpi','drawable-xhdpi','drawable-xxhdpi','drawable-xxxhdpi']
-    targetDrawableIndex=1
+    drawables=['drawable','drawable-mdpi','drawable-hdpi','drawable-xhdpi','drawable-xxhdpi','drawable-xxxhdpi']
+    targetDrawableIndex=2
     srcDrawablePath=str(os.path.join(srcPath,drawables[targetDrawableIndex]))
     if os.path.exists(srcDrawablePath)==False:
         print('drawable找不到')  
@@ -42,10 +42,11 @@ def printFun():
         info='重命名为：'
         if map.get(drawableFile,'')!='':
             info='重命名为：('+map.get(drawableFile,'')+")"
+
+        # map[drawableFile]=input(info)+'.png'
         print('map的值 '+map.get(drawableFile,''))
-        renameDrawableFileName=input(info)
-        if renameDrawableFileName!='':
-            map[drawableFile]=renameDrawableFileName+'.png'
+
+ 
         for drawableName in drawables:# 遍历drawalbe类别文件
             copyDrawablePath=os.path.join(srcPath,drawableName)
             if os.path.exists(copyDrawablePath)==False:#判断drawable类别文件夹是否存在
