@@ -10,13 +10,18 @@ def printFun():
     print('参数列表: ',len(args)," : ",str(args))
     wspath=None
     if len(args) ==1 :
-        wspath=input("输入包含res的文件夹： ")
+        wspath=input("输入包含res或assets的文件夹： ")
     else:
         wspath=args[1]
     if wspath == '':
         print('结束：\n输入文件夹： ',str(wspath))
         return
     srcPath=os.path.join(str(wspath),'res')
+    if os.path.exists(srcPath)==False:
+        srcPath=os.path.join(str(wspath),'assets')#兼容MeaXure
+    if os.path.exists(srcPath)==False:
+        print("工作目录不包含 res或assets目录 ",str(srcPath))
+        return
     print("输入文件夹",str(srcPath))
 
     targetPath=os.path.join(wspath,'res-gen')
@@ -39,11 +44,11 @@ def printFun():
     for drawableFile in files:# 遍历基准文件
         if drawableFile.endswith('.png')==False:
             continue
-        info='重命名为：'
+        info=drawableFile+'重命名为：'
         if map.get(drawableFile,'')!='':
-            info='重命名为：('+map.get(drawableFile,'')+")"
-
-        # map[drawableFile]=input(info)+'.png'
+            info=drawableFile+'重命名为：('+map.get(drawableFile,'')+")"
+        else:
+            map[drawableFile]=input(info)+'.png'
         print('map的值 '+map.get(drawableFile,''))
 
  
@@ -65,4 +70,3 @@ def printFun():
 
 if __name__=='__main__':
     printFun()
-
