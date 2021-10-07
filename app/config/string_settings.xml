@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <features>
+        <feature>color</feature>
+        <feature>rotation</feature>
+    </features>
+    <devices>
+        <device name="main" path="src/main/res/values">
+            <feature name='color'/>
+            <feature name='rotation'/>
+        </device>
+        <device name="s601" path="src/main/res/values">
+            <feature name='color'/>
+            <feature name='rotation'/>
+        </device>
+    </devices>
+    <string-array name="setting">
+        <item name="display" restrant="color">显示|0</item>
+    </string-array>
+</resources>

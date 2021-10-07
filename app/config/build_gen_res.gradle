@@ -1,0 +1,43 @@
+
+//apply from:'config/build_gen_res.gradle'
+//project.afterEvaluate {
+//    ExternalFunc.funGenRes()
+//}
+ext.ExternalFunc=[
+    funGenRes:{
+        //读取渠道
+        def flavor =project.extensions['android']['applicationVariants'][0]['flavorName']
+        if (flavor==null||flavor==''){
+            flavor='main'
+        }
+        //读取配置文件
+        def xml = new XmlParser().parse(file('./config/string_settings.xml'))
+        def devicefeatsListStr=xml.devices.device.find{it.'@name'==flavor}.feature['@name'].collect {it as String}
+        def path =xml.devices.device.find{it.'@name'==flavor}['@path']
+        if (path==''||path==null){
+            path=project.extensions['android']['sourceSets'][flavor]['res']['source'][0]
+        }
+        xml.remove(xml.devices)
+        xml.remove(xml.features)
+        //调整资源
+        xml.'string-array'.each {
+            it.item.each {
+                def hasFeature = devicefeatsListStr.contains(it['@restrant'])
+                if (hasFeature) {
+                    it.attributes()/*getClass()等于map 对象*/.remove('restrant')
+                } else {
+                    it.parent.remove(it)
+                }
+            }
+        }
+        //解析xml：XmlParser (dom)vs XmlSlurper(sax)
+        //生成xml：MarkupBuilder和StreamingMarkupBuilder
+    //    def xmlprint= new XmlNodePrinter(new PrintWriter(System.out))
+        //写入资源
+        def writer = new PrintWriter(new FileWriter(file(path+'/string_settings_generator.xml')))
+        def xmlprint= new XmlNodePrinter(writer)
+        xmlprint.setPreserveWhitespace(true)
+        xmlprint.print(xml)
+        writer.close()
+    }
+]

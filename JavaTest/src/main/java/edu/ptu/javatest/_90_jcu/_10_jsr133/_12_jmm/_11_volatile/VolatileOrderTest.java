@@ -1,42 +1,40 @@
 package edu.ptu.javatest._90_jcu._10_jsr133._12_jmm._11_volatile;
 
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 //有序性
 public class VolatileOrderTest {
 //    private volatile   int x=0;
 //    private volatile  int y = 0;
-    private     int x=0;
-    private    int y = 0;
-    private int a, b = 0;
+    private     boolean mChangedX;
+    private    boolean mChangedY;
+    private boolean mAssignX, mAssignY ;
 
     @Test
     public void testAtomic() {
         HashMap<String, Integer> value = new HashMap();
-
+        int i = 0;
        while(true){
-            x = 0;
-            y = 0;
-            a = 0;
-            b = 0;
+           mChangedX = false;
+           mChangedY = false;
+            mAssignX = false;
+           mAssignY = false;
             value.clear();
             Thread thread = new Thread(new Runnable() {
                 @Override
-                public void run() {
-                    a = 1;
-                    x = b;
+                public void run() {Thread.yield();
+                    mAssignX = true;Thread.yield();
+                    mChangedX = mAssignY;
                 }
             });
 
             Thread thread2 = new Thread(new Runnable() {
                 @Override
-                public void run() {
-                    b = 1;
-                    y = a;
+                public void run() {Thread.yield();
+                    mAssignY = true;Thread.yield();
+                    mChangedY = mAssignX;
                 }
             });
 
@@ -49,10 +47,12 @@ public class VolatileOrderTest {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (x == 0 && y == 0) {//所有结果都有可能
-//                System.out.println("第"+i+"次");
+
+            if (!mChangedX && !mChangedY) {//所有结果都有可能
+                System.out.println("第"+(i)+"次");
                 break;
             }
+            i++;
         }
 
 

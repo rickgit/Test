@@ -20,7 +20,7 @@ public class _01_SparseArrayCompatTest {
             Class<?> aClass = Class.forName("androidx.collection.ContainerHelpers");
             //(T[] array, int currentSize, int index, T element)
             Method insert = aClass.getMethod("idealIntArraySize", int.class);
-            //查找n>=4, cap*4 <= 2^n-12 时，返回 （2^n-12）/4；
+            //查找n>=4, cap*4 <= 2^n-12，即cap<=2^(n-2)-3 时，返回 cap<=2^(n-2)-3，即找2次方-3,从1开始找；
             // 即n>=4,cap<=2^(n-2)-3，n的最小值时，返回2^(n-2)-3
 
             insert.setAccessible(true);

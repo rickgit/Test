@@ -17,7 +17,7 @@ public class SleepTest {
 //                        e.printStackTrace();
 //                    }
                 }
-                System.out.println("循环结束");
+                System.out.println("必须用isDone volatile修饰，循环结束");
             }
         }).start();
         new Thread(new Runnable() {
