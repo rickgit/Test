@@ -59,7 +59,7 @@ Drawer buildDrawer(BuildContext context) {
                       "http://pic.lvmama.com/uploads/pc/place2/2017-07-19/7e318645-7b36-465e-8e79-9420fe057619.jpg"),
                   fit: BoxFit.cover,//填充
                   colorFilter: ColorFilter.mode(//滤镜
-                      Colors.blueGrey[400].withOpacity(0.6),
+                      Colors.blueGrey[400]!.withOpacity(0.6),
                       BlendMode.srcOver))),
         ),
         buildDrawerListTile(context),

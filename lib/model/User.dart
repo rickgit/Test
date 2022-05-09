@@ -1,8 +1,8 @@
 class User{
   const User({this.name,this.desc,this.img});
-  final String name;
-  final String desc;
-  final String img;
+  final String? name;
+  final String? desc;
+  final String? img;
 
 }
 final List<User> userDatas=[
