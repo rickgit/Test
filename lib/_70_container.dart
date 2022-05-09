@@ -26,11 +26,11 @@ DefaultTabController buildDefaultTabController(BuildContext context) {
 }
 
 ThemeData buildThemeData() {
-  ThemeData(
+  return ThemeData(
       primaryColor: Colors.deepPurpleAccent,
       highlightColor: Color.fromRGBO(255, 255, 255, .5));
-  splashColor:
-  Colors.white70;
+  // splashColor:
+  // Colors.white70;
 }
 
 Scaffold buildScaffold(BuildContext context) {
