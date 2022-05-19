@@ -35,7 +35,7 @@ Container buildListItem(BuildContext ctxt,int index) {
       margin: EdgeInsets.all(8.0),
       child: Column(
         children: <Widget>[
-          Image.network(userDatas[index].img),
+          Image.network(userDatas[index].img!),
           SizedBox(height: 16.0,),
           buildListItemTitle(ctxt,index),
           buildListItemSubHead(ctxt,index),
@@ -46,13 +46,13 @@ Container buildListItem(BuildContext ctxt,int index) {
 }
 Text buildListItemSubHead(BuildContext context,int index) {
   return Text(
-      userDatas[index].desc,
+      userDatas[index].desc!,
       style: Theme.of(context).textTheme.subtitle1);
 }
 
 Text buildListItemTitle(BuildContext context,int index) {
   return Text(
-      userDatas[index].name,
+      userDatas[index].name!,
       style: Theme.of(context).textTheme.headline6);
 }
 

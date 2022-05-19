@@ -15,12 +15,12 @@ main() {
 }
 
 class Metarial{
-  int age;
-  String name;
+  int? age;
+  String? name;
   static final Map<String, Metarial> _cache = <String, Metarial>{};
   factory Metarial(String name){
     if(_cache[name]!=null){
-      return _cache[name];
+      return _cache[name]!;
     }
     var newM=Metarial._internal(name);
     return _cache[name]=newM;

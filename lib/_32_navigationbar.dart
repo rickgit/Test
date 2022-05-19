@@ -26,11 +26,11 @@ DefaultTabController buildDefaultTabController(BuildContext context) {
 }
 
 ThemeData buildThemeData() {
-  ThemeData(
+  return ThemeData(
       primaryColor: Colors.deepPurpleAccent,
       highlightColor: Color.fromRGBO(255, 255, 255, .5));
-  splashColor:
-  Colors.white70;
+  // splashColor:
+  // Colors.white70;
 }
 
 Scaffold buildScaffold(BuildContext context) {
@@ -67,7 +67,7 @@ Drawer buildDrawer(BuildContext context) {
                   fit: BoxFit.cover, //填充
                   colorFilter: ColorFilter.mode(
                       //滤镜
-                      Colors.blueGrey[400].withOpacity(0.6),
+                      Colors.blueGrey[400]!.withOpacity(0.6),
                       BlendMode.srcOver))),
         ),
         buildDrawerListTile(context),
@@ -140,12 +140,12 @@ BottomNavigationBar buildBottomNavigationBar(void Function(int value) onTabBotto
       onTap: onTabBottomNb,
       items: [
         BottomNavigationBarItem(
-            icon: Icon(Icons.explore), title: Text('Export')),
+            icon: Icon(Icons.explore)/**, title: Text('Export') */),
         BottomNavigationBarItem(
-            icon: Icon(Icons.history), title: Text('history')),
+            icon: Icon(Icons.history)/**, title: Text('history') */),
         BottomNavigationBarItem(
-            icon: Icon(Icons.unarchive), title: Text('unarchive')),
-        BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('home'))
+            icon: Icon(Icons.unarchive)/**, title: Text('unarchive') */),
+        BottomNavigationBarItem(icon: Icon(Icons.home)/**, title: Text('home') */)
       ]);
 }
 

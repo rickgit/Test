@@ -40,22 +40,22 @@ main() {
 }
 
 class Metarial{
-  int age;
-  String name;//报名
-  String _privalue;//私有
+  int? age;
+  String? name;//报名
+  String? _privalue;//私有
 
 }
 
 
-doSomething(int age,[String name,String home]){
+doSomething(int age,[ name, home]){
   print("$age  $name");
 }
 
-doSomething2(int age,{String name,String home}){
+doSomething2(int age,{name,home}){
   print("$age  $name");
 }
 
-doSomethingDefaultValue(int age,{String name,String home="default home"}){
+doSomethingDefaultValue(int age,{name,String home="default home"}){
   return home;
 }
 doFuncDefault(Function f ){

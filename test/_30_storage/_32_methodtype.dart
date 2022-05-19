@@ -3,9 +3,9 @@
 import 'package:args/args.dart';
 import 'package:test/test.dart';
 
-void addPosMethod(num a, num b, [num c, num d]) {}
+void addPosMethod(num a, num b, [ c,  d]) {}
 
-void addNameMethod(num a, num b, {num c, num d}) {}
+void addNameMethod(num a, num b, { c,  d}) {}
 
 main(List<String> arg) {
   test("",(){

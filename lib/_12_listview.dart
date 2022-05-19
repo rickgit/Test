@@ -31,7 +31,7 @@ buildListView() {
 //需要返回具体类型
 Text buildListItem(int index) {
   return Text(
-        userDatas[index].desc,
+        userDatas[index].desc!,
         style: TextStyle(color: Colors.brown));
 }
 
