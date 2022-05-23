@@ -139,13 +139,14 @@ BottomNavigationBar buildBottomNavigationBar(void Function(int value) onTabBotto
       //当前选中状态
       onTap: onTabBottomNb,
       items: [
-        BottomNavigationBarItem(
+        BottomNavigationBarItem(label: "1",
             icon: Icon(Icons.explore)/**, title: Text('Export') */),
-        BottomNavigationBarItem(
+        BottomNavigationBarItem(label: "2",
             icon: Icon(Icons.history)/**, title: Text('history') */),
-        BottomNavigationBarItem(
+        BottomNavigationBarItem(label: "3",
             icon: Icon(Icons.unarchive)/**, title: Text('unarchive') */),
-        BottomNavigationBarItem(icon: Icon(Icons.home)/**, title: Text('home') */)
+        BottomNavigationBarItem(label: "4",
+          icon: Icon(Icons.home)/**, title: Text('home') */)
       ]);
 }
 

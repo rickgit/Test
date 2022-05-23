@@ -70,5 +70,8 @@ doFuncWithTypeDef(IsTrust f){
 }
 
 IsTrust doFuncReturnFunc(){
+  Future((){
+
+  }).then((value) => "null");
   return (){return true;};
 }
