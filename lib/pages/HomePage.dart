@@ -7,7 +7,7 @@ class Body extends StatelessWidget{
     return Scaffold(body:Container(color: Colors.deepOrange,
       child: TextButton(child:Text("文本"),onPressed: (){
         print("object");
-        Navigator.of(context).pushNamed("/user/info",arguments: {"":"a"});
+        Navigator.of(context).pushNamed('/user/login',arguments: {"":"a"});
       },),));
   }
 
