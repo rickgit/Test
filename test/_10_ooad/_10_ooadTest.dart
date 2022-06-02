@@ -1,6 +1,7 @@
 import "package:test/test.dart";
 
 import "package:test/test.dart";
+// import "package:ws_flutter_package/ws_flutter_package.dart";
 
 main() {
   test("func overring disable Test", () {
@@ -32,7 +33,7 @@ main() {
     expect(name??"new Value", "old");
   });
 
-  test("级联操作符号",(){
+  test("级联操作符号",(){//kotlin 的 apply 
     var m=Metarial()..age=14..name="mine";
     expect(m.age,14);
 
@@ -47,12 +48,13 @@ class Metarial{
 }
 
 
-doSomething(int age,[ name, home]){
+doSomething(int age,[String name="",String home=""]){
   print("$age  $name");
 }
 
 doSomething2(int age,{name,home}){
   print("$age  $name");
+  
 }
 
 doSomethingDefaultValue(int age,{name,String home="default home"}){
