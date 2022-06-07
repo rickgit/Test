@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:app_flutter/initial/CustomLocalizations.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -75,6 +76,7 @@ class AgressTextState extends State<AgressTextStatefullWidget> {
             ..onTap = (){
               setState(() {
                 print("跳转协议${Random().nextInt(10)} ${CommonLocalizations.of(context)!.helloWorld}");
+                print("跳转协议${Random().nextInt(10)} ${findString(context, "title")}");
               });
             }
       )]
