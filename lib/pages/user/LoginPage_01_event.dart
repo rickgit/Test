@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../initial/LocalAdapter.dart';
 
 Widget createLoginPage() {
   return Scaffold(
@@ -61,6 +60,7 @@ class AgressTextStatefullWidget extends StatefulWidget {
     return AgressTextState();
   }
 }
+
 class AgressTextState extends State<AgressTextStatefullWidget> {
   TapGestureRecognizer tapGestureRecognizer=TapGestureRecognizer();
   @override
@@ -74,7 +74,7 @@ class AgressTextState extends State<AgressTextStatefullWidget> {
           ,recognizer: tapGestureRecognizer
             ..onTap = (){
               setState(() {
-                print("跳转协议${Random().nextInt(10)} ${CommonLocalizations.of(context)!.helloWorld}");
+                print("跳转协议${Random().nextInt(10)}");
               });
             }
       )]
