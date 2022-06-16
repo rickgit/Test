@@ -1,3 +1,11 @@
 {
+
+    "account": "账号",
+    "password":"密码",
+    "sign_in":"登录",
+    "sign_up":"注册",
+    "foget_password":"忘记密码",
+    "receive_the":"我已阅读并同意",
+    "user_agreement":"《用户协议》",
     "helloWorld": "你好呀！"
 }

@@ -1,5 +1,12 @@
 {
     "helloWorld": "Hello World!",
+    "account": "Account",
+    "password":"Password",
+    "sign_in":"Sign in",
+    "sign_up":"Sign up",
+    "foget_password":"Forgot password",
+    "receive_the":"I have read and agreed to the&#8194;",
+    "user_agreement":"User Agreement",
     "@helloWorld": {
       "description": "The conventional newborn programmer greeting"
     }

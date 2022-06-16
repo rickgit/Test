@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../../initial/LocalAdapter.dart';
 
-Widget createLoginPage() {
+Widget createLoginPage(BuildContext context) {
   return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-        color: Color.fromARGB(1, 46, 66, 100),
+        color: Color.fromARGB(1, 5, 36, 78),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -23,7 +23,7 @@ Widget createLoginPage() {
               child: createPasswdWidget(),),
             Container(child: ElevatedButton(onPressed: () {
               //获取输入框控件
-            }, child: Text("Sign in") ,style: ButtonStyle( shape: MaterialStateProperty.all(
+            }, child: Text("${CommonLocalizations.of(context)?.sign_in}") ,style: ButtonStyle( shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
                     borderRadius:
                     BorderRadius.circular(
@@ -33,9 +33,9 @@ Widget createLoginPage() {
             Padding(padding: EdgeInsets.only(left: 30,right: 30,top: 10),
               child:
               Row(mainAxisAlignment: MainAxisAlignment.end,children: [
-                TextButton(onPressed: (){}, child: Text("Sign up")),
+                TextButton(onPressed: (){}, child: Text("${CommonLocalizations.of(context)?.sign_up}")),
                 Container(width: 10, child: TextButton(onPressed: (){}, child: Text("|")),),
-                TextButton(onPressed: (){}, child: Text("Forgot passwod")),
+                TextButton(onPressed: (){}, child: Text("${CommonLocalizations.of(context)?.foget_password}")),
               ],),
             ),
             Spacer(),
@@ -68,9 +68,9 @@ class AgressTextState extends State<AgressTextStatefullWidget> {
   Widget build(BuildContext context) {
     return RichText(text: TextSpan(
         style: TextStyle(color: Colors.black45),
-        text: "I have read and agreed to the "
+        text: "${CommonLocalizations.of(context)?.receive_the}"
         ,children:[
-      TextSpan(text: "User Agreement",
+      TextSpan(text: "${CommonLocalizations.of(context)?.user_agreement}",
           style: TextStyle(color: Colors.blue)
           ,recognizer: tapGestureRecognizer
             ..onTap = (){
@@ -105,7 +105,7 @@ class AccountState extends State<AccountEditWidget> {
         keyboardType:TextInputType.emailAddress,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30)) ),
-          hintText: 'username@gmail.com',
+          hintText:"${CommonLocalizations.of(context)?.account}",
           suffixIcon: IconButton(icon:Icon(Icons.keyboard_arrow_down),onPressed: (){
 
           },),
@@ -131,7 +131,7 @@ class PwdState  extends State<PwdStatefulWidget>{
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(30)),
           ),
-          hintText: '1234',
+          hintText: "${CommonLocalizations.of(context)?.password}",
           suffixIcon: IconButton(icon: Icon(stateShowSecure?Icons.remove_red_eye:Icons.remove_red_eye_outlined),onPressed: (){
             setState(() {
               stateShowSecure=!stateShowSecure;
