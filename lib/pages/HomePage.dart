@@ -1,6 +1,7 @@
 import 'package:app_flutter/initial/CustomLocalizations.dart';
 import 'package:flutter/material.dart';
 
+import '../initial/ResSize.dart';
 import '../initial/Routes.dart';
 
 class Body extends StatelessWidget{
@@ -8,6 +9,7 @@ class Body extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(body:Column(
       children : [
+        Container(child: Text(""),height: FONT_TITLE_HEIGHT,),
         TextButton(child:Text("登录"),onPressed: (){
           print("object");
           Navigator.of(context).pushNamed(ROUT_TAG_LOGIN,arguments: {"":"a"});

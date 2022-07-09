@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
+import '../../components/TitleWidget.dart';
 import '../../initial/ResSize.dart';
 import '../../initial/ResColors.dart';
 
@@ -48,7 +50,8 @@ class _MsgPageState extends State<MsgPage> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(height: 80,color:Color(0xff000022),child: TabBar(tabs: [Tab(text: "消息1"),Tab(text: "消息2")] ,controller:mTabController ,)),
+        createCommonTitleBar(context,"消息"),
+        Container(height: FONT_TITLE_HEIGHT,color:Color(COLOR_TAB_BACKGROUND),child: TabBar(tabs: [Tab(text: "消息1"),Tab(text: "消息2")] ,controller:mTabController ,)),
         Expanded(
             child: PageView(
           children: [createListPage(0), createListPage(1)],
@@ -74,8 +77,8 @@ class _MsgPageState extends State<MsgPage> with SingleTickerProviderStateMixin {
 Container createListPage(int flag) {
   return Container(color: Colors.white,child: ListView.builder(itemBuilder: (BuildContext context, int index) {
     return Column(children: [
-      Row(children: [Text("Label$flag",style: TextStyle(fontSize: FONT_DEFAULT,color: Color(COLOR_TITLE))), Container(width: 30,)
-        ,Text("${DateTime.now()}",style: TextStyle(fontSize: FONT_DEFAULT,color: Color(COLOR_TITLE)))],
+      Row(children: [Text("Tab$flag 第$index个消息",style: TextStyle(fontSize: FONT_DEFAULT,color: Color(COLOR_TITLE))), Container(width: 30,)
+        ,Text("${DateFormat('yyyy-MM-dd HH:mm').format(DateTime.now())}",style: TextStyle(fontSize: FONT_DEFAULT,color: Color(COLOR_TITLE)))],
       ),
       Padding(padding: EdgeInsets.only(top: 10),child:Text("系统暂停",style: TextStyle(fontSize: FONT_DEFAULT))),
       Padding(padding: EdgeInsets.only(top: 10),child:Text("系统由于一些原因停止运行",style: TextStyle(fontSize: FONT_DEFAULT))),
