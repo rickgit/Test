@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'initial/App.dart';
 
 class Todo {
-  final String title;
-  final String description;
-
   const Todo(this.title, this.description);
+
+  final String description;
+  final String title;
 }
 void main() {
   runApp(

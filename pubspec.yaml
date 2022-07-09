@@ -23,13 +23,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  retrofit: '>=3.0.0 <4.0.0'
   test: any #方便单元测试
   # args: ^1.6.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   get:
+  package_info:
   # ws_flutter_package:
     # path: "F:\\workspace\\ws-flutter\\ws_flutter_package"
   flutter_localizations: # 原生控件的国际化
@@ -38,6 +39,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
+  retrofit_generator:
+  build_runner:
+  json_serializable: '>4.4.0'
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

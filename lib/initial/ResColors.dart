@@ -1,0 +1,1 @@
+int COLOR_TITLE=0xFF0099ff;

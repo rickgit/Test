@@ -4,7 +4,7 @@ import 'package:app_flutter/initial/CustomLocalizations.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../initial/LocalAdapter.dart';
+import '../../initial/ResString.dart';
 
 Widget createLoginPage(BuildContext context) {
   return Scaffold(
@@ -23,7 +23,7 @@ Widget createLoginPage(BuildContext context) {
               child: createPasswdWidget(),),
             Container(child: ElevatedButton(onPressed: () {
               //获取输入框控件
-            }, child: Text("${CommonLocalizations.of(context)?.sign_in}") ,style: ButtonStyle( shape: MaterialStateProperty.all(
+            }, child: Text("${ResString.of(context)?.sign_in}") ,style: ButtonStyle( shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
                     borderRadius:
                     BorderRadius.circular(
@@ -33,9 +33,9 @@ Widget createLoginPage(BuildContext context) {
             Padding(padding: EdgeInsets.only(left: 30,right: 30,top: 10),
               child:
               Row(mainAxisAlignment: MainAxisAlignment.end,children: [
-                TextButton(onPressed: (){}, child: Text("${CommonLocalizations.of(context)?.sign_up}")),
+                TextButton(onPressed: (){}, child: Text("${ResString.of(context)?.sign_up}")),
                 Container(width: 10, child: TextButton(onPressed: (){}, child: Text("|")),),
-                TextButton(onPressed: (){}, child: Text("${CommonLocalizations.of(context)?.foget_password}")),
+                TextButton(onPressed: (){}, child: Text("${ResString.of(context)?.foget_password}")),
               ],),
             ),
             Spacer(),
@@ -68,14 +68,14 @@ class AgressTextState extends State<AgressTextStatefullWidget> {
   Widget build(BuildContext context) {
     return RichText(text: TextSpan(
         style: TextStyle(color: Colors.black45),
-        text: "${CommonLocalizations.of(context)?.receive_the}"
+        text: "${ResString.of(context)?.receive_the}"
         ,children:[
-      TextSpan(text: "${CommonLocalizations.of(context)?.user_agreement}",
+      TextSpan(text: "${ResString.of(context)?.user_agreement}",
           style: TextStyle(color: Colors.blue)
           ,recognizer: tapGestureRecognizer
             ..onTap = (){
               setState(() {
-                print("跳转协议${Random().nextInt(10)} ${CommonLocalizations.of(context)!.helloWorld}");
+                print("跳转协议${Random().nextInt(10)} ${ResString.of(context)!.helloWorld}");
                 print("跳转协议${Random().nextInt(10)} ${findString(context, "title")}");
               });
             }
@@ -105,7 +105,7 @@ class AccountState extends State<AccountEditWidget> {
         keyboardType:TextInputType.emailAddress,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(30)) ),
-          hintText:"${CommonLocalizations.of(context)?.account}",
+          hintText:"${ResString.of(context)?.account}",
           suffixIcon: IconButton(icon:Icon(Icons.keyboard_arrow_down),onPressed: (){
 
           },),
@@ -131,7 +131,7 @@ class PwdState  extends State<PwdStatefulWidget>{
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(30)),
           ),
-          hintText: "${CommonLocalizations.of(context)?.password}",
+          hintText: "${ResString.of(context)?.password}",
           suffixIcon: IconButton(icon: Icon(stateShowSecure?Icons.remove_red_eye:Icons.remove_red_eye_outlined),onPressed: (){
             setState(() {
               stateShowSecure=!stateShowSecure;

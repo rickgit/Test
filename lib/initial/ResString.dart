@@ -12,7 +12,7 @@ localizationsDelegates(){//#intl 步骤5
   return list;
 }
 
-abstract class CommonLocalizations {
+abstract class ResString {
   static AppLocalizations? of(BuildContext context) {
     return AppLocalizations.of(context);
   }
