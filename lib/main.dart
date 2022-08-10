@@ -1,6 +1,9 @@
+import 'package:app_flutter/base/BaseState.dart';
 import 'package:app_flutter/components/Toast.dart';
 import 'package:app_flutter/initial/App.dart';
+import 'package:app_flutter/pages/user/login/LoginViewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'initial/App.dart';
 
 class Todo {
@@ -12,10 +15,41 @@ class Todo {
 void main() {
   // Navigator.push(context, route)
   runApp(
+    // MultiProvider(providers: [],child: ProviderWidget(),)
+    // ProviderWidget()
     createApp()
     // materialApp(),
   );
   Toast.toastConf();
+}
+class ProviderWidget extends StatefulWidget {
+  const ProviderWidget({Key? key}) : super(key: key);
+
+  @override
+  State<ProviderWidget> createState() => _ProviderWidgetState();
+}
+
+class _ProviderWidgetState extends BaseState<ProviderWidget,LoginViewModel> {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider<LoginViewModel>(create: ((context) {
+     return mViewModel;
+    }),child: MaterialApp(home: LoginWidget()));
+  }
+  
+  @override
+  LoginViewModel initViewModel() {
+     return LoginViewModel();
+  }
+}
+class LoginWidget extends StatelessWidget {
+  const LoginWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    context.read<LoginViewModel>();
+    return Text(context.read<LoginViewModel>().stateShowSecure.toString(),);
+  }
 }
 
 MaterialApp materialApp() {
