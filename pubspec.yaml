@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.16.2 <3.0.0"
 
 dependencies:
+  provider:
+  flutter_easyloading: ^3.0.0
   flutter:
     sdk: flutter
   retrofit: '>=3.0.0 <4.0.0'

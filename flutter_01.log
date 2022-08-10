@@ -1,0 +1,113 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run
+
+## exception
+
+ProcessException: ProcessException: 系统找不到指定的文件。
+
+  Command: .\Google\Chrome\Application\chrome.exe http://127.0.0.1:9103?uri=http%3A%2F%2F127.0.0.1%3A54183%2FSpqmjpB4b6I%3D%2F
+
+```
+#0      _ProcessImpl._start (dart:io-patch/process_patch.dart:401:33)
+#1      Process.start (dart:io-patch/process_patch.dart:38:20)
+#2      Chrome._startProcess (package:browser_launcher/src/chrome.dart:156:26)
+#3      Chrome.start (package:browser_launcher/src/chrome.dart:148:18)
+#4      FlutterResidentDevtoolsHandler._launchDevToolsForDevices (package:flutter_tools/src/resident_devtools_handler.dart:134:24)
+#5      FlutterResidentDevtoolsHandler.launchDevToolsInBrowser (package:flutter_tools/src/resident_devtools_handler.dart:122:7)
+#6      TerminalHandler._commonTerminalInputHandler (package:flutter_tools/src/resident_runner.dart:1667:55)
+#7      TerminalHandler.processTerminalInput (package:flutter_tools/src/resident_runner.dart:1685:13)
+#8      _rootRunUnary (dart:async/zone.dart:1434:47)
+#9      _CustomZone.runUnary (dart:async/zone.dart:1335:19)
+#10     _CustomZone.runUnaryGuarded (dart:async/zone.dart:1244:7)
+#11     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:341:11)
+#12     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#13     _SyncBroadcastStreamController._sendData (dart:async/broadcast_stream_controller.dart:377:25)
+#14     _BroadcastStreamController.add (dart:async/broadcast_stream_controller.dart:244:5)
+#15     _AsBroadcastStreamController.add (dart:async/broadcast_stream_controller.dart:474:11)
+#16     _rootRunUnary (dart:async/zone.dart:1434:47)
+#17     _CustomZone.runUnary (dart:async/zone.dart:1335:19)
+#18     _CustomZone.runUnaryGuarded (dart:async/zone.dart:1244:7)
+#19     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:341:11)
+#20     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#21     _SinkTransformerStreamSubscription._add (dart:async/stream_transformers.dart:63:11)
+#22     _EventSinkWrapper.add (dart:async/stream_transformers.dart:13:11)
+#23     _StringAdapterSink.add (dart:convert/string_conversion.dart:238:11)
+#24     _StringAdapterSink.addSlice (dart:convert/string_conversion.dart:243:7)
+#25     _Utf8ConversionSink.addSlice (dart:convert/string_conversion.dart:317:20)
+#26     _ErrorHandlingAsciiDecoderSink.addSlice (dart:convert/ascii.dart:279:17)
+#27     _ErrorHandlingAsciiDecoderSink.add (dart:convert/ascii.dart:265:5)
+#28     _ConverterStreamEventSink.add (dart:convert/chunked_conversion.dart:72:18)
+#29     _SinkTransformerStreamSubscription._handleData (dart:async/stream_transformers.dart:111:24)
+#30     _rootRunUnary (dart:async/zone.dart:1434:47)
+#31     _CustomZone.runUnary (dart:async/zone.dart:1335:19)
+#32     _CustomZone.runUnaryGuarded (dart:async/zone.dart:1244:7)
+#33     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:341:11)
+#34     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#35     _SyncStreamControllerDispatch._sendData (dart:async/stream_controller.dart:774:19)
+#36     _StreamController._add (dart:async/stream_controller.dart:648:7)
+#37     _StreamController.add (dart:async/stream_controller.dart:596:5)
+#38     _Socket._onData (dart:io-patch/socket_patch.dart:2314:41)
+#39     _rootRunUnary (dart:async/zone.dart:1442:13)
+#40     _CustomZone.runUnary (dart:async/zone.dart:1335:19)
+#41     _CustomZone.runUnaryGuarded (dart:async/zone.dart:1244:7)
+#42     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:341:11)
+#43     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:271:7)
+#44     _SyncStreamControllerDispatch._sendData (dart:async/stream_controller.dart:774:19)
+#45     _StreamController._add (dart:async/stream_controller.dart:648:7)
+#46     _StreamController.add (dart:async/stream_controller.dart:596:5)
+#47     new _RawSocket.<anonymous closure> (dart:io-patch/socket_patch.dart:1839:33)
+#48     _NativeSocket.issueReadEvent.issue (dart:io-patch/socket_patch.dart:1322:14)
+#49     _microtaskLoop (dart:async/schedule_microtask.dart:40:21)
+#50     _startMicrotaskLoop (dart:async/schedule_microtask.dart:49:5)
+#51     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:122:13)
+#52     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:193:5)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel unknown, 3.0.5, on Microsoft Windows [版本 10.0.19042.804], locale zh-CN)
+    • Flutter version 3.0.5 at E:\Program\flutter
+    • Upstream repository unknown
+    • Framework revision f1875d570e (4 weeks ago), 2022-07-13 11:24:16 -0700
+    • Engine revision e85ea0e79c
+    • Dart version 2.17.6
+    • DevTools version 2.12.2
+
+[✓] Android toolchain - develop for Android devices (Android SDK version 32.1.0-rc1)
+    • Android SDK at E:\Program\Android\sdk-windows
+    • Platform android-32, build-tools 32.1.0-rc1
+    • Java binary at: E:\Program\Android\Android Studio_20220101\jre\bin\java
+    • Java version OpenJDK Runtime Environment (build 11.0.11+9-b60-7590822)
+    • All Android licenses accepted.
+
+[✗] Chrome - develop for the web (Cannot find Chrome executable at .\Google\Chrome\Application\chrome.exe)
+    ! Cannot find Chrome. Try setting CHROME_EXECUTABLE to a Chrome executable.
+
+[✗] Visual Studio - develop for Windows
+    ✗ Visual Studio not installed; this is necessary for Windows development.
+      Download at https://visualstudio.microsoft.com/downloads/.
+      Please install the "Desktop development with C++" workload, including all of its default components
+
+[✓] Android Studio (version 2021.1)
+    • Android Studio at E:\Program\Android\Android Studio_20220101
+    • Flutter plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
+    • Dart plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/6351-dart
+    • Java version OpenJDK Runtime Environment (build 11.0.11+9-b60-7590822)
+
+[✓] Connected device (3 available)
+    • PBFM00 (mobile)   • 42e7f095 • android-arm64  • Android 8.1.0 (API 27)
+    • Windows (desktop) • windows  • windows-x64    • Microsoft Windows [版本 10.0.19042.804]
+    • Edge (web)        • edge     • web-javascript • Microsoft Edge 103.0.1264.77
+
+[✓] HTTP Host Availability
+    • All required HTTP hosts are available
+
+! Doctor found issues in 2 categories.
+```

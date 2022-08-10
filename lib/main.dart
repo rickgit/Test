@@ -1,3 +1,4 @@
+import 'package:app_flutter/components/Toast.dart';
 import 'package:app_flutter/initial/App.dart';
 import 'package:flutter/material.dart';
 import 'initial/App.dart';
@@ -9,10 +10,12 @@ class Todo {
   final String title;
 }
 void main() {
+  // Navigator.push(context, route)
   runApp(
     createApp()
     // materialApp(),
   );
+  Toast.toastConf();
 }
 
 MaterialApp materialApp() {
