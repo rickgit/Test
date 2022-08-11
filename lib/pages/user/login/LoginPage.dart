@@ -78,46 +78,13 @@ class LoginWidget extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 30, right: 30, top: 10),
-                    child: Builder (builder: (context) =>   TextField(
-                          obscureText: context.select<LoginViewModel,bool>(((value) {
-                            return value.stateShowSecure;
-                          })),
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(30)),
-                            ),
-                            hintText: "${ResString.of(context)?.password}",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.blue),
-                              borderRadius: new BorderRadius.circular(30),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.blue),
-                              borderRadius: new BorderRadius.circular(30),
-                            ),
-                            suffixIcon: IconButton(
-                              icon: Icon(context.read<LoginViewModel>().stateShowSecure
-                                  ? Icons.remove_red_eye
-                                  : Icons.remove_red_eye_outlined),
-                              color: Colors.blue,
-                              onPressed: () {
-                                 context.read<LoginViewModel>().changeShowSecure();
-                              },
-                            ),
-                          )),
-                    ),
+                    child: pwdWidget(),
                   ),
                   Container(
                     child: ElevatedButton(
                       onPressed: () {
                         //登录
-                        Toast.show("message");
-                        Future.delayed(Duration(seconds: 2), () {
-                          print("Duration ...");
-                          Toast.dismiss();
-                          Navigator.of(context)
-                              .pushNamed('/user/message', arguments: {"": "a"});
-                        });
+                        context.read<LoginViewModel>().login(context);
                       },
                       child: Text("${ResString.of(context)?.sign_in}"),
                       style: ButtonStyle(
@@ -176,6 +143,65 @@ class LoginWidget extends StatelessWidget {
                 ],
               ),
             ));
+  }
+  Widget pwdWidget1() {
+    return Consumer(builder: (context, value, child) => TextField(
+                        obscureText: context.select<LoginViewModel,bool>(((value) {
+                          return value.stateShowSecure;
+                        })),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          hintText: "${ResString.of(context)?.password}",
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: new BorderSide(color: Colors.blue),
+                            borderRadius: new BorderRadius.circular(30),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: new BorderSide(color: Colors.blue),
+                            borderRadius: new BorderRadius.circular(30),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Icon(context.read<LoginViewModel>().stateShowSecure
+                                ? Icons.remove_red_eye
+                                : Icons.remove_red_eye_outlined),
+                            color: Colors.blue,
+                            onPressed: () {
+                               context.read<LoginViewModel>().changeShowSecure();
+                            },
+                          ),
+                        )));
+  }
+  Builder pwdWidget() {
+    return Builder (builder: (context) =>   TextField(
+                        obscureText: context.select<LoginViewModel,bool>(((value) {
+                          return value.stateShowSecure;
+                        })),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          hintText: "${ResString.of(context)?.password}",
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: new BorderSide(color: Colors.blue),
+                            borderRadius: new BorderRadius.circular(30),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: new BorderSide(color: Colors.blue),
+                            borderRadius: new BorderRadius.circular(30),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Icon(context.read<LoginViewModel>().stateShowSecure
+                                ? Icons.remove_red_eye
+                                : Icons.remove_red_eye_outlined),
+                            color: Colors.blue,
+                            onPressed: () {
+                               context.read<LoginViewModel>().changeShowSecure();
+                            },
+                          ),
+                        )),
+                  );
   }
 }
 
