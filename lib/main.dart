@@ -1,4 +1,4 @@
-import 'package:app_flutter/base/BaseState.dart';
+import 'package:app_flutter/base/base_state.dart';
 import 'package:app_flutter/components/toast_util.dart';
 import 'package:app_flutter/initial/app.dart';
 import 'package:app_flutter/pages/user/login/login_view_model.dart';

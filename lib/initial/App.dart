@@ -1,11 +1,11 @@
-import 'package:app_flutter/components/Toast.dart';
-import 'package:app_flutter/initial/CustomLocalizations.dart';
+import 'package:app_flutter/components/toast_util.dart';
+import 'package:app_flutter/initial/custom_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'ResString.dart';
-import 'Routes.dart';
-import 'package:app_flutter/pages/HomePage.dart';
+import 'res_strings.dart';
+import 'routes.dart';
+import 'package:app_flutter/pages/home_page.dart';
 
 Widget createApp(){
   return MaterialApp(

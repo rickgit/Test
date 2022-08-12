@@ -1,5 +1,5 @@
-import 'package:app_flutter/base/BaseRepo.dart';
-import 'package:app_flutter/base/BaseViewModel.dart';
+import 'package:app_flutter/base/base_repo.dart';
+import 'package:app_flutter/base/base_view_model.dart';
 import 'package:app_flutter/pages/user/login/login_repo.dart';
 import 'package:flutter/cupertino.dart';
 
