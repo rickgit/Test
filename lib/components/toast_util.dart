@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 //支持show dismiss showToast showSuccess show Error showInfo showProgress
-class Toast {
+class ToastUtil {
   static toastInit() {
     EasyLoading.init();
   }

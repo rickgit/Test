@@ -1,10 +1,10 @@
 import 'package:app_flutter/base/BaseState.dart';
-import 'package:app_flutter/components/Toast.dart';
-import 'package:app_flutter/initial/App.dart';
-import 'package:app_flutter/pages/user/login/LoginViewModel.dart';
+import 'package:app_flutter/components/toast_util.dart';
+import 'package:app_flutter/initial/app.dart';
+import 'package:app_flutter/pages/user/login/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'initial/App.dart';
+import 'initial/app.dart';
 
 class Todo {
   const Todo(this.title, this.description);
@@ -20,7 +20,7 @@ void main() {
     createApp()
     // materialApp(),
   );
-  Toast.toastConf();
+  ToastUtil.toastConf();
 }
 class ProviderWidget extends StatefulWidget {
   const ProviderWidget({Key? key}) : super(key: key);

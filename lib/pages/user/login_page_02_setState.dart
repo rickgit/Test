@@ -1,10 +1,11 @@
 import 'dart:math';
 
-import 'package:app_flutter/components/Toast.dart';
+import 'package:app_flutter/components/toast_util.dart';
 import 'package:app_flutter/initial/CustomLocalizations.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../../initial/ResString.dart';
+import 'package:flutter/widgets.dart';
+import '../../initial/res_strings.dart';
 
 Widget createLoginPage(BuildContext context) {
   return Scaffold(
@@ -23,10 +24,10 @@ Widget createLoginPage(BuildContext context) {
               child: createPasswdWidget(),),
             Container(child: ElevatedButton(onPressed: () {
               //登录
-              Toast.show("message");
+              ToastUtil.show("message");
               Future.delayed(Duration(seconds: 2),(){
                 print("Duration ...");
-                Toast.dismiss();
+                ToastUtil.dismiss();
                 Navigator.of(context).pushNamed('/user/message',arguments: {"":"a"});
               });
 
@@ -103,7 +104,7 @@ class AgressTextState extends State<AgressTextStatefullWidget> {
               setState(() {
                 print("跳转协议${Random().nextInt(10)} ${ResString.of(context)!.helloWorld}");
                 print("跳转协议${Random().nextInt(10)} ${findString(context, "title")}");
-                Toast.showToast("点击 ${ResString.of(context)?.user_agreement}");
+                ToastUtil.showToast("点击 ${ResString.of(context)?.user_agreement}");
               });
             }
       )]

@@ -1,14 +1,14 @@
 import 'dart:math';
 
 import 'package:app_flutter/base/BaseState.dart';
-import 'package:app_flutter/components/Toast.dart';
+import 'package:app_flutter/components/toast_util.dart';
 import 'package:app_flutter/initial/CustomLocalizations.dart';
-import 'package:app_flutter/pages/user/login/LoginViewModel.dart';
+import 'package:app_flutter/pages/user/login/login_view_model.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import '../../../initial/ResString.dart';
+import '../../../initial/res_strings.dart';
 
 Widget createProviderLoginPage(BuildContext context) {
   // return ProviderWidget();
@@ -243,7 +243,7 @@ class AgressTextState extends State<AgressTextStatefullWidget> {
                           "跳转协议${Random().nextInt(10)} ${ResString.of(context)!.helloWorld}");
                       print(
                           "跳转协议${Random().nextInt(10)} ${findString(context, "title")}");
-                      Toast.showToast(
+                      ToastUtil.showToast(
                           "点击 ${ResString.of(context)?.user_agreement}");
                     });
                   })
