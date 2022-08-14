@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../initial/ResColors.dart';
-import '../initial/ResSize.dart';
+import '../initial/res_colors.dart';
+import '../initial/res_size.dart';
 
 Widget createCommonTitleBar(BuildContext buildContext, String title) {
   return Container(

@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:app_flutter/base/BaseState.dart';
+import 'package:app_flutter/base/base_state.dart';
 import 'package:app_flutter/components/toast_util.dart';
-import 'package:app_flutter/initial/CustomLocalizations.dart';
+import 'package:app_flutter/initial/custom_localizations.dart';
 import 'package:app_flutter/pages/user/login/login_view_model.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

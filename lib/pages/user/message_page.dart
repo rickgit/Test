@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../components/TitleWidget.dart';
-import '../../initial/ResSize.dart';
-import '../../initial/ResColors.dart';
+import '../../components/title_widget.dart';
+import '../../initial/res_size.dart';
+import '../../initial/res_colors.dart';
 
 Widget createMessagePage(BuildContext buildContext){
   return Scaffold(

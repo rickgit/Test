@@ -1,9 +1,14 @@
 
-import 'package:app_flutter/pages/user/LoginPage.dart';
-import 'package:app_flutter/pages/user/login/LoginPage.dart';
+// import 'package:app_flutter/pages/user/LoginPage.dart';
+// import 'package:app_flutter/pages/user/login/LoginPage.dart';
+import 'package:app_flutter/pages/user/login_page.dart';
+import 'package:app_flutter/pages/user/login/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:app_flutter/pages/UserInfoPage.dart';
-import 'package:app_flutter/pages/user/MessagePage.dart';
+// import 'package:app_flutter/pages/UserInfoPage.dart';
+// import 'package:app_flutter/pages/user/MessagePage.dart';
+import 'package:app_flutter/pages/user_info_page.dart';
+import 'package:app_flutter/pages/user/message_page.dart';
+
 
 String ROUT_TAG_INFO='/user/info';
 String ROUT_TAG_MESSAGE='/user/message';

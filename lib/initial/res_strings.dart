@@ -1,4 +1,5 @@
-import 'package:app_flutter/initial/CustomLocalizations.dart';
+// import 'package:app_flutter/initial/CustomLocalizations.dart';
+import 'custom_localizations.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';//#intl 步骤4
 

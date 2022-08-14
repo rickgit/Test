@@ -1,7 +1,9 @@
-import 'package:app_flutter/initial/CustomLocalizations.dart';
+// import 'package:app_flutter/initial/CustomLocalizations.dart';
+import 'package:app_flutter/initial/custom_localizations.dart';
 import 'package:flutter/material.dart';
 
-import '../initial/ResSize.dart';
+// import '../initial/ResSize.dart';
+import 'package:app_flutter/initial/res_size.dart';
 import '../initial/Routes.dart';
 
 class Body extends StatelessWidget{

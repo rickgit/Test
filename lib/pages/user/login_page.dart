@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:app_flutter/components/toast_util.dart';
-import 'package:app_flutter/initial/CustomLocalizations.dart';
+import 'package:app_flutter/initial/custom_localizations.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../../initial/res_strings.dart';
