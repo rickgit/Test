@@ -1,4 +1,4 @@
-import 'package:app_flutter/model/User.dart';
+import 'package:app_flutter/model/user_model.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
