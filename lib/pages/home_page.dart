@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 // import '../initial/ResSize.dart';
 import 'package:app_flutter/initial/res_size.dart';
-import '../initial/Routes.dart';
+import '../initial/routes.dart';
 
 class Body extends StatelessWidget{
   @override

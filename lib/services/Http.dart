@@ -5,7 +5,7 @@ import 'package:package_info/package_info.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
-part 'Http.g.dart';
+part 'http.g.dart';
 
 
 testRestClient(){
