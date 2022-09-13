@@ -72,7 +72,7 @@ class DialogPage extends StatelessWidget {
     return SmartDialog.show(builder: (context){
           return ElevatedButton(onPressed: () {
             _createSmartDialog();
-          },child: Text("对话框"),);
+          },child: IntrinsicWidth(child: Column(children: [Text("对话框"),Text("内容"),Row(children: [Text("按钮1"),Text("按钮2")],)],mainAxisSize: MainAxisSize.min,),));
       });
   }
 
